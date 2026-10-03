@@ -75,3 +75,21 @@
   .story-quote-overlay{font-size:11px;left:14px;right:14px}
   .video-tile-media .video-script{font-size:8px;bottom:40px}
 }
+
+/* Keep testimonial copy outside the moving video so it never gets covered during playback. */
+.ai-reel-card{display:flex;flex-direction:column;gap:10px}
+.ai-reel-quote{padding:12px 2px 13px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:5px;min-height:105px}
+.ai-reel-quote strong{font:700 13px/1.2 var(--display);letter-spacing:-.02em;color:#f2f5f1}
+.ai-reel-quote small{font:500 7px var(--display);letter-spacing:.08em;text-transform:uppercase;color:#778178}
+.ai-reel-quote span{font:500 8px/1.35 var(--display);color:#a0aaa2}
+.ai-reel-media{flex:1}
+.video-tile{display:flex;flex-direction:column}
+.video-tile-quote{padding:15px 16px 13px;border-bottom:1px solid var(--line);font:600 11px/1.45 var(--display);color:#edf1ed;min-height:65px}
+.video-tile-media{order:2}
+.video-tile-copy{order:3}
+.video-tile-media .video-script{display:none}
+@media(max-width:600px){
+  .ai-reel-quote{min-height:112px}
+  .ai-reel-quote strong{font-size:12px}
+  .video-tile-quote{font-size:10px;min-height:auto}
+}
