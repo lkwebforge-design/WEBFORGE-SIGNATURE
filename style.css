@@ -62,3 +62,16 @@
   .video-tile-copy strong{font-size:12px}
   .video-tile-copy small{font-size:8px}
 }
+
+/* Client-story treatment: business-owner quotes are explicitly fictional AI concepts until verified footage is supplied. */
+.ai-reel-media{background:#080b09}
+.ai-quote-chip{position:absolute;left:14px;right:14px;bottom:92px;z-index:4;padding:10px 11px;border:1px solid rgba(255,255,255,.16);background:rgba(7,9,8,.68);backdrop-filter:blur(10px);border-radius:6px;font:600 9px/1.45 var(--display);color:#f0f4ef}
+.story-quote-overlay{position:absolute;left:22px;right:22px;top:22px;z-index:4;padding:13px 14px;border-left:2px solid var(--green);background:rgba(7,9,8,.66);backdrop-filter:blur(12px);font:600 13px/1.35 var(--display);color:#f4f7f3}
+.video-tile-media .video-script{position:absolute;left:14px;right:14px;bottom:43px;z-index:3;padding:9px 10px;background:rgba(7,9,8,.72);backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.12);border-radius:5px;font:600 9px/1.4 var(--display);color:#f3f6f2}
+.video-tile-media>span{bottom:14px}
+.video-tile-copy small{color:#758077}
+@media(max-width:600px){
+  .ai-quote-chip{bottom:88px;font-size:8px}
+  .story-quote-overlay{font-size:11px;left:14px;right:14px}
+  .video-tile-media .video-script{font-size:8px;bottom:40px}
+}
