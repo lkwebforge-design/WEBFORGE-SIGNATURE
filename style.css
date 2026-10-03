@@ -15,3 +15,50 @@
 .video-tile-copy small{max-width:48%;font:500 9px var(--display);line-height:1.5;letter-spacing:.06em;color:#8f9a91;text-align:right}
 @media(max-width:900px){.video-gallery{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.video-gallery{grid-template-columns:1fr}.video-gallery-kicker{margin-top:40px}.video-tile-copy{display:block}.video-tile-copy small{display:block;max-width:none;text-align:left;margin-top:7px}}
+
+/* AI VIDEO REEL — vertical story treatment inspired by modern agency testimonial walls */
+.video-band{grid-template-columns:.62fr 1.38fr;gap:6vw;overflow:hidden}
+.ai-note{margin-top:30px;padding:13px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;max-width:330px}
+.ai-note span{font:700 8px var(--display);letter-spacing:.16em;color:var(--green)}
+.ai-note small{font:500 9px var(--display);letter-spacing:.04em;color:#6f7972}
+.ai-reel{display:flex;gap:16px;align-items:stretch;min-width:0;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 8px 18px 0;scrollbar-width:none}
+.ai-reel::-webkit-scrollbar{display:none}
+.ai-reel-card{flex:0 0 clamp(170px,19vw,225px);scroll-snap-align:start}
+.ai-reel-media{aspect-ratio:9/15.5;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.13);border-radius:9px;background:#090c0a;box-shadow:0 24px 60px rgba(0,0,0,.28);transform:translateY(0);transition:transform .55s cubic-bezier(.2,.7,.2,1),border-color .4s ease}
+.ai-reel-card:hover .ai-reel-media{transform:translateY(-8px);border-color:rgba(182,255,103,.42)}
+.ai-reel-media iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;transform:scale(1.01)}
+.ai-reel-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 34%,rgba(0,0,0,.72));z-index:2;pointer-events:none}
+.ai-reel-top,.ai-reel-bottom{position:absolute;left:15px;right:15px;z-index:3;display:flex;justify-content:space-between;gap:12px;color:#f3f6f2}
+.ai-reel-top{top:14px;font:700 7px var(--display);letter-spacing:.14em}
+.ai-reel-top b{color:var(--green);font-size:9px}
+.ai-reel-bottom{bottom:15px;display:flex;flex-direction:column;align-items:flex-start}
+.ai-reel-bottom strong{font:700 14px var(--display);letter-spacing:-.02em}
+.ai-reel-bottom small{margin-top:5px;font:500 8px/1.4 var(--display);color:#b0b9b2}
+.ai-reel-card.is-primary .ai-reel-media{border-color:rgba(182,255,103,.3);box-shadow:0 28px 80px rgba(0,0,0,.38),0 0 50px rgba(182,255,103,.06)}
+.real-video-frame,.real-story-video{background:#090c0a}
+.real-video-frame iframe,.real-story-video iframe{background:#090c0a}
+.story-feature .real-story-video{background:#090c0a}
+.video-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.video-tile-media{aspect-ratio:9/14.5}
+.video-tile-media iframe{transform:scale(1.01)}
+.video-tile-media:after{background:linear-gradient(180deg,rgba(0,0,0,.08),transparent 42%,rgba(0,0,0,.7))}
+.video-tile-copy{display:block}
+.video-tile-copy strong{display:block}
+.video-tile-copy small{display:block;max-width:none;text-align:left;margin-top:7px}
+.video-tile{border-radius:9px}
+@media(max-width:900px){
+  .video-band{grid-template-columns:1fr;display:grid}
+  .ai-reel{padding-right:0}
+  .ai-reel-card{flex-basis:220px}
+  .video-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .ai-reel{gap:12px;margin-right:-20px;padding-right:20px}
+  .ai-reel-card{flex-basis:205px}
+  .ai-reel-media{aspect-ratio:9/15}
+  .video-gallery{grid-template-columns:1fr 1fr;gap:12px}
+  .video-tile-media{aspect-ratio:9/14}
+  .video-tile-copy{padding:14px}
+  .video-tile-copy strong{font-size:12px}
+  .video-tile-copy small{font-size:8px}
+}
