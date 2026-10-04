@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lkwebforge-design.github.io/WEBFORGE-SIGNATURE/sitemap.xml
