@@ -81,82 +81,25 @@ if(story){
 
 /* Start Project uses native <details>/<summary> so it works reliably on Safari/iPhone without JavaScript. */
 
-/* WEBFORGE SIGNATURE — privacy-friendly cookie consent */
+/* WEBFORGE SIGNATURE — simple cookie consent */
 (function(){
-  const STORAGE_KEY='webforge_cookie_consent_v1';
-  const loadStyles=()=>{
-    if(document.querySelector('link[data-cookie-css]')) return;
-    const link=document.createElement('link');
-    link.rel='stylesheet'; link.href='./cookie-consent.css?v=4'; link.dataset.cookieCss='true';
-    document.head.appendChild(link);
-  };
-  const saved=()=>{try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'null')}catch(e){return null}};
-  const save=(prefs)=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify({...prefs,updatedAt:new Date().toISOString()}))}catch(e){}};
-  const inject=()=>{
-    if(document.querySelector('.cookie-consent')) return;
-    const banner=document.createElement('aside');
-    banner.className='cookie-consent';
-    banner.setAttribute('aria-label','Cookie preferences');
-    banner.innerHTML=`
-      <div class="cookie-consent-copy">
-        <p class="cookie-consent-kicker">WEBFORGE / PRIVACY</p>
-        <p>We use essential cookies to keep this site working. Optional analytics cookies help us understand site usage. You can accept all, reject optional cookies, or choose what you allow.</p>
-      </div>
-      <div class="cookie-consent-actions">
-        <button class="cookie-btn" data-cookie="reject">Reject Optional</button>
-        <button class="cookie-btn" data-cookie="manage">Manage Preferences</button>
-        <button class="cookie-btn primary" data-cookie="accept">Accept All</button>
-      </div>`;
-    document.body.appendChild(banner);
-
-    const modal=document.createElement('div');
-    modal.className='cookie-settings';
-    modal.setAttribute('role','dialog');
-    modal.setAttribute('aria-modal','true');
-    modal.setAttribute('aria-label','Cookie preferences');
-    modal.innerHTML=`
-      <div class="cookie-panel">
-        <h3>Cookie preferences</h3>
-        <p>Essential cookies are always enabled because they are needed for core site functions. Optional analytics stays off unless you choose to enable it.</p>
-        <div class="cookie-option"><div><strong>Essential</strong><small>Required for basic website functionality and your consent choice.</small></div><label class="cookie-switch"><input type="checkbox" checked disabled><span class="cookie-slider"></span></label></div>
-        <div class="cookie-option"><div><strong>Analytics</strong><small>Optional measurement to help us improve the website. No analytics is activated by this consent component.</small></div><label class="cookie-switch"><input id="cookie-analytics" type="checkbox"><span class="cookie-slider"></span></label></div>
-        <div class="cookie-panel-actions"><button class="cookie-close" data-cookie="close">Cancel</button><button class="cookie-btn primary" data-cookie="save">Save Preferences</button></div>
-      </div>`;
-    document.body.appendChild(modal);
-
-    const show=()=>banner.classList.add('is-visible');
-    const hide=()=>banner.classList.remove('is-visible');
-    const open=()=>modal.classList.add('is-visible');
-    const close=()=>modal.classList.remove('is-visible');
-
-    const handleBannerAction=(action)=>{
-      if(action==='accept'){save({essential:true,analytics:true});hide()}
-      if(action==='reject'){save({essential:true,analytics:false});hide()}
-      if(action==='manage'){open()}
-    };
-    banner.querySelectorAll('[data-cookie]').forEach(btn=>{
-      btn.setAttribute('type','button');
-      btn.onclick=(e)=>{e.preventDefault();e.stopPropagation();handleBannerAction(btn.dataset.cookie);};
-      btn.ontouchend=(e)=>{e.preventDefault();e.stopPropagation();handleBannerAction(btn.dataset.cookie);};
-    });
-    const handleModalAction=(action)=>{
-      if(action==='close') close();
-      if(action==='save'){
-        save({essential:true,analytics:!!document.querySelector('#cookie-analytics')?.checked});
-        close(); hide();
-      }
-    };
-    modal.querySelectorAll('[data-cookie]').forEach(btn=>{
-      btn.setAttribute('type','button');
-      btn.onclick=(e)=>{e.preventDefault();e.stopPropagation();handleModalAction(btn.dataset.cookie);};
-      btn.ontouchend=(e)=>{e.preventDefault();e.stopPropagation();handleModalAction(btn.dataset.cookie);};
-    });
-    modal.addEventListener('click',e=>{if(e.target===modal) close()});
-
-    const current=saved();
-    if(current && current.analytics) document.querySelector('#cookie-analytics').checked=true;
-    if(!current) show();
-  };
-  const init=()=>{loadStyles();inject()};
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
+  const KEY='webforge_cookie_consent_v2';
+  const byId=(id)=>document.getElementById(id);
+  const save=(analytics)=>{try{localStorage.setItem(KEY,JSON.stringify({essential:true,analytics:!!analytics,updatedAt:new Date().toISOString()}))}catch(e){}};
+  const hide=(el)=>{if(el) el.hidden=true};
+  const show=(el)=>{if(el) el.hidden=false};
+  function initCookieConsent(){
+    const banner=byId('webforge-cookie-consent');
+    const modal=byId('wf-cookie-modal');
+    if(!banner||!modal) return;
+    let existing=null; try{existing=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
+    if(existing){hide(banner)}else{show(banner)}
+    byId('wf-cookie-accept')?.addEventListener('click',()=>{save(true);hide(banner)});
+    byId('wf-cookie-reject')?.addEventListener('click',()=>{save(false);hide(banner)});
+    byId('wf-cookie-manage')?.addEventListener('click',()=>show(modal));
+    byId('wf-cookie-cancel')?.addEventListener('click',()=>hide(modal));
+    byId('wf-cookie-save')?.addEventListener('click',()=>{save(!!byId('wf-cookie-analytics')?.checked);hide(modal);hide(banner)});
+    modal.addEventListener('click',(e)=>{if(e.target===modal) hide(modal)});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initCookieConsent,{once:true}); else initCookieConsent();
 })();
