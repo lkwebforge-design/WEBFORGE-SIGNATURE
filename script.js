@@ -129,21 +129,29 @@ if(story){
     const open=()=>modal.classList.add('is-visible');
     const close=()=>modal.classList.remove('is-visible');
 
-    banner.addEventListener('click',e=>{
-      const action=e.target.closest('[data-cookie]')?.dataset.cookie;
+    const handleBannerAction=(action)=>{
       if(action==='accept'){save({essential:true,analytics:true});hide()}
       if(action==='reject'){save({essential:true,analytics:false});hide()}
       if(action==='manage'){open()}
+    };
+    banner.querySelectorAll('[data-cookie]').forEach(btn=>{
+      const run=()=>handleBannerAction(btn.dataset.cookie);
+      btn.addEventListener('click',run);
+      btn.addEventListener('pointerup',run);
     });
-    modal.addEventListener('click',e=>{
-      const action=e.target.closest('[data-cookie]')?.dataset.cookie;
+    const handleModalAction=(action)=>{
       if(action==='close') close();
       if(action==='save'){
         save({essential:true,analytics:!!document.querySelector('#cookie-analytics')?.checked});
         close(); hide();
       }
-      if(e.target===modal) close();
+    };
+    modal.querySelectorAll('[data-cookie]').forEach(btn=>{
+      const run=()=>handleModalAction(btn.dataset.cookie);
+      btn.addEventListener('click',run);
+      btn.addEventListener('pointerup',run);
     });
+    modal.addEventListener('click',e=>{if(e.target===modal) close()});
 
     const current=saved();
     if(current && current.analytics) document.querySelector('#cookie-analytics').checked=true;
