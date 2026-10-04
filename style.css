@@ -142,3 +142,20 @@
 .packages-cta-card .eyebrow{margin-bottom:25px}
 @media(max-width:900px){.packages-cta-section{padding:100px 5vw}.packages-cta-card,.packages-cta-content{min-height:470px}.packages-cta-content{padding:50px 5vw}}
 @media(max-width:600px){.packages-cta-section{padding:80px 20px}.packages-cta-card,.packages-cta-content{min-height:540px}.packages-cta-content{padding:35px 25px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end}.packages-cta-content h2{font-size:54px}.packages-cta-action{align-items:flex-start;gap:10px}.packages-cta-overlay{background:linear-gradient(180deg,rgba(5,8,6,.3),rgba(5,8,6,.88) 66%,rgba(5,8,6,.96))}.packages-cta-card:after{inset:9px}}
+
+
+/* Portfolio 05–07 — force identical premium image-card dimensions */
+.work-section .salon-work,
+.work-section .aura-work,
+.work-section .volt-work{min-height:0!important;margin-top:24px!important}
+.work-section .salon-work .site-mock,
+.work-section .aura-work .site-mock,
+.work-section .volt-work .site-mock{height:520px!important;min-height:0!important;aspect-ratio:auto!important}
+.work-section .salon-work .work-meta,
+.work-section .aura-work .work-meta,
+.work-section .volt-work .work-meta{min-height:38px!important}
+@media(max-width:700px){
+ .work-section .salon-work .site-mock,
+ .work-section .aura-work .site-mock,
+ .work-section .volt-work .site-mock{height:390px!important}
+}
