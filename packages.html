@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WebForge Packages — Starter, Business & Signature</title>
+<meta name="description" content="Choose a WebForge website package: Starter, Business or Signature. Professional websites built around your business and budget.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.packages-page{min-height:100vh;background:#070908;color:var(--text)}
+.packages-hero{padding:125px 7vw 85px;max-width:1200px;margin:auto}
+.packages-hero h1{font:800 clamp(52px,7vw,94px)/.9 var(--display);letter-spacing:-.075em;margin:0;max-width:900px}
+.packages-hero h1 em{font-family:var(--serif);font-weight:400;color:var(--green)}
+.packages-hero>p:last-child{max-width:620px;color:#8f9991;line-height:1.7;margin:28px 0 0;font-size:15px}
+.package-grid{padding:0 7vw 120px;max-width:1450px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.package-card{position:relative;min-height:690px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0c100e;display:flex;flex-direction:column;transition:transform .5s ease,border-color .5s ease}
+.package-card:hover{transform:translateY(-8px);border-color:rgba(182,255,103,.42)}
+.package-image{height:225px;position:relative;overflow:hidden;background:#111}
+.package-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.7))}
+.package-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}
+.package-card:hover .package-image img{transform:scale(1.07)}
+.package-number{position:absolute;z-index:2;top:17px;left:18px;font:700 8px var(--display);letter-spacing:.16em;color:#eef3ed}
+.package-badge{position:absolute;z-index:2;top:15px;right:15px;border:1px solid rgba(182,255,103,.35);background:rgba(7,9,8,.7);backdrop-filter:blur(10px);padding:8px 10px;border-radius:999px;font:700 8px var(--display);letter-spacing:.12em;color:var(--green)}
+.package-body{padding:30px 28px 27px;display:flex;flex-direction:column;flex:1}
+.package-kicker{font:700 8px var(--display);letter-spacing:.16em;color:#78837b}
+.package-body h2{font:800 31px var(--display);letter-spacing:-.05em;margin:10px 0 7px}
+.package-price{font:800 34px var(--display);letter-spacing:-.05em;color:#f5f8f3}
+.package-price small{font:500 10px var(--display);color:#78837b;letter-spacing:.04em}
+.package-desc{color:#8e9890;font-size:12px;line-height:1.65;min-height:66px;margin:18px 0 20px}
+.package-list{border-top:1px solid var(--line);padding:18px 0 0;margin:0;list-style:none;display:grid;gap:11px}
+.package-list li{font-size:11px;color:#d2d9d3;display:flex;gap:9px;line-height:1.45}
+.package-list li:before{content:"✦";color:var(--green);font-size:9px;margin-top:2px}
+.package-note{margin-top:auto;padding-top:20px;color:#626d65;font-size:9px;line-height:1.5}
+.package-cta{margin-top:18px;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;border-top:1px solid var(--line);padding-top:18px;font:700 10px var(--display);letter-spacing:.1em}
+.package-cta span{color:var(--green);font-size:16px}
+.package-card.featured{border-color:rgba(182,255,103,.35);box-shadow:0 30px 90px rgba(0,0,0,.25)}
+.package-card.featured .package-image{height:245px}
+.package-footer{padding:0 7vw 100px;max-width:1100px;margin:auto;text-align:center}
+.package-footer h3{font:800 clamp(34px,4vw,54px)/.95 var(--display);letter-spacing:-.06em;margin:0}
+.package-footer h3 em{font-family:var(--serif);font-weight:400;color:var(--green)}
+.package-footer p{max-width:600px;margin:20px auto 28px;color:#818c84;font-size:13px;line-height:1.7}
+.package-footer .btn{background:var(--green);color:#091008}
+@media(max-width:900px){.package-grid{grid-template-columns:1fr}.package-card{min-height:0}.package-image,.package-card.featured .package-image{height:240px}.package-desc{min-height:0}}
+@media(max-width:600px){.packages-hero{padding:95px 20px 60px}.packages-hero h1{font-size:52px}.package-grid{padding:0 20px 80px;gap:16px}.package-body{padding:25px 22px}.package-footer{padding:0 20px 80px}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<header class="nav">
+<a class="brand" href="index.html"><span class="brand-mark">W</span><span>WEBFORGE<span class="accent"> SIGNATURE</span></span></a>
+<nav><a href="index.html#work">Work</a><a href="index.html#process">Process</a><a href="packages.html">Packages</a><a href="index.html#start">Contact</a></nav>
+<a class="nav-cta" href="index.html#start">Start a project <span>✦</span></a>
+</header>
+<main class="packages-page">
+<section class="packages-hero">
+<p class="eyebrow"><span></span> WEBFORGE / PACKAGES</p>
+<h1>Choose the level.<br><em>We'll craft the experience.</em></h1>
+<p>Simple websites should stay affordable. Growing businesses deserve more tools. Brands that want to stand apart get a fully custom experience. Every package is shaped around the business, not a recycled template.</p>
+</section>
+<section class="package-grid">
+<article class="package-card">
+<div class="package-image"><img src="assets/portfolio-cafe.svg" alt="Café website visual"><span class="package-number">01 / STARTER</span></div>
+<div class="package-body">
+<span class="package-kicker">GET ONLINE</span><h2>WebForge Starter</h2><div class="package-price">LKR 7,000 <small>starting price</small></div>
+<p class="package-desc">Clean, professional and responsive websites with the essential features a local business needs to get online.</p>
+<ul class="package-list">
+<li>1–3 pages</li><li>Mobile + desktop responsive design</li><li>Menu / services section</li><li>WhatsApp contact & ordering flow</li><li>Booking / request form</li><li>Google Maps location</li><li>Social links + basic SEO</li><li>Fast-loading setup</li>
+</ul>
+<p class="package-note">Domain name, hosting and paid third-party services are not included.</p>
+<a class="package-cta" href="index.html#start">START WITH STARTER <span>→</span></a>
+</div></article>
+<article class="package-card featured">
+<div class="package-image"><img src="assets/portfolio-lume.svg" alt="Premium salon website visual"><span class="package-number">02 / BUSINESS</span><span class="package-badge">BEST VALUE</span></div>
+<div class="package-body">
+<span class="package-kicker">GROW ONLINE</span><h2>WebForge Business</h2><div class="package-price">LKR 19,900 <small>starting price</small></div>
+<p class="package-desc">More advanced websites built to attract customers, generate enquiries and support everyday business operations.</p>
+<ul class="package-list">
+<li>5–10+ pages</li><li>Premium custom visual direction</li><li>Advanced animations & interactions</li><li>Services / products sections</li><li>Booking or enquiry system</li><li>WhatsApp lead flow</li><li>SEO + Google Search Console setup</li><li>Analytics + performance optimization</li>
+</ul>
+<p class="package-note">Domain name, hosting, paid integrations and transaction fees are quoted separately when required.</p>
+<a class="package-cta" href="index.html#start">GROW WITH BUSINESS <span>→</span></a>
+</div></article>
+<article class="package-card">
+<div class="package-image"><img src="assets/portfolio-aura.svg" alt="Luxury resort website visual"><span class="package-number">03 / SIGNATURE</span></div>
+<div class="package-body">
+<span class="package-kicker">STAND APART</span><h2>WebForge Signature</h2><div class="package-price">LKR 39,900+ <small>custom scope</small></div>
+<p class="package-desc">Fully customized premium experiences with distinctive art direction, cinematic visuals, advanced interactions and tailored functionality.</p>
+<ul class="package-list">
+<li>Fully custom visual direction</li><li>Cinematic hero sections</li><li>Advanced scrolling & interactions</li><li>Custom portfolio / gallery</li><li>Booking, ordering or enquiry systems</li><li>Custom integrations</li><li>Advanced SEO + analytics</li><li>Priority revisions + launch support</li>
+</ul>
+<p class="package-note">Final pricing depends on scope, integrations, content and custom functionality.</p>
+<a class="package-cta" href="index.html#start">BUILD SIGNATURE <span>→</span></a>
+</div></article>
+</section>
+<section class="package-footer">
+<h3>Not sure which package<br><em>fits your business?</em></h3>
+<p>Tell us what you need and we'll recommend the right level before any work begins. Extra functionality can be scoped separately instead of forcing every business into the same package.</p>
+<a class="btn" href="mailto:lkwebforge@gmail.com">Talk to WebForge <span>✦</span></a>
+</section>
+</main>
+<footer><span>© 2026 WEBFORGE SIGNATURE</span><span>DESIGN · BUILD · LAUNCH</span><span>COLOMBO · SRI LANKA</span></footer>
+</body>
+</html>
