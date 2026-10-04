@@ -61,3 +61,19 @@ if(story){
   },{threshold:.22});
   frames.forEach(frame=>io.observe(frame));
 })();
+
+
+/* Performance: only play portfolio videos while they are visible. */
+(function(){
+  const videos=[...document.querySelectorAll('.signature-video-gallery video, .story-video video')];
+  if(!videos.length) return;
+  const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    const v=entry.target;
+    if(entry.isIntersecting){
+      v.play().catch(()=>{});
+    }else{
+      v.pause();
+    }
+  }),{rootMargin:'180px 0px',threshold:.08});
+  videos.forEach(v=>io.observe(v));
+})();
