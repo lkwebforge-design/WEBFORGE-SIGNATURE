@@ -159,3 +159,25 @@
  .work-section .aura-work .site-mock,
  .work-section .volt-work .site-mock{height:390px!important}
 }
+
+
+/* Start Project — premium contact reveal */
+.start-content{width:min(100%,980px)}
+.start-project-trigger{border:0;cursor:pointer;font:700 12px var(--display)}
+.project-contact{margin:28px auto 0;width:min(100%,900px);padding:20px;border:1px solid rgba(7,16,11,.18);border-radius:16px;background:rgba(255,255,255,.16);box-shadow:0 24px 70px rgba(23,55,25,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);text-align:left;animation:contactIn .45s ease both}
+.project-contact[hidden]{display:none}
+.project-contact-head{display:flex;justify-content:space-between;align-items:center;padding:0 4px 14px;border-bottom:1px solid rgba(7,16,11,.15);font:800 9px var(--display);letter-spacing:.16em;color:#2f492f}
+.project-contact-close{width:32px;height:32px;border:1px solid rgba(7,16,11,.18);border-radius:50%;background:rgba(255,255,255,.18);color:#172518;font-size:20px;line-height:1;cursor:pointer}
+.project-contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.project-contact-grid a{display:flex;flex-direction:column;gap:7px;min-height:125px;padding:18px;border:1px solid rgba(7,16,11,.16);border-radius:12px;background:rgba(255,255,255,.13);color:#0b160c;text-decoration:none;transition:transform .25s ease,background .25s ease,border-color .25s ease}
+.project-contact-grid a:hover{transform:translateY(-3px);background:rgba(255,255,255,.28);border-color:rgba(7,16,11,.3)}
+.project-contact-grid small{font:800 8px var(--display);letter-spacing:.14em;color:#526652}
+.project-contact-grid strong{font:800 16px var(--display);letter-spacing:-.03em;word-break:break-word}
+.project-contact-grid span{margin-top:auto;font:600 9px var(--display);color:#4a5e4b}
+@keyframes contactIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:700px){
+ .project-contact{padding:14px;margin-top:22px}
+ .project-contact-grid{grid-template-columns:1fr}
+ .project-contact-grid a{min-height:88px;padding:15px}
+ .project-contact-grid span{margin-top:2px}
+}
