@@ -111,3 +111,10 @@
 .video-gallery .video-tile{display:flex;text-decoration:none;color:inherit;cursor:pointer}
 .video-gallery .video-tile:focus-visible{outline:1px solid var(--green);outline-offset:4px}
 .video-gallery .video-tile:hover .video-tile-copy strong{color:var(--green)}
+
+
+/* Normalize all portfolio project card heights */
+.work-section .salon,
+.work-section .aura,
+.work-section .volt{aspect-ratio:1.55/1!important}
+@media(max-width:700px){.work-section .salon,.work-section .aura,.work-section .volt{aspect-ratio:1.55/1!important}}
