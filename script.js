@@ -81,25 +81,22 @@ if(story){
 
 /* Start Project uses native <details>/<summary> so it works reliably on Safari/iPhone without JavaScript. */
 
-/* WEBFORGE SIGNATURE — simple cookie consent */
+/* WEBFORGE SIGNATURE — isolated cookie consent */
 (function(){
-  const KEY='webforge_cookie_consent_v2';
-  const byId=(id)=>document.getElementById(id);
-  const save=(analytics)=>{try{localStorage.setItem(KEY,JSON.stringify({essential:true,analytics:!!analytics,updatedAt:new Date().toISOString()}))}catch(e){}};
-  const hide=(el)=>{if(el) el.hidden=true};
-  const show=(el)=>{if(el) el.hidden=false};
-  function initCookieConsent(){
-    const banner=byId('webforge-cookie-consent');
-    const modal=byId('wf-cookie-modal');
-    if(!banner||!modal) return;
-    let existing=null; try{existing=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
-    if(existing){hide(banner)}else{show(banner)}
-    byId('wf-cookie-accept')?.addEventListener('click',()=>{save(true);hide(banner)});
-    byId('wf-cookie-reject')?.addEventListener('click',()=>{save(false);hide(banner)});
-    byId('wf-cookie-manage')?.addEventListener('click',()=>show(modal));
-    byId('wf-cookie-cancel')?.addEventListener('click',()=>hide(modal));
-    byId('wf-cookie-save')?.addEventListener('click',()=>{save(!!byId('wf-cookie-analytics')?.checked);hide(modal);hide(banner)});
-    modal.addEventListener('click',(e)=>{if(e.target===modal) hide(modal)});
+  const KEY='webforge_cookie_consent_v3';
+  function init(){
+    if(document.getElementById('wf-cookie-layer')) return;
+    const layer=document.createElement('div');
+    layer.id='wf-cookie-layer';
+    layer.innerHTML='<div class="wf-cookie-box" role="dialog" aria-label="Cookie preferences"><div class="wf-cookie-copy"><span>WEBFORGE / PRIVACY</span><strong>A little privacy, beautifully handled.</strong><p>Essential cookies keep this site working. Optional analytics is only enabled if you choose it.</p></div><div class="wf-cookie-actions"><button type="button" id="wf-cookie-reject">Reject Optional</button><button type="button" id="wf-cookie-manage">Manage</button><button type="button" id="wf-cookie-accept">Accept All</button></div></div>';
+    document.body.appendChild(layer);
+    const box=layer.querySelector('.wf-cookie-box');
+    const hide=()=>{layer.classList.add('wf-cookie-hidden')};
+    let saved=false; try{saved=!!localStorage.getItem(KEY)}catch(e){}
+    if(saved) hide();
+    layer.querySelector('#wf-cookie-accept').addEventListener('pointerup',()=>{try{localStorage.setItem(KEY,JSON.stringify({essential:true,analytics:true}))}catch(e){} hide()},{passive:true});
+    layer.querySelector('#wf-cookie-reject').addEventListener('pointerup',()=>{try{localStorage.setItem(KEY,JSON.stringify({essential:true,analytics:false}))}catch(e){} hide()},{passive:true});
+    layer.querySelector('#wf-cookie-manage').addEventListener('pointerup',()=>{alert('Essential cookies are always on. Optional analytics is currently off unless you choose Accept All.')},{passive:true});
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initCookieConsent,{once:true}); else initCookieConsent();
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
 })();
