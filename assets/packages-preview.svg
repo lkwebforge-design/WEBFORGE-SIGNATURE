@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+<rect width="1600" height="1000" fill="#0A0D0B"/>
+<rect x="70" y="70" width="1460" height="860" rx="34" fill="#0F1511" stroke="#334038"/>
+<circle cx="1250" cy="220" r="300" fill="#B6FF67" opacity=".08"/>
+<circle cx="1280" cy="210" r="190" fill="#B6FF67" opacity=".06"/>
+<text x="140" y="180" fill="#8E9A91" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="5">WEBFORGE / PACKAGES</text>
+<text x="140" y="280" fill="#F4F6F1" font-family="Arial,sans-serif" font-size="86" font-weight="800" letter-spacing="-4">BUILD YOUR</text>
+<text x="140" y="370" fill="#B6FF67" font-family="Georgia,serif" font-size="92" font-style="italic">signature.</text>
+<rect x="140" y="445" width="1320" height="2" fill="#2A342D"/>
+<g transform="translate(140 520)">
+<rect width="385" height="270" rx="22" fill="#111813" stroke="#3B493F"/>
+<text x="34" y="55" fill="#87938A" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">STARTER</text>
+<text x="34" y="105" fill="#F4F6F1" font-family="Arial,sans-serif" font-size="35" font-weight="800">THE ESSENTIAL</text>
+<text x="34" y="155" fill="#9FAA9F" font-family="Arial,sans-serif" font-size="18">A sharp, focused web presence.</text>
+<circle cx="330" cy="218" r="28" fill="#1B261D" stroke="#B6FF67"/>
+<path d="M318 218h24M332 206l12 12-12 12" stroke="#B6FF67" stroke-width="3"/>
+</g>
+<g transform="translate(565 520)">
+<rect width="385" height="270" rx="22" fill="#B6FF67"/>
+<text x="34" y="55" fill="#24301F" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">BUSINESS</text>
+<text x="34" y="105" fill="#081008" font-family="Arial,sans-serif" font-size="35" font-weight="800">THE GROWTH</text>
+<text x="34" y="155" fill="#30402C" font-family="Arial,sans-serif" font-size="18">Built to turn visits into leads.</text>
+<circle cx="330" cy="218" r="28" fill="#0D130E"/>
+<path d="M318 218h24M332 206l12 12-12 12" stroke="#B6FF67" stroke-width="3"/>
+</g>
+<g transform="translate(990 520)">
+<rect width="385" height="270" rx="22" fill="#151D17" stroke="#657260"/>
+<text x="34" y="55" fill="#B6FF67" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">SIGNATURE</text>
+<text x="34" y="105" fill="#F4F6F1" font-family="Arial,sans-serif" font-size="35" font-weight="800">THE CINEMATIC</text>
+<text x="34" y="155" fill="#A8B2AA" font-family="Arial,sans-serif" font-size="18">Motion, depth and premium detail.</text>
+<circle cx="330" cy="218" r="28" fill="#1B261D" stroke="#B6FF67"/>
+<path d="M318 218h24M332 206l12 12-12 12" stroke="#B6FF67" stroke-width="3"/>
+</g>
+</svg>
