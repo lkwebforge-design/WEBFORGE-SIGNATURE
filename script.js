@@ -77,3 +77,23 @@ if(story){
   }),{rootMargin:'180px 0px',threshold:.08});
   videos.forEach(v=>io.observe(v));
 })();
+
+
+/* Start Project contact reveal */
+(function(){
+  const trigger=document.querySelector('.start-project-trigger');
+  const panel=document.querySelector('#project-contact');
+  const close=document.querySelector('.project-contact-close');
+  if(!trigger || !panel) return;
+  const open=()=>{
+    panel.hidden=false;
+    trigger.setAttribute('aria-expanded','true');
+    setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),40);
+  };
+  const hide=()=>{
+    panel.hidden=true;
+    trigger.setAttribute('aria-expanded','false');
+  };
+  trigger.addEventListener('click',()=>panel.hidden?open():hide());
+  if(close) close.addEventListener('click',hide);
+})();
