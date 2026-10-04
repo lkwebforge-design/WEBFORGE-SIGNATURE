@@ -92,6 +92,8 @@ if(story){
     layer.innerHTML='<div class="wf-cookie-box" role="dialog" aria-label="Cookie preferences"><div class="wf-cookie-copy"><span>WEBFORGE / PRIVACY</span><strong>A little privacy, beautifully handled.</strong><p>Essential cookies keep this site working. Optional analytics is only enabled if you choose it.</p></div><div class="wf-cookie-actions"><button type="button" id="wf-cookie-reject">Reject Optional</button><button type="button" id="wf-cookie-manage">Manage</button><button type="button" id="wf-cookie-accept">Accept All</button></div></div>';
     document.body.appendChild(layer);
     const box=layer.querySelector('.wf-cookie-box');
+    const accept=layer.querySelector('#wf-cookie-accept');
+    if(accept){accept.style.setProperty('background','linear-gradient(135deg, rgba(205,255,220,.30), rgba(55,135,88,.18))','important');accept.style.setProperty('color','#f0fff5','important');accept.style.setProperty('border','1px solid rgba(180,255,205,.55)','important');accept.style.setProperty('box-shadow','inset 0 1px 0 rgba(255,255,255,.22), inset 0 0 22px rgba(170,255,200,.08), 0 8px 30px rgba(40,120,70,.20)','important');accept.style.setProperty('backdrop-filter','blur(18px) saturate(160%)','important');accept.style.setProperty('-webkit-backdrop-filter','blur(18px) saturate(160%)','important');}
     const hide=()=>{layer.classList.add('wf-cookie-hidden')};
     let saved=false; try{saved=!!localStorage.getItem(KEY)}catch(e){}
     if(saved) hide();
