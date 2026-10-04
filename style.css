@@ -144,30 +144,29 @@
 @media(max-width:600px){.packages-cta-section{padding:80px 20px}.packages-cta-card,.packages-cta-content{min-height:540px}.packages-cta-content{padding:35px 25px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end}.packages-cta-content h2{font-size:54px}.packages-cta-action{align-items:flex-start;gap:10px}.packages-cta-overlay{background:linear-gradient(180deg,rgba(5,8,6,.3),rgba(5,8,6,.88) 66%,rgba(5,8,6,.96))}.packages-cta-card:after{inset:9px}}
 
 
-/* Portfolio 05–07 — force identical premium image-card dimensions */
-.work-section .salon-work,
-.work-section .aura-work,
-.work-section .volt-work{min-height:0!important;margin-top:24px!important}
-.work-section .salon-work .site-mock,
-.work-section .aura-work .site-mock,
-.work-section .volt-work .site-mock{height:520px!important;min-height:0!important;aspect-ratio:auto!important}
-.work-section .salon-work .work-meta,
-.work-section .aura-work .work-meta,
-.work-section .volt-work .work-meta{min-height:38px!important}
-@media(max-width:700px){
- .work-section .salon-work .site-mock,
- .work-section .aura-work .site-mock,
- .work-section .volt-work .site-mock{height:390px!important}
+/* Portfolio 05–07 — equal-size latest work cards */
+.latest-work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px}
+.latest-work-grid .work-card{min-height:0;margin:0!important}
+.latest-work-grid .site-mock{height:360px!important;min-height:0!important;aspect-ratio:auto!important}
+.latest-work-grid .work-meta{min-height:42px!important}
+@media(max-width:900px){
+  .latest-work-grid{grid-template-columns:1fr 1fr;gap:18px}
+  .latest-work-grid .site-mock{height:300px!important}
+}
+@media(max-width:600px){
+  .latest-work-grid{grid-template-columns:1fr;gap:18px}
+  .latest-work-grid .site-mock{height:290px!important}
 }
 
-
-/* Start Project — premium contact reveal */
+/* Start Project — native Safari-safe disclosure */
 .start-content{width:min(100%,980px)}
-.start-project-trigger{border:0;cursor:pointer;font:700 12px var(--display)}
+.project-contact-wrap{display:flex;flex-direction:column;align-items:center}
+.start-project-trigger{border:0;cursor:pointer;font:700 12px var(--display);list-style:none}
+.start-project-trigger::-webkit-details-marker{display:none}
+.project-contact-hint{display:block;margin-top:16px;color:#4b6549;font-size:9px;letter-spacing:.1em}
+.project-contact-wrap[open] .project-contact-hint{display:none}
 .project-contact{margin:28px auto 0;width:min(100%,900px);padding:20px;border:1px solid rgba(7,16,11,.18);border-radius:16px;background:rgba(255,255,255,.16);box-shadow:0 24px 70px rgba(23,55,25,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);text-align:left;animation:contactIn .45s ease both}
-.project-contact[hidden]{display:none}
-.project-contact-head{display:flex;justify-content:space-between;align-items:center;padding:0 4px 14px;border-bottom:1px solid rgba(7,16,11,.15);font:800 9px var(--display);letter-spacing:.16em;color:#2f492f}
-.project-contact-close{width:32px;height:32px;border:1px solid rgba(7,16,11,.18);border-radius:50%;background:rgba(255,255,255,.18);color:#172518;font-size:20px;line-height:1;cursor:pointer}
+.project-contact-head{display:flex;align-items:center;padding:0 4px 14px;border-bottom:1px solid rgba(7,16,11,.15);font:800 9px var(--display);letter-spacing:.16em;color:#2f492f}
 .project-contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
 .project-contact-grid a{display:flex;flex-direction:column;gap:7px;min-height:125px;padding:18px;border:1px solid rgba(7,16,11,.16);border-radius:12px;background:rgba(255,255,255,.13);color:#0b160c;text-decoration:none;transition:transform .25s ease,background .25s ease,border-color .25s ease}
 .project-contact-grid a:hover{transform:translateY(-3px);background:rgba(255,255,255,.28);border-color:rgba(7,16,11,.3)}
