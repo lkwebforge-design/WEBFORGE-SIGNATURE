@@ -128,3 +128,48 @@ if(story){
     window.open('https://wa.me/94771544911?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
   });
 })();
+
+
+/* Cinematic hero: map scroll progress to restrained 3D transforms; no scroll hijacking. */
+(function(){
+  const pin=document.querySelector('[data-scroll-hero]');
+  const stage=document.querySelector('.signature-hero-stage');
+  if(!pin||!stage) return;
+  const root=pin;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let scheduled=false;
+  function update(){
+    scheduled=false;
+    const rect=pin.getBoundingClientRect();
+    const travel=Math.max(1,pin.offsetHeight-stage.offsetHeight);
+    const progress=Math.max(0,Math.min(1,(-rect.top)/travel));
+    root.style.setProperty('--hero-progress',progress.toFixed(4));
+    if(reduce){
+      ['--copy-lift','--scene-x','--scene-y','--scene-rotate','--aura-x','--orbit-turn','--core-x','--core-y','--core-rotate','--core-scale','--panel-x','--panel-y','--float-one-x','--float-one-y','--float-two-x','--float-two-y'].forEach(k=>root.style.removeProperty(k));
+      return;
+    }
+    const mobile=window.matchMedia('(max-width: 760px)').matches;
+    const px=(n)=>Math.round(n*progress*100)/100+'px';
+    root.style.setProperty('--copy-lift',px(-18*progress));
+    root.style.setProperty('--copy-opacity',(1-.08*progress).toFixed(3));
+    root.style.setProperty('--scene-x',px(mobile?0:16*progress));
+    root.style.setProperty('--scene-y',px(-24*progress));
+    root.style.setProperty('--scene-rotate',(mobile?0:2.5*progress).toFixed(2)+'deg');
+    root.style.setProperty('--aura-x',px(26*progress));
+    root.style.setProperty('--orbit-turn',(34*progress).toFixed(2)+'deg');
+    root.style.setProperty('--core-x',px(-18*progress));
+    root.style.setProperty('--core-y',px(22*progress));
+    root.style.setProperty('--core-rotate',(34*progress).toFixed(2)+'deg');
+    root.style.setProperty('--core-scale',(1-.12*progress).toFixed(3));
+    root.style.setProperty('--panel-x',px(28*progress));
+    root.style.setProperty('--panel-y',px(-42*progress));
+    root.style.setProperty('--float-one-x',px(-22*progress));
+    root.style.setProperty('--float-one-y',px(20*progress));
+    root.style.setProperty('--float-two-x',px(18*progress));
+    root.style.setProperty('--float-two-y',px(-28*progress));
+  }
+  function schedule(){if(!scheduled){scheduled=true;window.requestAnimationFrame(update)}}
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  update();
+})();
