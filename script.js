@@ -170,7 +170,7 @@ if(story){
     function draw(){
       scheduled = false;
       const rect = hero.getBoundingClientRect();
-      const span = Math.max(1, rect.height - window.innerHeight);
+      const span = Math.max(1, rect.height);
       const progress = Math.max(0,Math.min(1,(-rect.top)/span));
       const nextIndex = Math.min(frames.length-1,Math.floor(progress*(frames.length-1)+0.5));
       if(nextIndex === frameIndex && canvas.width) return;
