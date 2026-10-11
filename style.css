@@ -238,3 +238,7 @@
 @media(max-width:760px){.hero-pin{height:auto}.hero-redesign{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:58px 22px 55px;min-height:0}.hero-redesign .hero-copy{max-width:100%}.hero-redesign h1{font-size:clamp(52px,12.5vw,76px)}.hero-redesign .hero-text{font-size:14px;margin:23px 0}.hero-redesign .hero-proof{margin-top:32px}.hero-showcase{width:100%;height:430px;min-height:0;margin-top:12px}.showcase-browser{top:6%;left:7%;width:88%;transform:none}.showcase-main{aspect-ratio:1.08/1}.showcase-copy{top:12%}.showcase-copy strong{font-size:clamp(32px,8vw,47px)}.showcase-cafe{left:0;bottom:4%;width:145px}.showcase-cafe img{height:65px}.showcase-note{right:0;bottom:7%;min-width:150px;padding:12px}.showcase-footer{font-size:5px}.hero-redesign .hero-actions{gap:17px}}
 @media(max-width:420px){.hero-redesign{padding-left:18px;padding-right:18px}.hero-redesign h1{font-size:51px}.hero-showcase{height:370px}.showcase-cafe{width:126px}.showcase-cafe strong{font-size:15px}.showcase-note{min-width:137px;max-width:145px}.showcase-note strong{font-size:10px}.showcase-copy>span{font-size:5px}.showcase-chrome{font-size:6px;gap:8px}}
 @media(prefers-reduced-motion:reduce){.showcase-browser,.showcase-main>img,.showcase-cafe{transition:none!important}}
+
+/* Custom WebForge W monogram in the showcase chrome */
+.showcase-chrome>b.webforge-mark{display:flex;align-items:center;justify-content:center;width:23px;height:23px;color:#b6ff67;flex:0 0 23px}
+.showcase-chrome>b.webforge-mark svg{display:block;width:100%;height:100%}
