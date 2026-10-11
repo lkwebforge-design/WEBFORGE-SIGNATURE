@@ -219,3 +219,12 @@
 .project-brief-form .brief-submit{grid-column:1/-1;justify-self:start;border:0;cursor:pointer}
 .brief-privacy{grid-column:1/-1;margin:-7px 0 0;color:#7e8980;font-size:10px;line-height:1.5}
 @media(max-width:600px){.hero-market-note{font-size:8px;letter-spacing:.11em;line-height:1.7}.project-brief-card{padding:21px 16px;margin-top:22px;border-radius:14px}.project-brief-form{grid-template-columns:1fr;gap:13px}.project-brief-form .brief-wide,.project-brief-form .brief-submit,.brief-privacy{grid-column:1}.project-brief-form .brief-submit{width:100%;justify-content:center}.project-brief-form input,.project-brief-form select,.project-brief-form textarea{font-size:16px}}
+
+
+/* Cinematic hero video — subtle green motion, behind existing hero content */
+.hero{isolation:isolate;background:#070908}
+.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;opacity:.34;filter:saturate(.78) contrast(1.08);pointer-events:none}
+.hero-video-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(7,9,8,.96) 0%,rgba(7,9,8,.86) 35%,rgba(7,9,8,.48) 68%,rgba(7,9,8,.66) 100%),linear-gradient(0deg,rgba(7,9,8,.52),transparent 45%,rgba(7,9,8,.25))}
+.hero-copy,.hero-stage{position:relative;z-index:2}
+@media(max-width:760px){.hero-bg-video{opacity:.25;object-position:58% center}.hero-video-shade{background:linear-gradient(90deg,rgba(7,9,8,.88),rgba(7,9,8,.62)),linear-gradient(0deg,rgba(7,9,8,.45),transparent 65%)}}
+@media(prefers-reduced-motion:reduce){.hero-bg-video{display:none}}
