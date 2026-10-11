@@ -128,3 +128,76 @@ if(story){
     window.open('https://wa.me/94771544911?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
   });
 })();
+
+
+/* Hero image fallback: scroll-scrubbed frame sequence activates only if the primary hero image fails. */
+(function(){
+  const hero = document.querySelector('.hero-redesign');
+  const stage = document.querySelector('.showcase-main');
+  const primary = stage && stage.querySelector(':scope > img');
+  if(!hero || !stage || !primary) return;
+
+  const frameSources = [
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
+    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85',
+    'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=85',
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85',
+    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1600&q=85',
+    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=85'
+  ];
+
+  let started = false;
+  function activateFallback(){
+    if(started) return;
+    started = true;
+    const canvas = document.createElement('canvas');
+    canvas.className = 'showcase-frame-fallback';
+    canvas.setAttribute('aria-label','Scroll-controlled visual fallback');
+    canvas.setAttribute('role','img');
+    Object.assign(canvas.style,{position:'absolute',inset:'0',width:'100%',height:'100%',objectFit:'cover'});
+    stage.insertBefore(canvas, primary);
+    primary.style.display = 'none';
+    const ctx = canvas.getContext('2d');
+    if(!ctx) return;
+    const frames = frameSources.map(src => {
+      const image = new Image();
+      image.crossOrigin = 'anonymous';
+      image.src = src;
+      return image;
+    });
+    let frameIndex = -1;
+    let scheduled = false;
+    function draw(){
+      scheduled = false;
+      const rect = hero.getBoundingClientRect();
+      const span = Math.max(1, rect.height - window.innerHeight);
+      const progress = Math.max(0,Math.min(1,(-rect.top)/span));
+      const nextIndex = Math.min(frames.length-1,Math.floor(progress*(frames.length-1)+0.5));
+      if(nextIndex === frameIndex && canvas.width) return;
+      frameIndex = nextIndex;
+      const img = frames[frameIndex];
+      if(!img.complete || !img.naturalWidth) return;
+      const dpr = Math.min(window.devicePixelRatio || 1,2);
+      const width = Math.max(1,stage.clientWidth), height = Math.max(1,stage.clientHeight);
+      canvas.width = Math.round(width*dpr);
+      canvas.height = Math.round(height*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      const scale = Math.max(width/img.naturalWidth,height/img.naturalHeight);
+      const zoom = 1.02 + progress*.045;
+      const w=img.naturalWidth*scale*zoom, h=img.naturalHeight*scale*zoom;
+      ctx.drawImage(img,(width-w)/2,(height-h)/2,w,h);
+    }
+    function requestDraw(){
+      if(scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(draw);
+    }
+    frames.forEach(img => img.addEventListener('load',requestDraw,{once:true}));
+    window.addEventListener('scroll',requestDraw,{passive:true});
+    window.addEventListener('resize',requestDraw);
+    requestDraw();
+  }
+
+  if(primary.complete && primary.naturalWidth === 0) activateFallback();
+  primary.addEventListener('error',activateFallback,{once:true});
+})();
