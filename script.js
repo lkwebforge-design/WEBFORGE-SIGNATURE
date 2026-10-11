@@ -103,3 +103,28 @@ if(story){
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>{init();initPreviewButton()},{once:true}); else {init();initPreviewButton();}
 })();
+
+
+/* Project brief: prepare a client-controlled WhatsApp message without a backend. */
+(function(){
+  const form=document.getElementById('project-brief-form');
+  if(!form) return;
+  form.addEventListener('submit',function(event){
+    event.preventDefault();
+    const data=new FormData(form);
+    const value=name=>String(data.get(name)||'').trim();
+    const message=[
+      'Hi WebForge Signature! I would like to discuss a website project.',
+      '',
+      'Name: '+value('name'),
+      'Business / brand: '+value('business'),
+      'Website type: '+value('type'),
+      'Budget: '+value('budget'),
+      'Ideal deadline: '+value('deadline'),
+      'Project details: '+(value('details')||'I would like to discuss the requirements.'),
+      '',
+      'I understand the final scope, quote and timeline will be confirmed after reviewing the brief.'
+    ].join('\n');
+    window.open('https://wa.me/94771544911?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+  });
+})();
