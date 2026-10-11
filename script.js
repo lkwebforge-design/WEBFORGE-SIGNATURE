@@ -142,8 +142,11 @@ if(story){
   function update(){
     scheduled=false;
     const rect=pin.getBoundingClientRect();
+    const mobile=window.matchMedia('(max-width: 760px)').matches;
     const travel=Math.max(1,pin.offsetHeight-hero.offsetHeight);
-    const progress=Math.max(0,Math.min(1,(-rect.top)/travel));
+    const progress=mobile
+      ? Math.max(0,Math.min(1,(window.innerHeight-rect.top)/(window.innerHeight+hero.offsetHeight)))
+      : Math.max(0,Math.min(1,(-rect.top)/travel));
     root.style.setProperty('--hero-progress',progress.toFixed(4));
     root.style.setProperty('--aura-opacity',(1-.12*progress).toFixed(3));
     root.style.setProperty('--cue-scale',(1-.45*progress).toFixed(3));
@@ -152,7 +155,6 @@ if(story){
       ['--copy-lift','--scene-x','--scene-y','--scene-rotate','--aura-x','--orbit-turn','--core-x','--core-y','--core-rotate','--core-scale','--panel-x','--panel-y','--float-one-x','--float-one-y','--float-two-x','--float-two-y'].forEach(k=>root.style.removeProperty(k));
       return;
     }
-    const mobile=window.matchMedia('(max-width: 760px)').matches;
     const px=(n)=>Math.round(n*progress*100)/100+'px';
     root.style.setProperty('--copy-lift',px(-18*progress));
     root.style.setProperty('--copy-opacity',(1-.08*progress).toFixed(3));
