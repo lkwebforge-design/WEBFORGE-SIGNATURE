@@ -49,7 +49,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=hero-stack-2">
 <style id="signature-package-fallback">
 /* Premium package CTA — isolated fallback so this section always renders correctly */
 .packages-cta-section{padding:96px 7vw!important;background:#070908!important;border-top:1px solid rgba(255,255,255,.10)!important}
@@ -81,7 +81,21 @@
 .packages-cta-action strong{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:50px!important;padding:0 18px 0 20px!important;border:1px solid rgba(255,255,255,.24)!important;border-radius:999px!important;background:rgba(255,255,255,.08)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 12px 30px rgba(0,0,0,.22)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;transition:all .35s ease!important}
 .packages-cta-action strong:hover{background:rgba(182,255,103,.13)!important;border-color:rgba(182,255,103,.62)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.20),0 0 28px rgba(182,255,103,.16)!important;transform:translateY(-2px)!important}
 .packages-cta-action i{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:30px!important;height:30px!important;margin-left:12px!important;border-radius:50%!important;background:rgba(182,255,103,.16)!important;border:1px solid rgba(182,255,103,.35)!important;color:#b6ff67!important;font-size:16px!important}
-@media(max-width:600px){.packages-cta-action strong{min-height:48px!important;padding:0 15px 0 18px!important;font-size:10px!important}.packages-cta-action i{width:28px!important;height:28px!important;margin-left:10px!important}}</style></head>
+@media(max-width:600px){.packages-cta-action strong{min-height:48px!important;padding:0 15px 0 18px!important;font-size:10px!important}.packages-cta-action i{width:28px!important;height:28px!important;margin-left:10px!important}}</style>
+<style id="webforge-hero-stack-force">
+/* Force the homepage hero into text-first, image-underneath layout. */
+.hero-pin{height:auto!important;min-height:0!important;position:relative!important}
+.hero-redesign{height:auto!important;min-height:0!important;position:relative!important;top:auto!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:28px!important;padding:clamp(48px,7vw,88px) 7vw 58px!important;overflow:visible!important}
+.hero-redesign .hero-copy{order:1!important;width:100%!important;max-width:1000px!important}
+.hero-redesign .hero-stage,.hero-redesign .hero-showcase{order:2!important;display:block!important;position:relative!important;width:100%!important;height:clamp(390px,55vw,650px)!important;min-height:0!important;margin:0!important;flex:none!important}
+.hero-redesign .showcase-browser{top:3%!important;left:5%!important;width:90%!important;transform:none!important}
+.hero-redesign .showcase-main{aspect-ratio:1.9/1!important}
+.hero-redesign .showcase-cafe{left:1%!important;bottom:2%!important;width:180px!important}
+.hero-redesign .showcase-note{right:1%!important;bottom:5%!important}
+@media(max-width:760px){.hero-redesign{gap:18px!important;padding:45px 22px 38px!important}.hero-redesign .hero-stage,.hero-redesign .hero-showcase{height:clamp(330px,92vw,450px)!important}.hero-redesign .showcase-browser{top:3%!important;left:3%!important;width:94%!important}.hero-redesign .showcase-main{aspect-ratio:1.1/1!important}.hero-redesign .showcase-cafe{left:0!important;bottom:1%!important;width:135px!important}.hero-redesign .showcase-note{right:0!important;bottom:4%!important;min-width:140px!important}}
+@media(max-width:420px){.hero-redesign{padding-left:18px!important;padding-right:18px!important}.hero-redesign .hero-stage,.hero-redesign .hero-showcase{height:345px!important}.hero-redesign .showcase-main{aspect-ratio:1.05/1!important}}
+</style>
+</head>
 <body>
 <div id="page-loader" aria-label="Loading WebForge Signature"><div class="loader-mark"><span>W</span></div><div class="loader-line"><i></i></div><small>WEBFORGE / SIGNATURE</small></div>
 <div class="cursor-glow"></div><div class="noise"></div>
