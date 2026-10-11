@@ -297,3 +297,42 @@
 .interface-image img{transform:scale(var(--interface-image-scale,1))}
 .hero-scroll-cue i{transform-origin:left;transform:scaleX(var(--cue-scale,1))}
 @media(max-width:760px){.signature-hero{top:82px;height:calc(100vh - 82px)}}
+
+
+/* Hero correction pass: prevent intro animation from locking scroll transforms. */
+.loader-done .signature-hero-copy{animation:none!important;opacity:var(--copy-opacity,1);transform:translate3d(0,var(--copy-lift,0px),0)}
+.loader-done .signature-hero-stage{animation:none!important;opacity:1;transform:translate3d(var(--scene-x,0px),var(--scene-y,0px),0) rotateY(var(--scene-rotate,0deg))}
+.signature-hero-stage{will-change:transform}
+.signature-hero-copy{will-change:transform,opacity}
+.signature-hero .hero-proof{position:relative}
+.signature-hero .hero-proof:before{content:"";position:absolute;left:0;right:0;top:-17px;height:1px;background:linear-gradient(90deg,rgba(182,255,103,.25),transparent 78%)}
+@media(max-width:760px){
+  .hero-pin[data-scroll-hero]{height:auto;min-height:0}
+  .signature-hero{position:relative;top:auto;height:auto;min-height:0;overflow:hidden;padding:34px 20px 26px;display:flex;flex-direction:column;gap:0}
+  .signature-hero-copy{width:100%;max-width:none}
+  .signature-hero h1{font-size:clamp(52px,12.8vw,74px);line-height:.86}
+  .signature-hero .hero-text{max-width:440px;margin:17px 0;font-size:13px;line-height:1.6}
+  .signature-hero .hero-proof{margin-top:23px}
+  .signature-hero-stage{position:relative;width:100%;height:clamp(290px,88vw,390px);min-height:0;flex:0 0 auto;margin:8px 0 0;overflow:visible;transform:translate3d(0,var(--scene-y,0px),0)}
+  .hero-interface{top:7%;width:min(73vw,330px)}
+  .interface-image{height:clamp(205px,58vw,250px)}
+  .hero-glass-core{width:clamp(135px,39vw,190px)}
+  .project-float-one{left:0;bottom:12%}
+  .project-float-two{right:0;bottom:7%;min-width:146px}
+  .scene-caption{bottom:0}
+  .hero-scroll-cue{position:relative;left:auto;bottom:auto;margin-top:0;padding:0 20px 24px}
+}
+@media(max-width:420px){
+  .signature-hero{padding:30px 17px 22px}
+  .signature-hero-copy .eyebrow{font-size:6.5px;letter-spacing:.1em}
+  .signature-hero h1{font-size:51px}
+  .signature-hero .hero-actions{align-items:flex-start;gap:13px}
+  .signature-hero .btn.primary{font-size:10px;padding:13px 12px}
+  .signature-hero .text-link{font-size:10px}
+  .signature-hero-stage{height:315px}
+  .hero-interface{width:76vw}
+  .interface-image{height:205px}
+  .hero-project-float img{width:34px;height:36px}
+  .hero-project-float strong{font-size:7px}
+  .project-float-two{min-width:135px}
+}
