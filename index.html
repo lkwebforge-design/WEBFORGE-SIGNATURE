@@ -161,7 +161,7 @@
 </style>
 
 <style id="webforge-cinematic-hero-gif">
-/* Keep the supplied animated ball fully visible in a dedicated top-of-hero visual, not stretched across the whole hero. */
+/* Larger, full-width cinematic GIF at the top; preserve the image's proportions so the ball stays round and visible. */
 .hero-redesign{
   position:relative;
   isolation:isolate;
@@ -174,11 +174,11 @@
   top:0;
   left:0;
   width:100%;
-  height:clamp(230px,38vh,390px);
+  height:clamp(340px,56vh,620px);
   background-image:
-    linear-gradient(180deg,rgba(5,8,6,.12) 0%,rgba(5,8,6,.02) 48%,rgba(5,8,6,.78) 82%,#050806 100%),
+    linear-gradient(180deg,rgba(5,8,6,.04) 0%,rgba(5,8,6,.02) 58%,rgba(5,8,6,.48) 82%,#050806 100%),
     url("./From%20Klickpin.com-%20Shared%20by%20Nethmika%20Perera-multi-pin-share-gif-1-pin-id-510736413988570075.gif");
-  background-size:100% 100%,contain;
+  background-size:100% 100%,100% auto;
   background-position:center top,center top;
   background-repeat:no-repeat;
   pointer-events:none;
@@ -186,11 +186,11 @@
 .hero-redesign > *{position:relative;z-index:1}
 @media(max-width:760px){
   .hero-redesign::before{
-    height:clamp(190px,30vh,280px);
+    height:clamp(280px,46vh,440px);
     background-image:
-      linear-gradient(180deg,rgba(5,8,6,.08) 0%,rgba(5,8,6,.05) 45%,rgba(5,8,6,.72) 80%,#050806 100%),
+      linear-gradient(180deg,rgba(5,8,6,.02) 0%,rgba(5,8,6,.04) 58%,rgba(5,8,6,.50) 82%,#050806 100%),
       url("./From%20Klickpin.com-%20Shared%20by%20Nethmika%20Perera-multi-pin-share-gif-1-pin-id-510736413988570075.gif");
-    background-size:100% 100%,contain;
+    background-size:100% 100%,100% auto;
     background-position:center top,center top;
   }
 }
