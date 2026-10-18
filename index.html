@@ -49,7 +49,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=signature-hero-hybrid-20261018">
+<link rel="stylesheet" href="style.css?v=signature-hero-top-kicker-20261018">
 <style id="signature-package-fallback">
 /* Premium package CTA — isolated fallback so this section always renders correctly */
 .packages-cta-section{padding:96px 7vw!important;background:#070908!important;border-top:1px solid rgba(255,255,255,.10)!important}
@@ -127,6 +127,13 @@
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.hero-redesign .hero-showcase:hover .showcase-browser{box-shadow:0 50px 120px rgba(0,0,0,.65),0 0 40px rgba(182,255,103,.07)!important}.hero-redesign .hero-showcase:hover .showcase-main>img{filter:brightness(.8) saturate(.9)!important}}
 @media(prefers-reduced-motion:reduce){.hero-redesign .hero-orbit,.hero-redesign .showcase-glow,.hero-redesign .hero-scroll-cue i{animation:none!important}.hero-redesign .showcase-browser,.hero-redesign .showcase-main>img,.hero-redesign .showcase-cafe,.hero-redesign .showcase-note{transition:none!important;transform:none!important}}
 
+/* Top-of-hero studio kicker: gives the copy a deliberate editorial starting point. */
+.hero-redesign .hero-kicker{position:relative;display:flex;align-items:center;gap:10px;width:max-content;max-width:100%;margin:0 0 21px;padding:8px 11px;border:1px solid rgba(182,255,103,.17);border-radius:3px;background:linear-gradient(100deg,rgba(182,255,103,.065),rgba(255,255,255,.018));color:#c8d2c8;font:700 8px/1 var(--display);letter-spacing:.16em;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.hero-redesign .hero-kicker-dot{width:6px;height:6px;border-radius:50%;background:#b6ff67;box-shadow:0 0 13px rgba(182,255,103,.72);flex:none}
+.hero-redesign .hero-kicker i{display:block;width:24px;height:1px;background:rgba(182,255,103,.48);margin:0 2px}
+.hero-redesign .hero-kicker small{font:700 7px/1 var(--display);letter-spacing:.13em;color:#758277;white-space:nowrap}
+@media(max-width:760px){.hero-redesign .hero-kicker{margin-bottom:18px;font-size:7px;gap:8px;padding:8px 9px}.hero-redesign .hero-kicker i{width:16px}}
+@media(prefers-reduced-motion:reduce){.hero-redesign .hero-kicker-dot{box-shadow:none}}
 /* Text-side signature detail: editorial watermark + studio signature strip. */
 .hero-redesign .hero-copy:after{content:"W";position:absolute;z-index:-1;right:-5%;bottom:-12%;font:800 clamp(250px,29vw,430px)/.8 var(--display);letter-spacing:-.12em;color:transparent;-webkit-text-stroke:1px rgba(182,255,103,.075);pointer-events:none;user-select:none;transform:translateX(8%);mask-image:linear-gradient(180deg,transparent 0%,black 25%,black 80%,transparent 100%)}
 .hero-redesign .hero-signature{position:relative;display:flex;align-items:center;gap:13px;max-width:450px;margin-top:30px;padding-top:17px;border-top:1px solid rgba(220,235,219,.12)}
@@ -156,6 +163,7 @@
 <div class="hero-pin">
 <section class="hero hero-redesign">
   <div class="hero-copy reveal">
+    <div class="hero-kicker"><span class="hero-kicker-dot"></span><span>INDEPENDENT DIGITAL STUDIO</span><i></i><small>EST. 2026</small></div>
     <p class="eyebrow"><span></span> WEB DESIGN & DEVELOPMENT · SRI LANKA / WORLDWIDE</p>
     <h1>Make your<br>next move<br><em>look different.</em></h1>
     <p class="hero-text">Distinctive websites for businesses ready to be taken seriously. We combine sharp design, smooth motion and practical features that turn visitors into enquiries.</p>
