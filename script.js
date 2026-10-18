@@ -130,6 +130,46 @@ if(story){
 })();
 
 
+/* Signature hero: restrained scroll-linked depth and pointer response. Disabled for reduced-motion users. */
+(function(){
+  const hero=document.querySelector('.hero-redesign');
+  const stage=hero&&hero.querySelector('.hero-showcase');
+  const browser=stage&&stage.querySelector('.showcase-browser');
+  if(!hero||!stage||!browser) return;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(reduce.matches) return;
+  let raf=0;
+  function update(){
+    raf=0;
+    const rect=hero.getBoundingClientRect();
+    const span=Math.max(1,rect.height-window.innerHeight*.35);
+    const progress=Math.max(0,Math.min(1,(window.innerHeight*.15-rect.top)/span));
+    stage.style.setProperty('--hero-scroll-y',(progress*18).toFixed(2)+'px');
+    stage.style.setProperty('--hero-image-y',(progress*-8).toFixed(2)+'px');
+    stage.style.setProperty('--hero-image-scale',(1.04+progress*.035).toFixed(3));
+    stage.style.setProperty('--hero-card-y',(progress*12).toFixed(2)+'px');
+  }
+  function request(){if(!raf) raf=window.requestAnimationFrame(update)}
+  window.addEventListener('scroll',request,{passive:true});
+  window.addEventListener('resize',request,{passive:true});
+  update();
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    stage.addEventListener('pointermove',function(e){
+      const r=stage.getBoundingClientRect();
+      const x=(e.clientX-r.left)/Math.max(1,r.width)-.5;
+      const y=(e.clientY-r.top)/Math.max(1,r.height)-.5;
+      browser.style.setProperty('--hero-pointer-x',(x*5).toFixed(2)+'deg');
+      browser.style.setProperty('--hero-pointer-y',(y*-3).toFixed(2)+'deg');
+      browser.style.transform='translate3d(0,var(--hero-scroll-y,0px),0) rotateY(calc(-8deg + var(--hero-pointer-x,0deg))) rotateX(var(--hero-pointer-y,0deg)) rotateZ(-2deg)';
+    },{passive:true});
+    stage.addEventListener('pointerleave',function(){
+      browser.style.transform='';
+      browser.style.removeProperty('--hero-pointer-x');
+      browser.style.removeProperty('--hero-pointer-y');
+    });
+  }
+})();
+ 
 /* Hero image fallback: scroll-scrubbed frame sequence activates only if the primary hero image fails. */
 (function(){
   const hero = document.querySelector('.hero-redesign');
