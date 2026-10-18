@@ -127,6 +127,16 @@
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.hero-redesign .hero-showcase:hover .showcase-browser{box-shadow:0 50px 120px rgba(0,0,0,.65),0 0 40px rgba(182,255,103,.07)!important}.hero-redesign .hero-showcase:hover .showcase-main>img{filter:brightness(.8) saturate(.9)!important}}
 @media(prefers-reduced-motion:reduce){.hero-redesign .hero-orbit,.hero-redesign .showcase-glow,.hero-redesign .hero-scroll-cue i{animation:none!important}.hero-redesign .showcase-browser,.hero-redesign .showcase-main>img,.hero-redesign .showcase-cafe,.hero-redesign .showcase-note{transition:none!important;transform:none!important}}
 
+/* High-visibility project status strip to give the hero a stronger, more purposeful opening. */
+.hero-redesign .hero-open-strip{display:flex;align-items:center;gap:9px;width:max-content;max-width:100%;margin:0 0 17px;padding:10px 12px;border:1px solid rgba(182,255,103,.25);border-left:2px solid #b6ff67;background:linear-gradient(100deg,rgba(182,255,103,.105),rgba(255,255,255,.025));color:#cbd5ca;font:700 8px/1 var(--display);letter-spacing:.13em;box-shadow:0 8px 28px rgba(0,0,0,.12)}
+.hero-redesign .hero-open-strip strong{color:#d9ffb6;font-weight:800}
+.hero-redesign .hero-open-strip i{height:13px;width:1px;background:rgba(182,255,103,.3);margin:0 2px}
+.hero-redesign .hero-open-strip>span:last-of-type{color:#89968a}
+.hero-redesign .hero-open-strip b{margin-left:9px;padding-left:10px;border-left:1px solid rgba(255,255,255,.12);color:#718071;font-size:7px;letter-spacing:.15em;white-space:nowrap}
+.hero-redesign .hero-open-pulse{width:6px;height:6px;flex:none;border-radius:50%;background:#b6ff67;box-shadow:0 0 0 4px rgba(182,255,103,.09),0 0 13px rgba(182,255,103,.8);animation:heroOpenPulse 2s ease-in-out infinite}
+@keyframes heroOpenPulse{0%,100%{opacity:1;box-shadow:0 0 0 4px rgba(182,255,103,.09),0 0 13px rgba(182,255,103,.8)}50%{opacity:.55;box-shadow:0 0 0 7px rgba(182,255,103,.025),0 0 5px rgba(182,255,103,.4)}}
+@media(max-width:760px){.hero-redesign .hero-open-strip{gap:7px;padding:9px 9px;margin-bottom:15px;font-size:7px;letter-spacing:.1em}.hero-redesign .hero-open-strip b{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-redesign .hero-open-pulse{animation:none}}
 /* Top-of-hero studio kicker: gives the copy a deliberate editorial starting point. */
 .hero-redesign .hero-kicker{position:relative;display:flex;align-items:center;gap:10px;width:max-content;max-width:100%;margin:0 0 21px;padding:8px 11px;border:1px solid rgba(182,255,103,.17);border-radius:3px;background:linear-gradient(100deg,rgba(182,255,103,.065),rgba(255,255,255,.018));color:#c8d2c8;font:700 8px/1 var(--display);letter-spacing:.16em;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
 .hero-redesign .hero-kicker-dot{width:6px;height:6px;border-radius:50%;background:#b6ff67;box-shadow:0 0 13px rgba(182,255,103,.72);flex:none}
@@ -163,6 +173,7 @@
 <div class="hero-pin">
 <section class="hero hero-redesign">
   <div class="hero-copy reveal">
+    <div class="hero-open-strip"><span class="hero-open-pulse"></span><strong>PROJECTS OPEN</strong><i></i><span>OCT — NOV 2026</span><b>WF / STUDIO 01</b></div>
     <div class="hero-kicker"><span class="hero-kicker-dot"></span><span>INDEPENDENT DIGITAL STUDIO</span><i></i><small>EST. 2026</small></div>
     <p class="eyebrow"><span></span> WEB DESIGN & DEVELOPMENT · SRI LANKA / WORLDWIDE</p>
     <h1>Make your<br>next move<br><em>look different.</em></h1>
