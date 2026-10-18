@@ -241,3 +241,33 @@ if(story){
   if(primary.complete && primary.naturalWidth === 0) activateFallback();
   primary.addEventListener('error',activateFallback,{once:true});
 })();
+
+
+/* WEBFORGE THEME SWITCH — default to signature dark; remember visitor preference. */
+(function(){
+  const root=document.documentElement;
+  const button=document.getElementById('wf-theme-toggle');
+  const meta=document.getElementById('wf-theme-color');
+  const key='webforge_signature_theme';
+  if(!button) return;
+  let saved='';
+  try{saved=localStorage.getItem(key)||''}catch(e){}
+  const systemLight=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;
+  const initial=saved==='light'||saved==='dark'?saved:(systemLight?'light':'dark');
+  function applyTheme(theme,save){
+    const light=theme==='light';
+    root.dataset.theme=theme;
+    root.style.colorScheme=theme;
+    button.setAttribute('aria-pressed',String(light));
+    button.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode');
+    button.setAttribute('title',light?'Switch to dark mode':'Switch to light mode');
+    const label=button.querySelector('.wf-theme-label');
+    if(label) label.textContent=light?'DARK MODE':'LIGHT MODE';
+    if(meta) meta.setAttribute('content',light?'#f5f6f1':'#070908');
+    if(save){try{localStorage.setItem(key,theme)}catch(e){}}
+  }
+  applyTheme(initial,false);
+  button.addEventListener('click',function(){
+    applyTheme(root.dataset.theme==='light'?'dark':'light',true);
+  });
+})();
