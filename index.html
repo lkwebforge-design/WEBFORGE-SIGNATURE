@@ -126,6 +126,21 @@
 @media(max-width:420px){.hero-redesign{padding-left:18px!important;padding-right:18px!important}.hero-redesign h1{font-size:clamp(48px,12vw,56px)!important}.hero-redesign .hero-stage,.hero-redesign .hero-showcase{height:360px!important}.hero-redesign .showcase-browser{left:3%!important;width:94%!important}.hero-redesign .showcase-main{aspect-ratio:1.08/1!important}.hero-redesign .showcase-cafe{width:122px!important}.hero-redesign .showcase-cafe strong{font-size:14px!important}.hero-redesign .showcase-note{min-width:130px!important;max-width:140px!important}.hero-redesign .showcase-note strong{font-size:10px!important}.hero-redesign .showcase-copy>span{font-size:5px!important}.hero-redesign .showcase-chrome{font-size:6px!important;gap:7px!important}}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.hero-redesign .hero-showcase:hover .showcase-browser{box-shadow:0 50px 120px rgba(0,0,0,.65),0 0 40px rgba(182,255,103,.07)!important}.hero-redesign .hero-showcase:hover .showcase-main>img{filter:brightness(.8) saturate(.9)!important}}
 @media(prefers-reduced-motion:reduce){.hero-redesign .hero-orbit,.hero-redesign .showcase-glow,.hero-redesign .hero-scroll-cue i{animation:none!important}.hero-redesign .showcase-browser,.hero-redesign .showcase-main>img,.hero-redesign .showcase-cafe,.hero-redesign .showcase-note{transition:none!important;transform:none!important}}
+
+/* Text-side signature detail: editorial watermark + studio signature strip. */
+.hero-redesign .hero-copy:after{content:"W";position:absolute;z-index:-1;right:-5%;bottom:-12%;font:800 clamp(250px,29vw,430px)/.8 var(--display);letter-spacing:-.12em;color:transparent;-webkit-text-stroke:1px rgba(182,255,103,.075);pointer-events:none;user-select:none;transform:translateX(8%);mask-image:linear-gradient(180deg,transparent 0%,black 25%,black 80%,transparent 100%)}
+.hero-redesign .hero-signature{position:relative;display:flex;align-items:center;gap:13px;max-width:450px;margin-top:30px;padding-top:17px;border-top:1px solid rgba(220,235,219,.12)}
+.hero-redesign .hero-signature-mark{width:32px;height:32px;display:grid;place-items:center;color:#b6ff67;border:1px solid rgba(182,255,103,.28);border-radius:50%;flex:none;background:rgba(182,255,103,.035)}
+.hero-redesign .hero-signature-mark svg{width:19px;height:19px}
+.hero-redesign .hero-signature-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.hero-redesign .hero-signature-copy strong{font:600 11px var(--display);letter-spacing:.015em;color:#dce5dc}
+.hero-redesign .hero-signature-copy small{font:700 7px var(--display);letter-spacing:.12em;color:#77847a}
+.hero-redesign .hero-signature-index{margin-left:auto;align-self:center;color:#aab5aa;font:700 10px var(--display);letter-spacing:.12em;white-space:nowrap}
+.hero-redesign .hero-signature-index span{color:#b6ff67}
+@media(max-width:1000px){.hero-redesign .hero-copy:after{right:-2%;bottom:-7%;font-size:clamp(240px,31vw,340px)}.hero-redesign .hero-signature{margin-top:24px}}
+@media(max-width:760px){.hero-redesign .hero-copy:after{right:0;bottom:-4%;font-size:clamp(220px,58vw,340px);transform:translateX(4%);opacity:.72}.hero-redesign .hero-signature{margin-top:25px;max-width:100%;gap:10px}.hero-redesign .hero-signature-copy small{font-size:6px;letter-spacing:.09em}.hero-redesign .hero-signature-mark{width:30px;height:30px}}
+@media(max-width:380px){.hero-redesign .hero-signature-copy small{font-size:5.5px}.hero-redesign .hero-signature-index{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.hero-redesign .hero-signature-mark{transition:none!important}}
 </style>
 </head>
 <body>
@@ -146,6 +161,11 @@
     <p class="hero-text">Distinctive websites for businesses ready to be taken seriously. We combine sharp design, smooth motion and practical features that turn visitors into enquiries.</p>
     <div class="hero-actions"><a class="btn primary" href="#start">Build your website <span>→</span></a><a class="text-link" href="#work">See selected work ↓</a></div>
     <div class="hero-proof"><div><strong>01</strong><small>DISCOVER</small></div><i></i><div><strong>02</strong><small>DESIGN & BUILD</small></div><i></i><div><strong>03</strong><small>GO LIVE</small></div></div>
+    <div class="hero-signature">
+      <span class="hero-signature-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 7 10 25 16 12 22 25 28 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/><path d="M10 25H22" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      <span class="hero-signature-copy"><strong>Independent by design.</strong><small>BUILT IN SRI LANKA · MADE FOR EVERYWHERE</small></span>
+      <span class="hero-signature-index">WF<span> / </span>01</span>
+    </div>
   </div>
   <div class="hero-stage hero-showcase" aria-label="Selected WebForge website concepts">
     <div class="showcase-glow"></div>
