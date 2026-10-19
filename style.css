@@ -607,3 +607,16 @@ html[data-theme="dark"] #project-contact .wf-social-links--contact .wf-social-gl
   opacity:1!important;
   color:#b6ff67!important;
 }
+
+
+/* Label for the Start Project social profiles in both theme modes. */
+#project-contact .wf-social-heading{
+  margin:16px 0 0!important;
+  color:#dce8d8!important;
+  font:800 10px/1.4 var(--display)!important;
+  letter-spacing:.14em!important;
+  text-transform:uppercase!important;
+}
+html[data-theme="light"] #project-contact .wf-social-heading{
+  color:#354b35!important;
+}
