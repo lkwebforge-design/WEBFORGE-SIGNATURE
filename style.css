@@ -526,3 +526,50 @@ footer .wf-social-links--icons-only .wf-social-link:focus-visible{
     padding-top:8px!important;
   }
 }
+
+
+/* Start Project social icons: visible and high-contrast in both theme modes. */
+#project-contact .wf-social-links--contact{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  flex-direction:row!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  gap:10px!important;
+  margin-top:14px!important;
+}
+#project-contact .wf-social-links--contact .wf-social-link{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:#f4f6f1!important;
+  background:rgba(255,255,255,.045)!important;
+  border-color:rgba(182,255,103,.28)!important;
+}
+#project-contact .wf-social-links--contact .wf-social-glyph{
+  color:#b6ff67!important;
+}
+#project-contact .wf-social-links--contact .wf-social-glyph svg{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+html[data-theme="light"] #project-contact .wf-social-links--contact .wf-social-link{
+  color:#172019!important;
+  background:rgba(255,255,255,.78)!important;
+  border-color:rgba(55,91,45,.24)!important;
+}
+html[data-theme="light"] #project-contact .wf-social-links--contact .wf-social-glyph{
+  color:#426a35!important;
+}
+#project-contact .wf-social-links--contact .wf-social-link:hover,
+#project-contact .wf-social-links--contact .wf-social-link:focus-visible{
+  opacity:1!important;
+  border-color:#b6ff67!important;
+}
+html[data-theme="light"] #project-contact .wf-social-links--contact .wf-social-link:hover,
+html[data-theme="light"] #project-contact .wf-social-links--contact .wf-social-link:focus-visible{
+  border-color:#4e7c36!important;
+}
