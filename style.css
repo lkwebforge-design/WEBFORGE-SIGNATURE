@@ -573,3 +573,37 @@ html[data-theme="light"] #project-contact .wf-social-links--contact .wf-social-l
 html[data-theme="light"] #project-contact .wf-social-links--contact .wf-social-link:focus-visible{
   border-color:#4e7c36!important;
 }
+
+
+/* Explicit dark-theme override: keep Start Project social icons visible regardless of inherited theme styles. */
+html:not([data-theme="light"]) #project-contact .wf-social-links--contact,
+html[data-theme="dark"] #project-contact .wf-social-links--contact{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  z-index:5!important;
+}
+html:not([data-theme="light"]) #project-contact .wf-social-links--contact .wf-social-link,
+html[data-theme="dark"] #project-contact .wf-social-links--contact .wf-social-link{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:#f4f6f1!important;
+  background:#18231a!important;
+  border:1px solid rgba(182,255,103,.55)!important;
+  box-shadow:0 0 0 1px rgba(182,255,103,.08),0 5px 18px rgba(0,0,0,.18)!important;
+}
+html:not([data-theme="light"]) #project-contact .wf-social-links--contact .wf-social-glyph,
+html[data-theme="dark"] #project-contact .wf-social-links--contact .wf-social-glyph{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:#b6ff67!important;
+}
+html:not([data-theme="light"]) #project-contact .wf-social-links--contact .wf-social-glyph svg,
+html[data-theme="dark"] #project-contact .wf-social-links--contact .wf-social-glyph svg{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:#b6ff67!important;
+}
