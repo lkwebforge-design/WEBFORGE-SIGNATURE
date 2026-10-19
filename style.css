@@ -428,3 +428,12 @@ html[data-theme="light"] .wf-social-kicker{color:#59645b}
  .wf-social-links--contact .wf-social-link{padding:0 10px}
  .wf-social-name{font-size:8px}
 }
+
+
+/* Footer social icons: small, icon-only, single row at the very end */
+.wf-social-links--icons-only{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:center!important;gap:15px!important;width:100%!important;margin:0!important;padding:13px 0 0!important}
+.wf-social-links--icons-only .wf-social-link{display:inline-flex!important;flex:0 0 22px!important;width:22px!important;min-width:22px!important;height:22px!important;min-height:22px!important;padding:0!important;margin:0!important;gap:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;transform:none!important;color:inherit!important}
+.wf-social-links--icons-only .wf-social-glyph{display:inline-flex!important;flex:0 0 18px!important;width:18px!important;height:18px!important;margin:0!important;padding:0!important;color:currentColor!important}
+.wf-social-links--icons-only .wf-social-glyph svg{display:block!important;width:17px!important;height:17px!important}
+.wf-social-links--icons-only .wf-social-link:hover,.wf-social-links--icons-only .wf-social-link:focus-visible{color:#b6ff67!important;opacity:.78!important;background:transparent!important;border:0!important;box-shadow:none!important}
+@media(max-width:760px){footer{align-items:center!important;flex-direction:column!important}.wf-social-links--icons-only{justify-content:center!important;gap:16px!important;padding-top:12px!important}}
