@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Premium e-commerce storefront preview</title><desc id="desc">A dark premium online shop interface with apparel product cards, a shopping cart and checkout controls.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#26332a"/><stop offset=".48" stop-color="#101713"/><stop offset="1" stop-color="#070a08"/></linearGradient>
+ <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#202821"/><stop offset="1" stop-color="#111612"/></linearGradient>
+ <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8ff9d"/><stop offset="1" stop-color="#a5ef60"/></linearGradient>
+ <linearGradient id="hoodie" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#404640"/><stop offset="1" stop-color="#111512"/></linearGradient>
+ <linearGradient id="sand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eee7d9"/><stop offset="1" stop-color="#b4b09f"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".4"/></filter>
+</defs>
+<rect width="1200" height="720" fill="url(#bg)"/>
+<circle cx="1050" cy="70" r="250" fill="#b6ff67" opacity=".055"/><circle cx="120" cy="650" r="280" fill="#a4ff70" opacity=".035"/>
+<rect x="42" y="38" width="1116" height="644" rx="22" fill="#080b09" stroke="#596457" stroke-opacity=".65"/>
+<path d="M42 60Q42 38 64 38H1136Q1158 38 1158 60V112H42Z" fill="#121813"/>
+<text x="78" y="83" fill="#eff4ec" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="4">VELORA</text>
+<text x="485" y="78" fill="#aeb8ad" font-family="Arial,sans-serif" font-size="13">HOME</text><text x="552" y="78" fill="#aeb8ad" font-family="Arial,sans-serif" font-size="13">SHOP</text><text x="610" y="78" fill="#aeb8ad" font-family="Arial,sans-serif" font-size="13">OUR STORY</text>
+<rect x="1000" y="57" width="118" height="38" rx="19" fill="#b6ff67"/><text x="1059" y="81" fill="#0b100b" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="700">BAG (02)  →</text>
+<rect x="65" y="133" width="1070" height="235" rx="13" fill="url(#panel)"/>
+<text x="102" y="178" fill="#b6ff67" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="3">THE NEW COLLECTION</text>
+<text x="100" y="228" fill="#f5f7f2" font-family="Arial,sans-serif" font-size="43" font-weight="700">Made to move.</text>
+<text x="102" y="260" fill="#b8c0b8" font-family="Arial,sans-serif" font-size="16">Everyday essentials. Exceptional by design.</text>
+<rect x="102" y="289" width="144" height="43" rx="5" fill="#b6ff67"/><text x="174" y="316" fill="#10150e" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="700">SHOP THE DROP  →</text>
+<g filter="url(#shadow)"><rect x="700" y="150" width="190" height="200" rx="10" fill="#303830"/><rect x="900" y="150" width="208" height="200" rx="10" fill="#d6d2c6"/></g>
+<path d="M755 208L782 187L805 196L830 187L856 210L840 231L827 221L829 310H782L785 221L772 231Z" fill="url(#hoodie)"/><path d="M782 187L790 204L805 196L819 204L830 187" fill="none" stroke="#646b60" stroke-width="3"/><path d="M802 205L807 211L812 205" fill="none" stroke="#a9b4a6" stroke-width="2"/>
+<path d="M959 207L984 190L1006 196L1028 190L1052 207L1042 226L1030 218L1033 310H980L982 218L969 226Z" fill="#f0ede4" stroke="#c2bcae" stroke-width="2"/><path d="M984 190L991 205L1006 196L1020 205L1028 190" fill="none" stroke="#c2bcae" stroke-width="3"/>
+<text x="795" y="336" fill="#f3f5f0" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">CORE HOODIE</text><text x="1005" y="336" fill="#30362e" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">ESSENTIAL TEE</text>
+<text x="70" y="410" fill="#f4f7f1" font-family="Arial,sans-serif" font-size="20" font-weight="700">Shop bestsellers</text><text x="1128" y="410" fill="#b6ff67" text-anchor="end" font-family="Arial,sans-serif" font-size="12">VIEW ALL  →</text>
+<g>
+ <rect x="65" y="432" width="250" height="193" rx="10" fill="#202720"/><rect x="330" y="432" width="250" height="193" rx="10" fill="#d4d0c4"/><rect x="595" y="432" width="250" height="193" rx="10" fill="#242b25"/><rect x="860" y="432" width="275" height="193" rx="10" fill="#c6b9a6"/>
+ <path d="M136 480L160 462L182 469L204 462L229 480L217 500L205 490L207 552H158L160 490L148 500Z" fill="url(#hoodie)"/><path d="M160 462L167 477L182 469L197 477L204 462" fill="none" stroke="#6e766c" stroke-width="3"/>
+ <path d="M397 480L420 462L442 469L464 462L489 480L477 500L465 490L467 552H418L420 490L408 500Z" fill="#eeeae0" stroke="#b8b3a8" stroke-width="2"/>
+ <path d="M668 487Q720 455 772 487L762 548H678Z" fill="#9ca68f"/><path d="M668 487Q720 508 772 487" fill="none" stroke="#596552" stroke-width="3"/>
+ <path d="M937 469L958 457L980 463L1001 457L1023 469L1014 489L1002 482L1004 553H956L958 482L946 489Z" fill="#3b332c"/>
+ <rect x="80" y="568" width="13" height="13" rx="6.5" fill="#b6ff67"/><text x="101" y="579" fill="#f4f7f1" font-family="Arial,sans-serif" font-size="12">Signature Hoodie</text><text x="296" y="579" fill="#b6ff67" text-anchor="end" font-family="Arial,sans-serif" font-size="12">$89</text>
+ <text x="345" y="579" fill="#262b24" font-family="Arial,sans-serif" font-size="12">Essential Tee</text><text x="560" y="579" fill="#262b24" text-anchor="end" font-family="Arial,sans-serif" font-size="12">$39</text>
+ <text x="610" y="579" fill="#f4f7f1" font-family="Arial,sans-serif" font-size="12">Everyday Cap</text><text x="825" y="579" fill="#b6ff67" text-anchor="end" font-family="Arial,sans-serif" font-size="12">$29</text>
+ <text x="875" y="579" fill="#252a23" font-family="Arial,sans-serif" font-size="12">Track Pants</text><text x="1115" y="579" fill="#252a23" text-anchor="end" font-family="Arial,sans-serif" font-size="12">$68</text>
+ <text x="80" y="604" fill="#9ba69b" font-family="Arial,sans-serif" font-size="10">MATERIALS · FIT · FINISH</text><text x="345" y="604" fill="#5c6258" font-family="Arial,sans-serif" font-size="10">NEW SEASON</text><text x="610" y="604" fill="#9ba69b" font-family="Arial,sans-serif" font-size="10">BESTSELLER</text><text x="875" y="604" fill="#5d594f" font-family="Arial,sans-serif" font-size="10">LIMITED DROP</text>
+</g>
+<text x="72" y="656" fill="#9da89d" font-family="Arial,sans-serif" font-size="10" letter-spacing="2">RESPONSIVE STOREFRONT  ·  PRODUCT CATALOG  ·  SHOPPING CART  ·  CHECKOUT</text>
+</svg>
