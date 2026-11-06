@@ -290,8 +290,8 @@ if(story){
 
   let distance=0,startY=null,raf=0,manualOffset=0,currentX=0;
   let dragging=false,pointerStart=0,positionStart=0,moved=false,pointerId=null;
-  const scrollGain=0.0001;
-  const easing=0.22;
+  const scrollGain=0.35;
+  const easing=0.12;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
   const pageProgress=()=>Math.max(0,Math.min(distance,((window.scrollY-(startY||0))*scrollGain)));
   const targetX=()=>Math.max(0,Math.min(distance,pageProgress()+manualOffset));
