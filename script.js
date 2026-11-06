@@ -290,7 +290,7 @@ if(story){
 
   let distance=0,startY=0,raf=0,manualOffset=0;
   let dragging=false,pointerStart=0,positionStart=0,moved=false;
-  const scrollGain=2.5;
+  const scrollGain=1.2;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
   const pageProgress=()=>Math.max(0,Math.min(distance,(window.scrollY-startY)*scrollGain));
 
@@ -300,7 +300,7 @@ if(story){
   }
   function measure(){
     distance=Math.max(0,Math.ceil(inner.scrollWidth-viewport.clientWidth));
-    /* Restore the original slower 2.5px horizontal travel per 1px page scroll. */
+    /* Slower portfolio movement: 1.2px horizontal travel per 1px page scroll. */
     spacer.style.height=Math.ceil(distance/scrollGain)+'px';
     section.style.paddingBottom='0px';
     startY=viewport.getBoundingClientRect().top+window.scrollY-topGap();
