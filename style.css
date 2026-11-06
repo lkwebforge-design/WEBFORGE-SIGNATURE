@@ -1277,30 +1277,40 @@ body{overflow-x:clip!important}
 
 /* Velora now uses the standard portfolio card class and shared sizing rules. */
 
-/* AUTHORITATIVE PORTFOLIO CARD SIZE — one identical box for every card. */
-#work .portfolio-marquee .portfolio-project{
+/* HARD-LOCKED SHARED PORTFOLIO CARD DIMENSIONS — all cards and clones. */
+#work .portfolio-marquee .portfolio-track__inner .portfolio-project{
   box-sizing:border-box!important;
   display:block!important;
+  align-self:flex-start!important;
   flex:0 0 clamp(290px,32vw,410px)!important;
   width:clamp(290px,32vw,410px)!important;
+  min-width:clamp(290px,32vw,410px)!important;
+  max-width:clamp(290px,32vw,410px)!important;
   height:clamp(340px,37vw,420px)!important;
-  min-width:0!important;
-  min-height:0!important;
-  max-height:none!important;
+  min-height:clamp(340px,37vw,420px)!important;
+  max-height:clamp(340px,37vw,420px)!important;
+  grid-column:auto!important;
+  grid-row:auto!important;
 }
-#work .portfolio-marquee .portfolio-project>img{
+#work .portfolio-marquee .portfolio-track__inner .portfolio-project>img{
   position:absolute!important;
   inset:0!important;
   display:block!important;
   width:100%!important;
   height:100%!important;
+  min-height:100%!important;
+  max-height:100%!important;
   object-fit:cover!important;
   object-position:center!important;
 }
 @media(max-width:760px){
-  #work .portfolio-marquee .portfolio-project{
+  #work .portfolio-marquee .portfolio-track__inner .portfolio-project{
     flex:0 0 82vw!important;
     width:82vw!important;
+    min-width:82vw!important;
+    max-width:82vw!important;
     height:370px!important;
+    min-height:370px!important;
+    max-height:370px!important;
   }
 }
