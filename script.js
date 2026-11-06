@@ -273,145 +273,40 @@ if(story){
 })();
 
 
-/* WEBFORGE 2026 — faster portfolio autoplay with real drag/swipe control. */
+/* WEBFORGE — portfolio moves horizontally in response to vertical page scroll. */
 (function(){
  const section=document.querySelector('#work.portfolio-redesign');
  const viewport=section&&section.querySelector('.portfolio-marquee');
  const track=section&&section.querySelector('.portfolio-track');
  const firstSet=track&&track.querySelector('.portfolio-track__inner');
- if(!section||!viewport||!track||!firstSet||viewport.dataset.wfMotionReady==='true')return;
- viewport.dataset.wfMotionReady='true';
-
- const originals=[...firstSet.querySelectorAll('.portfolio-project')];
- const descriptions=[
-  'A cinematic café website with scroll-led video, menu, gallery and table enquiries.',
-  'A premium billiards website with table availability and online session booking.',
-  'A bold streetwear storefront designed to showcase collections and drive online orders.',
-  'A welcoming café brand experience with editorial visuals and clear visitor information.',
-  'A fashion storefront built to present collections in a polished digital shopping experience.',
-  'A refined salon website showcasing beauty services, brand identity and enquiries.',
-  'A luxury hospitality website designed to make the destination and guest experience shine.',
-  'A performance-focused fitness website presenting training, facilities and membership enquiries.',
-  'A professional service website presenting air-conditioning solutions and company services.'
- ];
- originals.forEach((card,index)=>{
-  const bottom=card.querySelector('.portfolio-project__bottom');
-  const description=bottom&&bottom.querySelector('.portfolio-project__description');
-  if(description&&!description.textContent.trim())description.textContent=descriptions[index]||'A responsive digital experience crafted by WebForge.';
-  card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
- });
-
- const previous=section.querySelector('.portfolio-control--prev');
- const next=section.querySelector('.portfolio-control--next');
- let controlResumeTimer=0;
- function moveByUser(direction){
-  pause();
-  if(controlResumeTimer)clearTimeout(controlResumeTimer);
-  viewport.scrollBy({left:direction*Math.max(260,viewport.clientWidth*.78),behavior:'smooth'});
-  controlResumeTimer=window.setTimeout(resume,950);
- }
- previous&&previous.addEventListener('click',()=>moveByUser(-1));
- next&&next.addEventListener('click',()=>moveByUser(1));
-
- const secondSet=track.querySelectorAll('.portfolio-track__inner')[1];
- let loopWidth=firstSet.getBoundingClientRect().width;
- if(secondSet&&loopWidth>0)viewport.scrollLeft=loopWidth;
- let paused=false,raf=0,lastTime=0,dragging=false,dragMoved=false,startX=0,startScroll=0;
- const speed=window.matchMedia('(max-width:760px)').matches?105:135; // pixels per second
-
+ if(!section||!viewport||!track||!firstSet)return;
+ const secondSet=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
+ if(secondSet)secondSet.style.display='none';
+ let travel=0,startY=0,sectionExtra=0,raf=0;
+ const stickyTop=()=>window.innerHeight*(window.innerWidth<=760?.14:.16);
  function measure(){
-  loopWidth=firstSet.getBoundingClientRect().width;
-  if(loopWidth>0&&viewport.scrollLeft===0&&secondSet)viewport.scrollLeft=loopWidth;
+   const viewportWidth=viewport.clientWidth;
+   const contentWidth=firstSet.scrollWidth;
+   travel=Math.max(0,contentWidth-viewportWidth);
+   const sectionTop=section.getBoundingClientRect().top+window.scrollY;
+   const viewportTop=viewport.getBoundingClientRect().top+window.scrollY;
+   startY=viewportTop-stickyTop();
+   section.style.paddingBottom=(travel+Math.max(0,stickyTop()-100))+'px';
+   update();
  }
- function tick(now){
-  raf=0;
-  if(!paused){
-   if(lastTime){
-    const dt=Math.min((now-lastTime)/1000,.05);
-    viewport.scrollLeft+=speed*dt;
-    if(loopWidth>0){
-     if(viewport.scrollLeft>=loopWidth*1.5)viewport.scrollLeft-=loopWidth;
-     else if(viewport.scrollLeft<loopWidth*.5)viewport.scrollLeft+=loopWidth;
-    }
-   }
-   lastTime=now;
-  }else lastTime=0;
-  raf=requestAnimationFrame(tick);
+ function update(){
+   raf=0;
+   const progress=travel>0?Math.max(0,Math.min(1,(window.scrollY-startY)/travel)):0;
+   track.style.transform='translate3d('+(-travel*progress)+'px,0,0)';
  }
- function pause(){paused=true;lastTime=0}
- function resume(){paused=false;lastTime=0}
- measure();
+ function requestUpdate(){if(!raf)raf=window.requestAnimationFrame(update)}
+ window.addEventListener('scroll',requestUpdate,{passive:true});
  window.addEventListener('resize',measure,{passive:true});
- raf=requestAnimationFrame(tick);
-
- viewport.addEventListener('pointerdown',event=>{
-  if(event.pointerType==='mouse'&&event.button!==0)return;
-  pause();
-  if(event.pointerType==='mouse'){
-   dragging=true;dragMoved=false;startX=event.clientX;startScroll=viewport.scrollLeft;
-   viewport.classList.add('is-dragging');
-   viewport.setPointerCapture?.(event.pointerId);
-  }
- });
- viewport.addEventListener('pointermove',event=>{
-  if(!dragging)return;
-  const dx=event.clientX-startX;
-  if(Math.abs(dx)>5)dragMoved=true;
-  if(dragMoved)viewport.scrollLeft=startScroll-dx;
- });
- function finishDrag(){
-  if(dragging){
-   dragging=false;
-   viewport.classList.remove('is-dragging');
-   if(dragMoved){
-    viewport.dataset.wfDragged='true';
-    window.setTimeout(()=>delete viewport.dataset.wfDragged,350);
-   }
-  }
-  resume();
+ if('ResizeObserver' in window){
+   const ro=new ResizeObserver(measure);
+   ro.observe(firstSet);ro.observe(viewport);
  }
- viewport.addEventListener('pointerup',finishDrag);
- viewport.addEventListener('pointercancel',finishDrag);
- viewport.addEventListener('lostpointercapture',finishDrag);
- viewport.addEventListener('mouseleave',()=>{if(dragging)finishDrag()});
-
- /* Use iPhone's native horizontal scrolling. Do not cancel touchmove: Safari needs it to scroll the rail. */
- let touchActive=false;
- viewport.addEventListener('touchstart',event=>{
-  if(!event.touches||event.touches.length!==1)return;
-  touchActive=true;
-  pause();
- },{passive:true});
- function finishTouch(){
-  if(!touchActive)return;
-  touchActive=false;
-  window.setTimeout(()=>resume(),180);
- }
- viewport.addEventListener('touchend',finishTouch,{passive:true});
- viewport.addEventListener('touchcancel',finishTouch,{passive:true});
-
-
- viewport.addEventListener('click',event=>{
-  if(viewport.dataset.wfDragged==='true'){
-   event.preventDefault();event.stopImmediatePropagation();
-  }
- },true);
-
- if(window.matchMedia('(max-width:760px)').matches){
-  originals.forEach(card=>{
-   card.addEventListener('click',event=>{
-    if(viewport.dataset.wfDragged==='true'){
-     event.preventDefault();event.stopImmediatePropagation();return;
-    }
-    if(!card.classList.contains('is-active')){
-     event.preventDefault();
-     originals.forEach(item=>item.classList.remove('is-active'));
-     card.classList.add('is-active');
-    }
-   });
-  });
-  document.addEventListener('click',event=>{
-   if(!section.contains(event.target))originals.forEach(card=>card.classList.remove('is-active'));
-  });
- }
+ if(document.readyState==='complete')measure();
+ else window.addEventListener('load',measure,{once:true});
+ measure();
 })();
