@@ -844,19 +844,32 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 /* Keep the second seamless loop available on touch screens too. */
 #work .portfolio-track__inner[aria-hidden="true"]{display:flex!important}
 
-/* Manual browsing stays available at all times; autoplay pauses while the visitor drags. */
+/* Manual browsing stays available at all times; native iPhone swipe + desktop drag. */
 #work .portfolio-marquee{
+  display:block!important;
   overflow-x:auto!important;
   overflow-y:hidden!important;
-  touch-action:pan-y!important;
+  touch-action:pan-x pan-y!important;
   overscroll-behavior-x:contain!important;
   -webkit-overflow-scrolling:touch!important;
   scroll-behavior:auto!important;
+  scrollbar-width:none!important;
+}
+#work .portfolio-marquee::-webkit-scrollbar{display:none!important}
+#work .portfolio-track{
+  display:flex!important;
+  width:max-content!important;
+  min-width:max-content!important;
+}
+#work .portfolio-track__inner{
+  display:flex!important;
+  flex:0 0 auto!important;
+  width:max-content!important;
 }
 @media(max-width:760px){
   #work .portfolio-marquee{
     overflow-x:auto!important;
     overflow-y:hidden!important;
-    touch-action:pan-y!important;
+    touch-action:pan-x pan-y!important;
   }
 }
