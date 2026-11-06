@@ -814,3 +814,29 @@ html[data-theme="light"] #project-contact .wf-social-heading{
   #work .portfolio-track{animation-duration:64s!important}
   #work .portfolio-marquee{overflow-x:auto!important;overflow-y:hidden!important}
 }
+
+
+/* PORTFOLIO FIX: one controlled motion system + reliable horizontal browsing. */
+#work .portfolio-marquee{
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scrollbar-width:none!important;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-x pan-y!important;
+  scroll-behavior:auto!important;
+  cursor:grab;
+}
+#work .portfolio-marquee::-webkit-scrollbar{display:none!important}
+#work .portfolio-track,
+#work .portfolio-track__inner{
+  animation:none!important;
+  transform:none!important;
+  will-change:auto!important;
+}
+#work .portfolio-marquee.is-dragging{cursor:grabbing;user-select:none}
+#work .portfolio-marquee.is-dragging .portfolio-project{user-select:none}
+@media(max-width:760px){
+  #work .portfolio-marquee{overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x pan-y!important}
+  #work .portfolio-track{animation:none!important}
+  #work .portfolio-track__inner{animation:none!important}
+}
