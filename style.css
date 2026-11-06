@@ -1275,17 +1275,18 @@ body{overflow-x:clip!important}
 }
 
 
-/* Velora Café only: force the same card dimensions as Moss & Mug and the standard cards. */
+/* Velora Café: match the exact final dimensions used by every standard portfolio card. */
 #work a.portfolio-project.featured[href^="https://lkwebforge-design.github.io/Cafe/"]{
-  flex:0 0 clamp(290px,34vw,470px)!important;
-  width:clamp(290px,34vw,470px)!important;
-  height:clamp(340px,35vw,440px)!important;
+  flex:0 0 clamp(290px,32vw,410px)!important;
+  width:clamp(290px,32vw,410px)!important;
+  height:clamp(340px,37vw,420px)!important;
   min-height:0!important;
   grid-column:auto!important;
   grid-row:auto!important;
   aspect-ratio:auto!important;
 }
 #work a.portfolio-project.featured[href^="https://lkwebforge-design.github.io/Cafe/"]>img{
+  display:block!important;
   width:100%!important;
   height:100%!important;
   object-fit:cover!important;
@@ -1295,5 +1296,6 @@ body{overflow-x:clip!important}
     flex:0 0 82vw!important;
     width:82vw!important;
     height:370px!important;
+    min-height:0!important;
   }
 }
