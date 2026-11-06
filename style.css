@@ -946,3 +946,87 @@ html[data-theme="light"] #project-contact .wf-social-heading{
   opacity:1!important;
   visibility:visible!important;
 }
+
+
+/* WEBFORGE PORTFOLIO FINAL FIX — natural swipe carousel, no pinned dead-scroll gap. */
+#work.portfolio-redesign{
+  position:relative!important;
+  overflow:visible!important;
+  padding-bottom:clamp(64px,8vw,110px)!important;
+}
+#work .portfolio-marquee{
+  position:relative!important;
+  top:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  padding:12px 22px 30px!important;
+  margin:0 -22px!important;
+  width:calc(100% + 44px)!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior-x:contain!important;
+  touch-action:pan-x pan-y!important;
+  scroll-behavior:smooth!important;
+  scrollbar-width:none!important;
+  mask-image:none!important;
+  cursor:grab!important;
+}
+#work .portfolio-marquee::-webkit-scrollbar{display:none!important}
+#work .portfolio-track{
+  display:flex!important;
+  width:max-content!important;
+  min-width:max-content!important;
+  transform:none!important;
+  animation:none!important;
+  will-change:auto!important;
+}
+#work .portfolio-track__inner{
+  display:flex!important;
+  flex:0 0 auto!important;
+  width:max-content!important;
+  gap:14px!important;
+  padding-right:14px!important;
+  transform:none!important;
+  animation:none!important;
+}
+#work .portfolio-track__inner[aria-hidden="true"]{display:none!important}
+#work .portfolio-project,
+#work .portfolio-project.featured,
+#work .portfolio-project:nth-child(2),
+#work .portfolio-project:nth-child(3),
+#work .portfolio-project:nth-child(n+5){
+  display:block!important;
+  flex:0 0 clamp(280px,32vw,410px)!important;
+  width:clamp(280px,32vw,410px)!important;
+  height:410px!important;
+  min-height:410px!important;
+}
+#work .portfolio-track .portfolio-project.reveal{
+  opacity:1!important;
+  visibility:visible!important;
+}
+#work .portfolio-marquee.is-dragging{
+  cursor:grabbing!important;
+  scroll-behavior:auto!important;
+  user-select:none!important;
+}
+#work .portfolio-marquee.is-dragging a{pointer-events:none!important}
+@media(max-width:760px){
+  #work .portfolio-marquee{
+    margin:0 -18px!important;
+    width:calc(100% + 36px)!important;
+    padding:10px 18px 26px!important;
+    scroll-behavior:auto!important;
+  }
+  #work .portfolio-project,
+  #work .portfolio-project.featured,
+  #work .portfolio-project:nth-child(2),
+  #work .portfolio-project:nth-child(3),
+  #work .portfolio-project:nth-child(n+5){
+    flex:0 0 min(82vw,350px)!important;
+    width:min(82vw,350px)!important;
+    height:390px!important;
+    min-height:390px!important;
+  }
+}
