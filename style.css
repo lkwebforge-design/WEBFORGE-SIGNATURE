@@ -931,3 +931,11 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 @media(prefers-reduced-motion:reduce){
   #work .portfolio-track{will-change:auto}
 }
+
+
+/* Final override: allow the scroll controller's transform while keeping legacy animations off. */
+#work .portfolio-track{
+  animation:none!important;
+  transform:translate3d(var(--portfolio-x,0px),0,0)!important;
+}
+#work .portfolio-track__inner{animation:none!important;transform:none!important}
