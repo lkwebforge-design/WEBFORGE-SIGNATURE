@@ -271,3 +271,48 @@ if(story){
     applyTheme(root.dataset.theme==='light'?'dark':'light',true);
   });
 })();
+
+
+/* WEBFORGE 2026 — portfolio marquee duplication + mobile tap-to-reveal */
+(function(){
+ const section=document.querySelector('#work.portfolio-redesign');
+ const track=section&&section.querySelector('.portfolio-track__inner');
+ if(!track||track.dataset.wfReady==='true')return;
+ track.dataset.wfReady='true';
+ const originals=[...track.querySelectorAll('.portfolio-project')];
+ originals.forEach((card,index)=>{
+   const bottom=card.querySelector('.portfolio-project__bottom');
+   if(bottom&&!bottom.querySelector(':scope > span')){
+     const category=bottom.querySelector('small')?.textContent||'Web design project';
+     const name=bottom.querySelector('strong')?.textContent?.trim()||'Selected project';
+     const description=document.createElement('span');
+     description.textContent=name+' — a responsive '+category.toLowerCase()+' digital experience crafted by WebForge.';
+     bottom.insertBefore(description,bottom.querySelector('i'));
+   }
+   card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
+ });
+ if(!window.matchMedia('(max-width: 760px)').matches){
+   originals.forEach(card=>{
+     const clone=card.cloneNode(true);
+     clone.setAttribute('aria-hidden','true');
+     clone.setAttribute('tabindex','-1');
+     clone.querySelectorAll('a,button,[tabindex]').forEach(el=>el.setAttribute('tabindex','-1'));
+     track.appendChild(clone);
+   });
+ }
+ const mobile=window.matchMedia('(max-width: 760px)');
+ if(mobile.matches){
+   originals.forEach(card=>{
+     card.addEventListener('click',event=>{
+       if(!card.classList.contains('is-active')){
+         event.preventDefault();
+         originals.forEach(item=>item.classList.remove('is-active'));
+         card.classList.add('is-active');
+       }
+     });
+   });
+   document.addEventListener('click',event=>{
+     if(!section.contains(event.target)) originals.forEach(card=>card.classList.remove('is-active'));
+   });
+ }
+})();
