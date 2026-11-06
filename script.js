@@ -300,7 +300,7 @@ if(story){
   }
   function measure(){
     distance=Math.max(0,Math.ceil(inner.scrollWidth-viewport.clientWidth));
-    /* Slower portfolio movement: 0.8px horizontal travel per 1px page scroll. */
+    /* Slower portfolio movement: 0.1px horizontal travel per 1px page scroll. */
     spacer.style.height=Math.ceil(distance/scrollGain)+'px';
     section.style.paddingBottom='0px';
     startY=viewport.getBoundingClientRect().top+window.scrollY-topGap();
