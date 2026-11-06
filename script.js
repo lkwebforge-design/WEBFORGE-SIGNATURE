@@ -273,40 +273,19 @@ if(story){
 })();
 
 
-/* WEBFORGE — vertical page scroll pins and moves through the complete portfolio. */
+/* WEBFORGE — pinned portfolio with a dedicated spacer before the footer. */
 (function(){
-  const section=document.querySelector('#work');
-  const viewport=section&&section.querySelector('.portfolio-marquee');
-  const track=viewport&&viewport.querySelector('.portfolio-track');
-  const inner=track&&track.querySelector('.portfolio-track__inner');
-  if(!section||!viewport||!track||!inner)return;
-  const clone=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
-  if(clone)clone.remove();
-
-  let distance=0,startY=0,topOffset=0,raf=0;
-  const measure=()=>{
-    topOffset=window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
-    distance=Math.max(0,inner.scrollWidth-viewport.clientWidth);
-    section.style.paddingBottom=(distance+24)+'px';
-    startY=viewport.getBoundingClientRect().top+window.scrollY-topOffset;
-    update();
-  };
-  const update=()=>{
-    raf=0;
-    const progress=Math.max(0,Math.min(distance,window.scrollY-startY));
-    track.style.setProperty('--portfolio-x',(-progress)+'px');
-  };
-  const onScroll=()=>{
-    if(!raf)raf=requestAnimationFrame(update);
-  };
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',measure,{passive:true});
-  window.addEventListener('orientationchange',measure,{passive:true});
-  if('ResizeObserver' in window){
-    const ro=new ResizeObserver(measure);
-    ro.observe(viewport);ro.observe(inner);
-  }
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
-  window.addEventListener('load',measure,{once:true});
-  measure();
-})();
+const section=document.querySelector('#work');
+const viewport=section&&section.querySelector('.portfolio-marquee');
+const track=viewport&&viewport.querySelector('.portfolio-track');
+const inner=track&&track.querySelector('.portfolio-track__inner:not([aria-hidden="true"])');
+const spacer=section&&section.querySelector('.portfolio-scroll-spacer');
+if(!section||!viewport||!track||!inner||!spacer)return;
+const clone=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');if(clone)clone.remove();
+let distance=0,startY=0,raf=0;
+const measure=()=>{distance=Math.max(0,inner.scrollWidth-viewport.clientWidth);spacer.style.height=distance+'px';const sectionTop=section.getBoundingClientRect().top+window.scrollY;startY=sectionTop+viewport.offsetTop-(window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12);update()};
+const update=()=>{raf=0;const progress=Math.max(0,Math.min(distance,window.scrollY-startY));track.style.setProperty('--portfolio-x',(-progress)+'px')};
+const onScroll=()=>{if(!raf)raf=window.requestAnimationFrame(update)};
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',measure,{passive:true});window.addEventListener('orientationchange',measure,{passive:true});
+if('ResizeObserver' in window){const ro=new ResizeObserver(measure);ro.observe(viewport);ro.observe(inner)}
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);window.addEventListener('load',measure,{once:true});measure();})();
