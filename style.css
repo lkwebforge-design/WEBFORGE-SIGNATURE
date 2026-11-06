@@ -895,3 +895,39 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 #work .portfolio-track{display:flex!important;width:max-content!important;min-width:max-content!important}
 #work .portfolio-track__inner{display:flex!important;flex:0 0 auto!important;width:max-content!important}
 @media(max-width:760px){#work .portfolio-controls{padding:0 20px 10px}#work .portfolio-control{width:42px;height:42px;flex-basis:42px}}
+
+
+/* SCROLL-LINKED PORTFOLIO: horizontal movement is driven by vertical page scroll. */
+#work.portfolio-redesign{position:relative;overflow:visible!important}
+#work .portfolio-marquee{
+  position:sticky!important;
+  top:16vh!important;
+  height:clamp(285px,38vw,430px)!important;
+  overflow:hidden!important;
+  width:100%!important;
+  touch-action:pan-y!important;
+  cursor:default!important;
+  -webkit-overflow-scrolling:auto!important;
+}
+#work .portfolio-track{
+  display:flex!important;
+  width:max-content!important;
+  min-width:max-content!important;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+  animation:none!important;
+}
+#work .portfolio-track__inner{
+  display:flex!important;
+  flex:0 0 auto!important;
+  width:max-content!important;
+  animation:none!important;
+}
+#work .portfolio-track__inner[aria-hidden="true"]{display:none!important}
+#work .portfolio-controls{display:none!important}
+@media(max-width:760px){
+  #work .portfolio-marquee{top:14vh!important;height:285px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #work .portfolio-track{will-change:auto}
+}
