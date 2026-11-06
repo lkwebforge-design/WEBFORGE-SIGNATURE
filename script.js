@@ -276,7 +276,7 @@ if(story){
 
 
 
-/* WEBFORGE — smooth, slow scroll-linked portfolio with direct manual drag. */
+/* WEBFORGE — reliable scroll-linked portfolio + manual touch/mouse drag. */
 (function(){
   const section=document.querySelector('#work.portfolio-redesign');
   const viewport=section&&section.querySelector('.portfolio-marquee');
@@ -288,28 +288,32 @@ if(story){
   const clone=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
   if(clone)clone.remove();
 
-  let distance=0,startY=0,raf=0,manualOffset=0,currentX=0;
-  let dragging=false,pointerStart=0,positionStart=0,moved=false;
-  const scrollGain=0.25;
-  const easing=0.16;
+  let distance=0,startY=null,raf=0,manualOffset=0,currentX=0;
+  let dragging=false,pointerStart=0,positionStart=0,moved=false,pointerId=null;
+  const scrollGain=0.68;
+  const easing=0.22;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
-  const pageProgress=()=>Math.max(0,Math.min(distance,(window.scrollY-startY)*scrollGain));
+  const pageProgress=()=>Math.max(0,Math.min(distance,((window.scrollY-(startY||0))*scrollGain)));
   const targetX=()=>Math.max(0,Math.min(distance,pageProgress()+manualOffset));
 
   function paint(immediate){
     const target=targetX();
     currentX=immediate?target:currentX+(target-currentX)*easing;
-    if(Math.abs(target-currentX)<0.25)currentX=target;
+    if(Math.abs(target-currentX)<0.35)currentX=target;
     track.style.setProperty('--portfolio-x',(-currentX)+'px');
-    if(!dragging&&Math.abs(target-currentX)>=0.25){
-      if(!raf)raf=window.requestAnimationFrame(function(){raf=0;paint(false)});
+    if(!dragging&&Math.abs(target-currentX)>=0.35&&!raf){
+      raf=window.requestAnimationFrame(function(){raf=0;paint(false)});
     }
   }
   function measure(){
     distance=Math.max(0,Math.ceil(inner.scrollWidth-viewport.clientWidth));
-    spacer.style.height=Math.ceil(distance/scrollGain+24)+'px';
+    spacer.style.height=Math.ceil(distance/scrollGain+40)+'px';
     section.style.paddingBottom='0px';
-    startY=viewport.getBoundingClientRect().top+window.scrollY-topGap();
+    /* Never reset the scroll origin while the rail is sticky: doing so makes
+       the animation jump back to its first card during ResizeObserver updates. */
+    if(startY===null || window.scrollY < startY-2){
+      startY=viewport.getBoundingClientRect().top+window.scrollY-topGap();
+    }
     manualOffset=0;
     paint(true);
   }
@@ -319,14 +323,13 @@ if(story){
 
   viewport.addEventListener('pointerdown',function(e){
     if(e.pointerType==='mouse'&&e.button!==0)return;
-    dragging=true;moved=false;
-    pointerStart=e.clientX;
-    positionStart=currentX;
+    dragging=true;moved=false;pointerId=e.pointerId;
+    pointerStart=e.clientX;positionStart=currentX;
     viewport.classList.add('is-dragging');
     try{viewport.setPointerCapture(e.pointerId)}catch(_){}
   });
   viewport.addEventListener('pointermove',function(e){
-    if(!dragging)return;
+    if(!dragging||e.pointerId!==pointerId)return;
     const delta=e.clientX-pointerStart;
     if(Math.abs(delta)>5)moved=true;
     const wanted=Math.max(0,Math.min(distance,positionStart-delta));
@@ -339,6 +342,7 @@ if(story){
     dragging=false;
     viewport.classList.remove('is-dragging');
     if(e&&e.pointerId!==undefined){try{viewport.releasePointerCapture(e.pointerId)}catch(_){}}
+    pointerId=null;
     requestUpdate();
   }
   viewport.addEventListener('pointerup',endDrag);
@@ -351,10 +355,10 @@ if(story){
   window.addEventListener('resize',measure,{passive:true});
   window.addEventListener('orientationchange',measure,{passive:true});
   if('ResizeObserver' in window){
-    const observer=new ResizeObserver(()=>measure());
+    const observer=new ResizeObserver(measure);
     observer.observe(viewport);observer.observe(inner);
   }
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   window.addEventListener('load',measure,{once:true});
   measure();
-})();;
+})();
