@@ -273,35 +273,44 @@ if(story){
 })();
 
 
-/* WEBFORGE 2026 — portfolio marquee duplication + mobile tap-to-reveal */
+/* WEBFORGE 2026 — duplicated seamless portfolio loop + touch-to-reveal. */
 (function(){
  const section=document.querySelector('#work.portfolio-redesign');
  const track=section&&section.querySelector('.portfolio-track__inner');
  if(!track||track.dataset.wfReady==='true')return;
  track.dataset.wfReady='true';
  const originals=[...track.querySelectorAll('.portfolio-project')];
- originals.forEach((card,index)=>{
+ originals.forEach(card=>{
    const bottom=card.querySelector('.portfolio-project__bottom');
    if(bottom&&!bottom.querySelector(':scope > span')){
      const category=bottom.querySelector('small')?.textContent||'Web design project';
      const name=bottom.querySelector('strong')?.textContent?.trim()||'Selected project';
+     const descriptions={
+       'Velora Café.':'A cinematic café website with scroll-led video, menu, gallery and table enquiries.',
+       'Breakpoint Billiards Club.':'A premium billiards website with live table availability and session booking.',
+       'GAIN.':'A bold streetwear storefront designed to showcase collections and drive online orders.',
+       'Moss & Mug.':'A welcoming café brand experience with editorial visuals and clear visitor information.',
+       'Lumerah Store.':'A fashion storefront built to present collections in a polished digital shopping experience.',
+       'Lumé Beauty Studio.':'A refined salon website showcasing beauty services, brand identity and enquiries.',
+       'Aura Private Island.':'A luxury hospitality website designed to make the destination and guest experience shine.',
+       'Volt Fitness.':'A performance-focused fitness website presenting training, facilities and membership enquiries.',
+       'Aerova AC Company.':'A professional service website presenting air-conditioning solutions and company services.'
+     };
      const description=document.createElement('span');
-     description.textContent=name+' — a responsive '+category.toLowerCase()+' digital experience crafted by WebForge.';
+     description.textContent=descriptions[name]||name+' — a responsive '+category.toLowerCase()+' digital experience crafted by WebForge.';
      bottom.insertBefore(description,bottom.querySelector('i'));
    }
    card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
  });
- if(!window.matchMedia('(max-width: 760px)').matches){
-   originals.forEach(card=>{
-     const clone=card.cloneNode(true);
-     clone.setAttribute('aria-hidden','true');
-     clone.setAttribute('tabindex','-1');
-     clone.querySelectorAll('a,button,[tabindex]').forEach(el=>el.setAttribute('tabindex','-1'));
-     track.appendChild(clone);
-   });
- }
- const mobile=window.matchMedia('(max-width: 760px)');
- if(mobile.matches){
+ /* A second identical set makes the slow marquee loop seamlessly at every viewport size. */
+ originals.forEach(card=>{
+   const clone=card.cloneNode(true);
+   clone.setAttribute('aria-hidden','true');
+   clone.setAttribute('tabindex','-1');
+   clone.querySelectorAll('a,button,[tabindex]').forEach(el=>el.setAttribute('tabindex','-1'));
+   track.appendChild(clone);
+ });
+ if(window.matchMedia('(max-width:760px)').matches){
    originals.forEach(card=>{
      card.addEventListener('click',event=>{
        if(!card.classList.contains('is-active')){
