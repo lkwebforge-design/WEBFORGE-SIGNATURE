@@ -939,3 +939,10 @@ html[data-theme="light"] #project-contact .wf-social-heading{
   transform:translate3d(var(--portfolio-x,0px),0,0)!important;
 }
 #work .portfolio-track__inner{animation:none!important;transform:none!important}
+
+
+/* FIX: horizontally scrolling portfolio cards must not wait for vertical reveal observer. */
+#work .portfolio-track .portfolio-project.reveal{
+  opacity:1!important;
+  visibility:visible!important;
+}
