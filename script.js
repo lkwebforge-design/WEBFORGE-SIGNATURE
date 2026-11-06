@@ -273,86 +273,117 @@ if(story){
 })();
 
 
-/* WEBFORGE 2026 — portfolio loop, touch reveal and grab-to-browse. */
+/* WEBFORGE 2026 — faster portfolio autoplay with real drag/swipe control. */
 (function(){
  const section=document.querySelector('#work.portfolio-redesign');
  const viewport=section&&section.querySelector('.portfolio-marquee');
- const track=section&&section.querySelector('.portfolio-track__inner');
- if(!track||!viewport||track.dataset.wfReady==='true')return;
- track.dataset.wfReady='true';
- const originals=[...track.querySelectorAll('.portfolio-project')];
- const projectDescriptions=[
-   'A cinematic café website with scroll-led video, menu, gallery and table enquiries.',
-   'A premium billiards website with table availability and online session booking.',
-   'A bold streetwear storefront designed to showcase collections and drive online orders.',
-   'A welcoming café brand experience with editorial visuals and clear visitor information.',
-   'A fashion storefront built to present collections in a polished digital shopping experience.',
-   'A refined salon website showcasing beauty services, brand identity and enquiries.',
-   'A luxury hospitality website designed to make the destination and guest experience shine.',
-   'A performance-focused fitness website presenting training, facilities and membership enquiries.',
-   'A professional service website presenting air-conditioning solutions and company services.'
+ const track=section&&section.querySelector('.portfolio-track');
+ const firstSet=track&&track.querySelector('.portfolio-track__inner');
+ if(!section||!viewport||!track||!firstSet||viewport.dataset.wfMotionReady==='true')return;
+ viewport.dataset.wfMotionReady='true';
+
+ const originals=[...firstSet.querySelectorAll('.portfolio-project')];
+ const descriptions=[
+  'A cinematic café website with scroll-led video, menu, gallery and table enquiries.',
+  'A premium billiards website with table availability and online session booking.',
+  'A bold streetwear storefront designed to showcase collections and drive online orders.',
+  'A welcoming café brand experience with editorial visuals and clear visitor information.',
+  'A fashion storefront built to present collections in a polished digital shopping experience.',
+  'A refined salon website showcasing beauty services, brand identity and enquiries.',
+  'A luxury hospitality website designed to make the destination and guest experience shine.',
+  'A performance-focused fitness website presenting training, facilities and membership enquiries.',
+  'A professional service website presenting air-conditioning solutions and company services.'
  ];
  originals.forEach((card,index)=>{
-   const bottom=card.querySelector('.portfolio-project__bottom');
-   if(bottom&&!bottom.querySelector(':scope > span')){
-     const category=bottom.querySelector('small')?.textContent||'Web design project';
-     const name=bottom.querySelector('strong')?.textContent?.trim()||'Selected project';
-     const description=document.createElement('span');
-     description.textContent=projectDescriptions[index]||name+' — a responsive '+category.toLowerCase()+' digital experience crafted by WebForge.';
-     bottom.insertBefore(description,bottom.querySelector('i'));
+  const bottom=card.querySelector('.portfolio-project__bottom');
+  const description=bottom&&bottom.querySelector('.portfolio-project__description');
+  if(description&&!description.textContent.trim())description.textContent=descriptions[index]||'A responsive digital experience crafted by WebForge.';
+  card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
+ });
+
+ const secondSet=track.querySelectorAll('.portfolio-track__inner')[1];
+ let loopWidth=firstSet.getBoundingClientRect().width;
+ if(secondSet&&loopWidth>0)viewport.scrollLeft=loopWidth;
+ let paused=false,raf=0,lastTime=0,dragging=false,dragMoved=false,startX=0,startScroll=0;
+ const speed=window.matchMedia('(max-width:760px)').matches?105:135; // pixels per second
+
+ function measure(){
+  loopWidth=firstSet.getBoundingClientRect().width;
+  if(loopWidth>0&&viewport.scrollLeft===0&&secondSet)viewport.scrollLeft=loopWidth;
+ }
+ function tick(now){
+  raf=0;
+  if(!paused){
+   if(lastTime){
+    const dt=Math.min((now-lastTime)/1000,.05);
+    viewport.scrollLeft+=speed*dt;
+    if(loopWidth>0){
+     if(viewport.scrollLeft>=loopWidth*1.5)viewport.scrollLeft-=loopWidth;
+     else if(viewport.scrollLeft<loopWidth*.5)viewport.scrollLeft+=loopWidth;
+    }
    }
-   card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
- });
- originals.forEach(card=>{
-   const clone=card.cloneNode(true);
-   clone.setAttribute('aria-hidden','true');
-   clone.setAttribute('tabindex','-1');
-   clone.querySelectorAll('a,button,[tabindex]').forEach(el=>el.setAttribute('tabindex','-1'));
-   track.appendChild(clone);
- });
- /* Drag or swipe the portfolio rail to browse projects manually. */
- let down=false,moved=false,startX=0,startScroll=0,pointerId=null;
+   lastTime=now;
+  }else lastTime=0;
+  raf=requestAnimationFrame(tick);
+ }
+ function pause(){paused=true;lastTime=0}
+ function resume(){paused=false;lastTime=0}
+ measure();
+ window.addEventListener('resize',measure,{passive:true});
+ raf=requestAnimationFrame(tick);
+
  viewport.addEventListener('pointerdown',event=>{
-   if(event.pointerType==='mouse'&&event.button!==0)return;
-   down=true;moved=false;startX=event.clientX;startScroll=viewport.scrollLeft;pointerId=event.pointerId;
+  if(event.pointerType==='mouse'&&event.button!==0)return;
+  pause();
+  if(event.pointerType==='mouse'){
+   dragging=true;dragMoved=false;startX=event.clientX;startScroll=viewport.scrollLeft;
    viewport.classList.add('is-dragging');
-   viewport.setPointerCapture?.(pointerId);
-   const marqueeTrack=section.querySelector('.portfolio-track');
-   if(marqueeTrack)marqueeTrack.style.animationPlayState='paused';
+   viewport.setPointerCapture?.(event.pointerId);
+  }
  });
  viewport.addEventListener('pointermove',event=>{
-   if(!down)return;
-   const dx=event.clientX-startX;
-   if(Math.abs(dx)>5)moved=true;
-   if(moved)viewport.scrollLeft=startScroll-dx;
+  if(!dragging)return;
+  const dx=event.clientX-startX;
+  if(Math.abs(dx)>5)dragMoved=true;
+  if(dragMoved)viewport.scrollLeft=startScroll-dx;
  });
- function endDrag(){
-   if(!down)return;
-   down=false;
+ function finishDrag(){
+  if(dragging){
+   dragging=false;
    viewport.classList.remove('is-dragging');
-   const marqueeTrack=section.querySelector('.portfolio-track');
-   if(marqueeTrack)marqueeTrack.style.animationPlayState='';
-   if(moved){
-     viewport.dataset.wfDragged='true';
-     window.setTimeout(()=>{delete viewport.dataset.wfDragged},80);
+   if(dragMoved){
+    viewport.dataset.wfDragged='true';
+    window.setTimeout(()=>delete viewport.dataset.wfDragged,250);
    }
+  }
+  resume();
  }
- viewport.addEventListener('pointerup',endDrag);
- viewport.addEventListener('pointercancel',endDrag);
- viewport.addEventListener('lostpointercapture',endDrag);
+ viewport.addEventListener('pointerup',finishDrag);
+ viewport.addEventListener('pointercancel',finishDrag);
+ viewport.addEventListener('lostpointercapture',finishDrag);
+ viewport.addEventListener('mouseleave',()=>{if(dragging)finishDrag()});
+
+ viewport.addEventListener('click',event=>{
+  if(viewport.dataset.wfDragged==='true'){
+   event.preventDefault();event.stopImmediatePropagation();
+  }
+ },true);
+
  if(window.matchMedia('(max-width:760px)').matches){
-   originals.forEach(card=>{
-     card.addEventListener('click',event=>{
-       if(viewport.dataset.wfDragged==='true'){event.preventDefault();event.stopImmediatePropagation();return;}
-       if(!card.classList.contains('is-active')){
-         event.preventDefault();
-         originals.forEach(item=>item.classList.remove('is-active'));
-         card.classList.add('is-active');
-       }
-     });
+  originals.forEach(card=>{
+   card.addEventListener('click',event=>{
+    if(viewport.dataset.wfDragged==='true'){
+     event.preventDefault();event.stopImmediatePropagation();return;
+    }
+    if(!card.classList.contains('is-active')){
+     event.preventDefault();
+     originals.forEach(item=>item.classList.remove('is-active'));
+     card.classList.add('is-active');
+    }
    });
-   document.addEventListener('click',event=>{
-     if(!section.contains(event.target)) originals.forEach(card=>card.classList.remove('is-active'));
-   });
+  });
+  document.addEventListener('click',event=>{
+   if(!section.contains(event.target))originals.forEach(card=>card.classList.remove('is-active'));
+  });
  }
 })();
