@@ -648,3 +648,56 @@ html[data-theme="light"] #project-contact .wf-social-heading{
  #work .portfolio-project.is-active{transform:translateY(-5px) scale(1.015)}
 }
 @media(prefers-reduced-motion:reduce){#work .portfolio-track__inner{animation:none!important}#work .portfolio-project,#work .portfolio-project *{transition:none!important}}
+
+
+/* WEBFORGE PORTFOLIO ONLY — continuous showcase on desktop and touch screens. */
+@media(max-width:760px){
+  #work .portfolio-marquee{
+    overflow:hidden!important;
+    overflow-y:visible!important;
+    padding:12px 0 30px!important;
+    scroll-snap-type:none!important;
+    -webkit-overflow-scrolling:auto!important;
+    mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%)!important;
+  }
+  #work .portfolio-track__inner{
+    animation:wfPortfolioDrift 112s linear infinite!important;
+    gap:13px!important;
+  }
+  #work .portfolio-project,
+  #work .portfolio-project.featured,
+  #work .portfolio-project:nth-child(2),
+  #work .portfolio-project:nth-child(3),
+  #work .portfolio-project:nth-child(n+5){
+    flex:0 0 min(82vw,350px)!important;
+    width:min(82vw,350px)!important;
+    height:410px!important;
+    scroll-snap-align:none!important;
+  }
+  #work .portfolio-project__bottom>span{
+    max-height:0!important;
+    opacity:0!important;
+    transform:translateY(10px)!important;
+  }
+  #work .portfolio-project.is-active .portfolio-project__bottom>span{
+    max-height:110px!important;
+    opacity:1!important;
+    transform:translateY(0)!important;
+  }
+  #work .portfolio-project.is-active{
+    transform:translateY(-5px) scale(1.015)!important;
+  }
+  #work .portfolio-marquee:has(.portfolio-project.is-active) .portfolio-track__inner{
+    animation-play-state:paused!important;
+  }
+}
+@media(hover:hover) and (min-width:761px){
+  #work .portfolio-project:hover .portfolio-project__bottom>span{
+    max-height:110px!important;
+    opacity:1!important;
+    transform:translateY(0)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #work .portfolio-track__inner{animation:none!important}
+}
