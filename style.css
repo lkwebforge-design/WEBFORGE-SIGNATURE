@@ -1190,3 +1190,36 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 
 /* Keep sticky scroll sections working without creating an extra horizontal scroll container. */
 body{overflow-x:clip!important}
+
+
+/* PORTFOLIO CARD RATIO NORMALIZATION — every project uses the same frame. */
+#work .portfolio-track .portfolio-project,
+#work .portfolio-track .portfolio-project.featured{
+  flex:0 0 clamp(290px,32vw,410px)!important;
+  width:clamp(290px,32vw,410px)!important;
+  height:clamp(340px,37vw,420px)!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  align-self:stretch!important;
+  overflow:hidden!important;
+}
+#work .portfolio-track .portfolio-project>img{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+@media(max-width:760px){
+  #work .portfolio-track .portfolio-project,
+  #work .portfolio-track .portfolio-project.featured{
+    flex:0 0 82vw!important;
+    width:82vw!important;
+    height:370px!important;
+    min-height:370px!important;
+    max-height:370px!important;
+  }
+}
