@@ -1176,3 +1176,8 @@ html[data-theme="light"] #project-contact .wf-social-heading{
     height:370px!important;
   }
 }
+
+
+/* Final spacing correction: keep the horizontal runway before the portfolio footer. */
+#work.portfolio-redesign{padding-bottom:72px!important}
+#work .portfolio-scroll-spacer{display:block!important;width:100%!important;height:0;min-height:0;pointer-events:none}
