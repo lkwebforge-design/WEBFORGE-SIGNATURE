@@ -1181,3 +1181,9 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 /* Final spacing correction: keep the horizontal runway before the portfolio footer. */
 #work.portfolio-redesign{padding-bottom:72px!important}
 #work .portfolio-scroll-spacer{display:block!important;width:100%!important;height:0;min-height:0;pointer-events:none}
+
+
+/* PORTFOLIO FINAL INTERACTION FIX — compact scroll runway + direct drag. */
+#work .portfolio-marquee{cursor:grab;touch-action:pan-y!important}
+#work .portfolio-marquee.is-dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+#work .portfolio-marquee.is-dragging .portfolio-project{user-select:none;-webkit-user-select:none}
