@@ -289,12 +289,12 @@ if(story){
   if(clone)clone.remove();
 
   let distance=0,startY=0,raf=0;
-  const scrollGain=2.5;
+  const scrollGain=9;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
 
   function measure(){
     distance=Math.max(0,Math.ceil(inner.scrollWidth-viewport.clientWidth));
-    /* Compress the vertical runway: 2.5px of horizontal travel per 1px page scroll. */
+    /* Keep the vertical runway short: 9px of horizontal travel per 1px page scroll. */
     spacer.style.height=Math.ceil(distance/scrollGain)+'px';
     section.style.paddingBottom='0px';
     /* Anchor the animation to the rail itself, not an estimated heading position. */
