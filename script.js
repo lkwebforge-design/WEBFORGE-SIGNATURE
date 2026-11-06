@@ -353,7 +353,7 @@ if(story){
    viewport.classList.remove('is-dragging');
    if(dragMoved){
     viewport.dataset.wfDragged='true';
-    window.setTimeout(()=>delete viewport.dataset.wfDragged,250);
+    window.setTimeout(()=>delete viewport.dataset.wfDragged,350);
    }
   }
   resume();
@@ -362,6 +362,35 @@ if(story){
  viewport.addEventListener('pointercancel',finishDrag);
  viewport.addEventListener('lostpointercapture',finishDrag);
  viewport.addEventListener('mouseleave',()=>{if(dragging)finishDrag()});
+
+ /* iPhone Safari fallback: explicitly translate horizontal finger movement into rail scrolling. */
+ let touchX=0,touchY=0,touchScroll=0,touchAxis='';
+ viewport.addEventListener('touchstart',event=>{
+  if(!event.touches||event.touches.length!==1)return;
+  const touch=event.touches[0];
+  touchX=touch.clientX;touchY=touch.clientY;touchScroll=viewport.scrollLeft;touchAxis='';
+  pause();
+ },{passive:true});
+ viewport.addEventListener('touchmove',event=>{
+  if(!event.touches||event.touches.length!==1)return;
+  const touch=event.touches[0],dx=touch.clientX-touchX,dy=touch.clientY-touchY;
+  if(!touchAxis&&Math.max(Math.abs(dx),Math.abs(dy))>7)touchAxis=Math.abs(dx)>Math.abs(dy)?'x':'y';
+  if(touchAxis==='x'){
+   event.preventDefault();
+   viewport.scrollLeft=touchScroll-dx;
+   if(Math.abs(dx)>7){
+    viewport.dataset.wfDragged='true';
+    viewport.classList.add('is-dragging');
+   }
+  }
+ },{passive:false});
+ function finishTouch(){
+  viewport.classList.remove('is-dragging');
+  if(viewport.dataset.wfDragged==='true')window.setTimeout(()=>delete viewport.dataset.wfDragged,350);
+  resume();
+ }
+ viewport.addEventListener('touchend',finishTouch,{passive:true});
+ viewport.addEventListener('touchcancel',finishTouch,{passive:true});
 
  viewport.addEventListener('click',event=>{
   if(viewport.dataset.wfDragged==='true'){
