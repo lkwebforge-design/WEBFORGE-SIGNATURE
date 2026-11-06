@@ -1275,9 +1275,8 @@ body{overflow-x:clip!important}
 }
 
 
-/* Match Velora Café and Moss & Mug to the exact standard portfolio card dimensions. */
-#work .portfolio-project[href*="/Cafe/"],
-#work .portfolio-project[href*="/webforge-3d-lab/cafe/"]{
+/* Velora Café only: force the same card dimensions as Moss & Mug and the standard cards. */
+#work a.portfolio-project.featured[href^="https://lkwebforge-design.github.io/Cafe/"]{
   flex:0 0 clamp(290px,34vw,470px)!important;
   width:clamp(290px,34vw,470px)!important;
   height:clamp(340px,35vw,440px)!important;
@@ -1286,15 +1285,13 @@ body{overflow-x:clip!important}
   grid-row:auto!important;
   aspect-ratio:auto!important;
 }
-#work .portfolio-project[href*="/Cafe/"]>img,
-#work .portfolio-project[href*="/webforge-3d-lab/cafe/"]>img{
+#work a.portfolio-project.featured[href^="https://lkwebforge-design.github.io/Cafe/"]>img{
   width:100%!important;
   height:100%!important;
   object-fit:cover!important;
 }
 @media(max-width:760px){
-  #work .portfolio-project[href*="/Cafe/"],
-  #work .portfolio-project[href*="/webforge-3d-lab/cafe/"]{
+  #work a.portfolio-project.featured[href^="https://lkwebforge-design.github.io/Cafe/"]{
     flex:0 0 82vw!important;
     width:82vw!important;
     height:370px!important;
