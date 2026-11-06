@@ -794,3 +794,23 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 @media(prefers-reduced-motion:reduce){
   #work .portfolio-track{animation:none!important}
 }
+
+
+/* PORTFOLIO: quicker autoplay + user-controlled drag/scroll browsing. */
+#work .portfolio-track{animation-duration:48s!important}
+#work .portfolio-marquee{
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  cursor:grab;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+}
+#work .portfolio-marquee::-webkit-scrollbar{display:none}
+#work .portfolio-marquee.is-dragging{cursor:grabbing;user-select:none}
+#work .portfolio-marquee.is-dragging .portfolio-track{animation-play-state:paused!important}
+#work .portfolio-marquee.is-dragging .portfolio-project{pointer-events:none}
+@media(max-width:760px){
+  #work .portfolio-track{animation-duration:64s!important}
+  #work .portfolio-marquee{overflow-x:auto!important;overflow-y:hidden!important}
+}
