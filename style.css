@@ -727,3 +727,28 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 @keyframes wfPortfolioSlide{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @media(max-width:760px){.portfolio-marquee{overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;scrollbar-width:none;padding:12px 20px 28px;margin:0 -20px;width:calc(100% + 40px)}.portfolio-marquee::-webkit-scrollbar{display:none}.portfolio-marquee:before,.portfolio-marquee:after{display:none}.portfolio-track{animation:none;width:max-content}.portfolio-track__inner{gap:14px;padding-right:14px}.portfolio-track .portfolio-project,.portfolio-track .portfolio-project.featured{flex-basis:min(82vw,360px);width:min(82vw,360px);height:390px;scroll-snap-align:center}.portfolio-track .portfolio-project__description{font-size:11px}.portfolio-track .portfolio-project__bottom strong{font-size:34px}.portfolio-track .portfolio-project.is-active{transform:translateY(-5px) scale(1.015)}.portfolio-track__inner[aria-hidden="true"]{display:none}}
 @media(prefers-reduced-motion:reduce){.portfolio-track{animation:none!important}.portfolio-track .portfolio-project,.portfolio-track .portfolio-project__description{transition:none!important}}
+
+
+/* WEBFORGE PORTFOLIO TUNING — slightly quicker drift + compact rectangular cards. */
+#work .portfolio-track__inner{animation-duration:58s!important}
+#work .portfolio-project,
+#work .portfolio-project.featured,
+#work .portfolio-project:nth-child(2),
+#work .portfolio-project:nth-child(3),
+#work .portfolio-project:nth-child(n+5){
+  flex-basis:clamp(300px,32vw,410px)!important;
+  width:clamp(300px,32vw,410px)!important;
+  height:clamp(300px,27vw,355px)!important;
+}
+@media(max-width:760px){
+  #work .portfolio-track__inner{animation-duration:76s!important}
+  #work .portfolio-project,
+  #work .portfolio-project.featured,
+  #work .portfolio-project:nth-child(2),
+  #work .portfolio-project:nth-child(3),
+  #work .portfolio-project:nth-child(n+5){
+    flex-basis:min(82vw,340px)!important;
+    width:min(82vw,340px)!important;
+    height:290px!important;
+  }
+}
