@@ -280,24 +280,24 @@ if(story){
  if(!track||track.dataset.wfReady==='true')return;
  track.dataset.wfReady='true';
  const originals=[...track.querySelectorAll('.portfolio-project')];
- originals.forEach(card=>{
+ const projectDescriptions=[
+   'A cinematic café website with scroll-led video, menu, gallery and table enquiries.',
+   'A premium billiards website with table availability and online session booking.',
+   'A bold streetwear storefront designed to showcase collections and drive online orders.',
+   'A welcoming café brand experience with editorial visuals and clear visitor information.',
+   'A fashion storefront built to present collections in a polished digital shopping experience.',
+   'A refined salon website showcasing beauty services, brand identity and enquiries.',
+   'A luxury hospitality website designed to make the destination and guest experience shine.',
+   'A performance-focused fitness website presenting training, facilities and membership enquiries.',
+   'A professional service website presenting air-conditioning solutions and company services.'
+ ];
+ originals.forEach((card,index)=>{
    const bottom=card.querySelector('.portfolio-project__bottom');
    if(bottom&&!bottom.querySelector(':scope > span')){
      const category=bottom.querySelector('small')?.textContent||'Web design project';
      const name=bottom.querySelector('strong')?.textContent?.trim()||'Selected project';
-     const descriptions={
-       'Velora Café.':'A cinematic café website with scroll-led video, menu, gallery and table enquiries.',
-       'Breakpoint Billiards Club.':'A premium billiards website with live table availability and session booking.',
-       'GAIN.':'A bold streetwear storefront designed to showcase collections and drive online orders.',
-       'Moss & Mug.':'A welcoming café brand experience with editorial visuals and clear visitor information.',
-       'Lumerah Store.':'A fashion storefront built to present collections in a polished digital shopping experience.',
-       'Lumé Beauty Studio.':'A refined salon website showcasing beauty services, brand identity and enquiries.',
-       'Aura Private Island.':'A luxury hospitality website designed to make the destination and guest experience shine.',
-       'Volt Fitness.':'A performance-focused fitness website presenting training, facilities and membership enquiries.',
-       'Aerova AC Company.':'A professional service website presenting air-conditioning solutions and company services.'
-     };
      const description=document.createElement('span');
-     description.textContent=descriptions[name]||name+' — a responsive '+category.toLowerCase()+' digital experience crafted by WebForge.';
+     description.textContent=projectDescriptions[index]||name+' — a responsive '+category.toLowerCase()+' digital experience crafted by WebForge.';
      bottom.insertBefore(description,bottom.querySelector('i'));
    }
    card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
@@ -324,17 +324,4 @@ if(story){
      if(!section.contains(event.target)) originals.forEach(card=>card.classList.remove('is-active'));
    });
  }
-})();
-
-/* On touch screens, first tap reveals a project's details; the next opens its live site. */
-(function(){
-  const cards=[...document.querySelectorAll('.portfolio-track__inner:not([aria-hidden="true"]) [data-portfolio-card]')];
-  if(!cards.length||!window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
-  cards.forEach(card=>card.addEventListener('click',function(event){
-    if(!card.classList.contains('is-active')){
-      event.preventDefault();
-      cards.forEach(other=>other.classList.remove('is-active'));
-      card.classList.add('is-active');
-    }
-  }));
 })();
