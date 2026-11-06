@@ -325,3 +325,16 @@ if(story){
    });
  }
 })();
+
+/* On touch screens, first tap reveals a project's details; the next opens its live site. */
+(function(){
+  const cards=[...document.querySelectorAll('.portfolio-track__inner:not([aria-hidden="true"]) [data-portfolio-card]')];
+  if(!cards.length||!window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+  cards.forEach(card=>card.addEventListener('click',function(event){
+    if(!card.classList.contains('is-active')){
+      event.preventDefault();
+      cards.forEach(other=>other.classList.remove('is-active'));
+      card.classList.add('is-active');
+    }
+  }));
+})();
