@@ -620,3 +620,31 @@ html[data-theme="dark"] #project-contact .wf-social-links--contact .wf-social-gl
 html[data-theme="light"] #project-contact .wf-social-heading{
   color:#354b35!important;
 }
+
+
+/* WEBFORGE 2026 — cinematic portfolio marquee (isolated to #work) */
+#work.portfolio-redesign{overflow:hidden;position:relative}
+#work .portfolio-marquee{position:relative;width:100%;overflow:hidden;padding:12px 0 34px;mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 96%,transparent 100%)}
+#work .portfolio-track{width:max-content}
+#work .portfolio-track__inner{display:flex;align-items:stretch;gap:18px;width:max-content;animation:wfPortfolioDrift 78s linear infinite;will-change:transform}
+#work .portfolio-project,#work .portfolio-project.featured,#work .portfolio-project:nth-child(2),#work .portfolio-project:nth-child(3),#work .portfolio-project:nth-child(n+5){display:block;flex:0 0 clamp(270px,31vw,430px);width:clamp(270px,31vw,430px);height:clamp(390px,39vw,500px);min-height:0;grid-column:auto;grid-row:auto;border-radius:13px;transform:translateZ(0);transition:transform .55s cubic-bezier(.2,.75,.25,1),border-color .4s ease,box-shadow .4s ease}
+#work .portfolio-project>img{z-index:0;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .7s ease}
+#work .portfolio-project__shade{z-index:1}
+#work .portfolio-project__top,#work .portfolio-project__bottom{z-index:2}
+#work .portfolio-project__bottom{gap:10px}
+#work .portfolio-project__bottom>span{max-height:0;opacity:0;overflow:hidden;transform:translateY(10px);transition:max-height .45s ease,opacity .35s ease,transform .45s ease}
+#work .portfolio-project__bottom i{opacity:.82;transition:opacity .3s ease}
+#work .portfolio-project:hover,#work .portfolio-project:focus-visible,#work .portfolio-project.is-active{z-index:4;transform:translateY(-9px) scale(1.035);border-color:rgba(182,255,103,.62);box-shadow:0 28px 80px rgba(0,0,0,.42),0 0 32px rgba(182,255,103,.08);outline:none}
+#work .portfolio-project:hover .portfolio-project__bottom>span,#work .portfolio-project:focus-visible .portfolio-project__bottom>span,#work .portfolio-project.is-active .portfolio-project__bottom>span{max-height:110px;opacity:1;transform:translateY(0)}
+#work .portfolio-project:hover .portfolio-project__bottom i,#work .portfolio-project.is-active .portfolio-project__bottom i{opacity:1}
+#work .portfolio-project:hover>img,#work .portfolio-project:focus-visible>img,#work .portfolio-project.is-active>img{transform:scale(1.075);filter:brightness(.83) saturate(1.08)}
+#work .portfolio-marquee:has(.portfolio-project:hover) .portfolio-track__inner,#work .portfolio-marquee:has(.portfolio-project:focus-visible) .portfolio-track__inner,#work .portfolio-marquee:has(.portfolio-project.is-active) .portfolio-track__inner{animation-play-state:paused}
+@keyframes wfPortfolioDrift{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(max-width:760px){
+ #work .portfolio-marquee{overflow-x:auto;overflow-y:visible;mask-image:none;padding:12px 22px 30px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+ #work .portfolio-track__inner{animation:none;gap:13px}
+ #work .portfolio-project,#work .portfolio-project.featured,#work .portfolio-project:nth-child(2),#work .portfolio-project:nth-child(3),#work .portfolio-project:nth-child(n+5){flex-basis:min(82vw,350px);width:min(82vw,350px);height:410px;scroll-snap-align:center}
+ #work .portfolio-project__bottom>span{max-height:100px;opacity:1;transform:none}
+ #work .portfolio-project.is-active{transform:translateY(-5px) scale(1.015)}
+}
+@media(prefers-reduced-motion:reduce){#work .portfolio-track__inner{animation:none!important}#work .portfolio-project,#work .portfolio-project *{transition:none!important}}
