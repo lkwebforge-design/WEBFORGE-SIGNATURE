@@ -292,7 +292,7 @@ if(story){
   let pointerStart=0,positionStart=0,moved=false,pointerId=null;
   /* Deliberately slower scroll-linked movement: the rail advances 0.25px per 1px of page scroll.
      Direct mapping only — no autoplay, easing or momentum after scrolling stops. */
-  const scrollGain=0.30;
+  const scrollGain=0.35;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
   const pageProgress=()=>Math.max(0,Math.min(distance,(window.scrollY-(startY||0))*scrollGain));
   const targetX=()=>Math.max(0,Math.min(distance,pageProgress()+manualOffset));
