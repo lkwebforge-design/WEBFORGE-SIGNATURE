@@ -840,3 +840,6 @@ html[data-theme="light"] #project-contact .wf-social-heading{
   #work .portfolio-track{animation:none!important}
   #work .portfolio-track__inner{animation:none!important}
 }
+
+/* Keep the second seamless loop available on touch screens too. */
+#work .portfolio-track__inner[aria-hidden="true"]{display:flex!important}
