@@ -273,60 +273,42 @@ if(story){
 })();
 
 
-/* WEBFORGE — vertical scroll drives the pinned horizontal portfolio. */
+/* WEBFORGE PORTFOLIO — native touch scrolling + desktop click-and-drag. */
 (function(){
-  const section=document.querySelector('#work.portfolio-redesign');
-  const viewport=section&&section.querySelector('.portfolio-marquee');
-  const track=section&&section.querySelector('.portfolio-track');
-  const cards=track&&track.querySelector('.portfolio-track__inner');
-  if(!section||!viewport||!track||!cards)return;
+  const viewport=document.querySelector('#work .portfolio-marquee');
+  if(!viewport)return;
+  const track=viewport.querySelector('.portfolio-track');
+  const inner=track&&track.querySelector('.portfolio-track__inner');
+  const duplicate=track&&track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
+  if(duplicate)duplicate.remove();
+  if(track){track.style.removeProperty('--portfolio-x');track.style.transform='none';}
+  const section=document.querySelector('#work');
+  if(section)section.style.removeProperty('padding-bottom');
 
-  const duplicate=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
-  if(duplicate)duplicate.style.display='none';
-
-  let distance=0,begin=0,frame=0;
-  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-  const stickyOffset=()=>{
-    const parsed=parseFloat(getComputedStyle(viewport).top);
-    return Number.isFinite(parsed)?parsed:window.innerHeight*.16;
-  };
-
-  function render(){
-    frame=0;
-    if(reduceMotion.matches){
-      track.style.setProperty('--portfolio-x','0px');
-      return;
-    }
-    const progress=distance>0?Math.max(0,Math.min(1,(window.scrollY-begin)/distance)):0;
-    track.style.setProperty('--portfolio-x',(-distance*progress).toFixed(2)+'px');
+  let down=false,startX=0,startScroll=0,moved=false;
+  viewport.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='touch')return;
+    if(e.button!==0)return;
+    down=true;moved=false;startX=e.clientX;startScroll=viewport.scrollLeft;
+    viewport.classList.add('is-dragging');
+    try{viewport.setPointerCapture(e.pointerId)}catch(_){}
+  });
+  viewport.addEventListener('pointermove',function(e){
+    if(!down)return;
+    const delta=e.clientX-startX;
+    if(Math.abs(delta)>4)moved=true;
+    viewport.scrollLeft=startScroll-delta;
+  });
+  const end=function(){down=false;viewport.classList.remove('is-dragging')};
+  viewport.addEventListener('pointerup',end);
+  viewport.addEventListener('pointercancel',end);
+  viewport.addEventListener('lostpointercapture',end);
+  viewport.addEventListener('click',function(e){
+    if(moved){e.preventDefault();e.stopPropagation();moved=false;}
+  },true);
+  if(inner){
+    inner.querySelectorAll('.portfolio-project').forEach(card=>{
+      card.addEventListener('dragstart',e=>e.preventDefault());
+    });
   }
-
-  function measure(){
-    if(reduceMotion.matches){
-      distance=0;
-      section.style.paddingBottom='';
-      render();
-      return;
-    }
-    distance=Math.max(0,cards.scrollWidth-viewport.clientWidth);
-    const offset=stickyOffset();
-    begin=viewport.getBoundingClientRect().top+window.scrollY-offset;
-    section.style.paddingBottom=(distance+Math.max(0,offset-100))+'px';
-    render();
-  }
-
-  function onScroll(){if(!frame)frame=requestAnimationFrame(render)}
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',measure,{passive:true});
-  window.addEventListener('orientationchange',()=>requestAnimationFrame(measure),{passive:true});
-  reduceMotion.addEventListener?.('change',measure);
-
-  if('ResizeObserver' in window){
-    const observer=new ResizeObserver(()=>requestAnimationFrame(measure));
-    observer.observe(cards);
-    observer.observe(viewport);
-  }
-  window.addEventListener('load',measure,{once:true});
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure).catch(()=>{});
-  requestAnimationFrame(measure);
 })();
