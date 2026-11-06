@@ -290,9 +290,9 @@ if(story){
 
   let distance=0,startY=null,manualOffset=0,currentX=0,dragging=false;
   let pointerStart=0,positionStart=0,moved=false,pointerId=null;
-  /* 1:1 scroll mapping: one vertical pixel moves the rail one horizontal pixel.
-     No easing or momentum; the rail stops exactly when page scrolling stops. */
-  const scrollGain=1;
+  /* Deliberately slower scroll-linked movement: the rail advances 0.25px per 1px of page scroll.
+     Direct mapping only — no autoplay, easing or momentum after scrolling stops. */
+  const scrollGain=0.25;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
   const pageProgress=()=>Math.max(0,Math.min(distance,(window.scrollY-(startY||0))*scrollGain));
   const targetX=()=>Math.max(0,Math.min(distance,pageProgress()+manualOffset));
