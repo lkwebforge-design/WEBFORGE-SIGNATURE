@@ -289,13 +289,13 @@ if(story){
   if(clone)clone.remove();
 
   let distance=0,startY=0,raf=0;
+  const scrollGain=2.5;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
 
   function measure(){
     distance=Math.max(0,Math.ceil(inner.scrollWidth-viewport.clientWidth));
-    /* A small extra runway guarantees the final card reaches its full position
-       before the next section is allowed to enter. */
-    spacer.style.height=Math.ceil(distance+viewport.clientHeight*.35)+'px';
+    /* Compress the vertical runway: 2.5px of horizontal travel per 1px page scroll. */
+    spacer.style.height=Math.ceil(distance/scrollGain)+'px';
     section.style.paddingBottom='0px';
     /* Anchor the animation to the rail itself, not an estimated heading position. */
     startY=viewport.getBoundingClientRect().top+window.scrollY-topGap();
@@ -304,7 +304,7 @@ if(story){
 
   function update(){
     raf=0;
-    const progress=Math.max(0,Math.min(distance,window.scrollY-startY));
+    const progress=Math.max(0,Math.min(distance,(window.scrollY-startY)*scrollGain));
     track.style.setProperty('--portfolio-x',(-progress)+'px');
   }
 
