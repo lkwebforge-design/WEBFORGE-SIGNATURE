@@ -275,47 +275,40 @@ if(story){
 
 
 
-/* WEBFORGE — scroll vertically to reveal the full portfolio rail, then continue down. */
+
+/* WEBFORGE — vertical scroll drives the complete horizontal portfolio rail. */
 (function(){
   const section=document.querySelector('#work.portfolio-redesign');
   const viewport=section&&section.querySelector('.portfolio-marquee');
   const track=viewport&&viewport.querySelector('.portfolio-track');
   const inner=track&&track.querySelector('.portfolio-track__inner:not([aria-hidden="true"])');
   const heading=section&&section.querySelector('.section-head');
-  if(!section||!viewport||!track||!inner||!heading)return;
-
+  const spacer=section&&section.querySelector('.portfolio-scroll-spacer');
+  if(!section||!viewport||!track||!inner||!heading||!spacer)return;
   const clone=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
   if(clone)clone.remove();
-
   let distance=0,startY=0,raf=0;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
-
   function measure(){
     distance=Math.max(0,inner.scrollWidth-viewport.clientWidth);
-    const headingStyle=getComputedStyle(heading);
-    const headingMargin=parseFloat(headingStyle.marginBottom)||0;
-    /* Use the non-sticky heading as the stable document-position anchor. */
+    spacer.style.height=distance+'px';
+    section.style.paddingBottom='';
+    const headingMargin=parseFloat(getComputedStyle(heading).marginBottom)||0;
     startY=heading.getBoundingClientRect().bottom+window.scrollY+headingMargin-topGap();
-    /* This is the only scroll runway: it ends as soon as the last card is fully in view. */
-    section.style.paddingBottom=(distance+36)+'px';
     update();
   }
-
   function update(){
     raf=0;
     const progress=Math.max(0,Math.min(distance,window.scrollY-startY));
     track.style.setProperty('--portfolio-x',(-progress)+'px');
   }
-
   function requestUpdate(){if(!raf)raf=window.requestAnimationFrame(update)}
   window.addEventListener('scroll',requestUpdate,{passive:true});
   window.addEventListener('resize',measure,{passive:true});
   window.addEventListener('orientationchange',measure,{passive:true});
   if('ResizeObserver' in window){
     const observer=new ResizeObserver(()=>measure());
-    observer.observe(viewport);
-    observer.observe(inner);
-    observer.observe(heading);
+    observer.observe(viewport);observer.observe(inner);observer.observe(heading);
   }
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   window.addEventListener('load',measure,{once:true});
