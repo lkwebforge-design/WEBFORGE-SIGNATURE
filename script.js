@@ -283,7 +283,7 @@ if(story){
  const secondSet=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
  if(secondSet)secondSet.style.display='none';
  let travel=0,startY=0,sectionExtra=0,raf=0;
- const stickyTop=()=>window.innerHeight*(window.innerWidth<=760?.14:.16);
+ const stickyTop=()=>window.innerHeight*(window.innerWidth <= 760 ? 0.14 : 0.16);
  function measure(){
    const viewportWidth=viewport.clientWidth;
    const contentWidth=firstSet.scrollWidth;
