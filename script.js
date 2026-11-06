@@ -273,11 +273,12 @@ if(story){
 })();
 
 
-/* WEBFORGE 2026 — duplicated seamless portfolio loop + touch-to-reveal. */
+/* WEBFORGE 2026 — portfolio loop, touch reveal and grab-to-browse. */
 (function(){
  const section=document.querySelector('#work.portfolio-redesign');
+ const viewport=section&&section.querySelector('.portfolio-marquee');
  const track=section&&section.querySelector('.portfolio-track__inner');
- if(!track||track.dataset.wfReady==='true')return;
+ if(!track||!viewport||track.dataset.wfReady==='true')return;
  track.dataset.wfReady='true';
  const originals=[...track.querySelectorAll('.portfolio-project')];
  const projectDescriptions=[
@@ -302,7 +303,6 @@ if(story){
    }
    card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
  });
- /* A second identical set makes the slow marquee loop seamlessly at every viewport size. */
  originals.forEach(card=>{
    const clone=card.cloneNode(true);
    clone.setAttribute('aria-hidden','true');
@@ -310,9 +310,40 @@ if(story){
    clone.querySelectorAll('a,button,[tabindex]').forEach(el=>el.setAttribute('tabindex','-1'));
    track.appendChild(clone);
  });
+ /* Drag or swipe the portfolio rail to browse projects manually. */
+ let down=false,moved=false,startX=0,startScroll=0,pointerId=null;
+ viewport.addEventListener('pointerdown',event=>{
+   if(event.pointerType==='mouse'&&event.button!==0)return;
+   down=true;moved=false;startX=event.clientX;startScroll=viewport.scrollLeft;pointerId=event.pointerId;
+   viewport.classList.add('is-dragging');
+   viewport.setPointerCapture?.(pointerId);
+   const marqueeTrack=section.querySelector('.portfolio-track');
+   if(marqueeTrack)marqueeTrack.style.animationPlayState='paused';
+ });
+ viewport.addEventListener('pointermove',event=>{
+   if(!down)return;
+   const dx=event.clientX-startX;
+   if(Math.abs(dx)>5)moved=true;
+   if(moved)viewport.scrollLeft=startScroll-dx;
+ });
+ function endDrag(){
+   if(!down)return;
+   down=false;
+   viewport.classList.remove('is-dragging');
+   const marqueeTrack=section.querySelector('.portfolio-track');
+   if(marqueeTrack)marqueeTrack.style.animationPlayState='';
+   if(moved){
+     viewport.dataset.wfDragged='true';
+     window.setTimeout(()=>{delete viewport.dataset.wfDragged},80);
+   }
+ }
+ viewport.addEventListener('pointerup',endDrag);
+ viewport.addEventListener('pointercancel',endDrag);
+ viewport.addEventListener('lostpointercapture',endDrag);
  if(window.matchMedia('(max-width:760px)').matches){
    originals.forEach(card=>{
      card.addEventListener('click',event=>{
+       if(viewport.dataset.wfDragged==='true'){event.preventDefault();event.stopImmediatePropagation();return;}
        if(!card.classList.contains('is-active')){
          event.preventDefault();
          originals.forEach(item=>item.classList.remove('is-active'));
