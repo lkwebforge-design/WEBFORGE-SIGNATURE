@@ -1273,3 +1273,30 @@ body{overflow-x:clip!important}
     min-height:0!important;
   }
 }
+
+
+/* Match Velora and Moss & Mug card proportions to the standard portfolio cards only. */
+#work .portfolio-project[href*="/Cafe/"],
+#work .portfolio-project[href*="/webforge-3d-lab/cafe/"]{
+  flex:0 0 clamp(290px,32vw,410px)!important;
+  width:clamp(290px,32vw,410px)!important;
+  height:clamp(340px,37vw,420px)!important;
+  min-height:0!important;
+  grid-column:auto!important;
+  grid-row:auto!important;
+  aspect-ratio:auto!important;
+}
+#work .portfolio-project[href*="/Cafe/"]>img,
+#work .portfolio-project[href*="/webforge-3d-lab/cafe/"]>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+@media(max-width:760px){
+  #work .portfolio-project[href*="/Cafe/"],
+  #work .portfolio-project[href*="/webforge-3d-lab/cafe/"]{
+    flex:0 0 82vw!important;
+    width:82vw!important;
+    height:370px!important;
+  }
+}
