@@ -926,7 +926,7 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 #work .portfolio-track__inner[aria-hidden="true"]{display:none!important}
 #work .portfolio-controls{display:none!important}
 @media(max-width:760px){
-  #work .portfolio-marquee{top:14vh!important;height:285px!important}
+  #work .portfolio-marquee{top:14vh!important;height:410px!important}
 }
 @media(prefers-reduced-motion:reduce){
   #work .portfolio-track{will-change:auto}
