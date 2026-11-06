@@ -273,42 +273,40 @@ if(story){
 })();
 
 
-/* WEBFORGE PORTFOLIO — native touch scrolling + desktop click-and-drag. */
+/* WEBFORGE — vertical page scroll pins and moves through the complete portfolio. */
 (function(){
-  const viewport=document.querySelector('#work .portfolio-marquee');
-  if(!viewport)return;
-  const track=viewport.querySelector('.portfolio-track');
-  const inner=track&&track.querySelector('.portfolio-track__inner');
-  const duplicate=track&&track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
-  if(duplicate)duplicate.remove();
-  if(track){track.style.removeProperty('--portfolio-x');track.style.transform='none';}
   const section=document.querySelector('#work');
-  if(section)section.style.removeProperty('padding-bottom');
+  const viewport=section&&section.querySelector('.portfolio-marquee');
+  const track=viewport&&viewport.querySelector('.portfolio-track');
+  const inner=track&&track.querySelector('.portfolio-track__inner');
+  if(!section||!viewport||!track||!inner)return;
+  const clone=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
+  if(clone)clone.remove();
 
-  let down=false,startX=0,startScroll=0,moved=false;
-  viewport.addEventListener('pointerdown',function(e){
-    if(e.pointerType==='touch')return;
-    if(e.button!==0)return;
-    down=true;moved=false;startX=e.clientX;startScroll=viewport.scrollLeft;
-    viewport.classList.add('is-dragging');
-    try{viewport.setPointerCapture(e.pointerId)}catch(_){}
-  });
-  viewport.addEventListener('pointermove',function(e){
-    if(!down)return;
-    const delta=e.clientX-startX;
-    if(Math.abs(delta)>4)moved=true;
-    viewport.scrollLeft=startScroll-delta;
-  });
-  const end=function(){down=false;viewport.classList.remove('is-dragging')};
-  viewport.addEventListener('pointerup',end);
-  viewport.addEventListener('pointercancel',end);
-  viewport.addEventListener('lostpointercapture',end);
-  viewport.addEventListener('click',function(e){
-    if(moved){e.preventDefault();e.stopPropagation();moved=false;}
-  },true);
-  if(inner){
-    inner.querySelectorAll('.portfolio-project').forEach(card=>{
-      card.addEventListener('dragstart',e=>e.preventDefault());
-    });
+  let distance=0,startY=0,topOffset=0,raf=0;
+  const measure=()=>{
+    topOffset=window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
+    distance=Math.max(0,inner.scrollWidth-viewport.clientWidth);
+    section.style.paddingBottom=(distance+24)+'px';
+    startY=viewport.getBoundingClientRect().top+window.scrollY-topOffset;
+    update();
+  };
+  const update=()=>{
+    raf=0;
+    const progress=Math.max(0,Math.min(distance,window.scrollY-startY));
+    track.style.setProperty('--portfolio-x',(-progress)+'px');
+  };
+  const onScroll=()=>{
+    if(!raf)raf=requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',measure,{passive:true});
+  window.addEventListener('orientationchange',measure,{passive:true});
+  if('ResizeObserver' in window){
+    const ro=new ResizeObserver(measure);
+    ro.observe(viewport);ro.observe(inner);
   }
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
+  window.addEventListener('load',measure,{once:true});
+  measure();
 })();
