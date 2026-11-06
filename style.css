@@ -752,3 +752,45 @@ html[data-theme="light"] #project-contact .wf-social-heading{
     height:290px!important;
   }
 }
+
+
+/* WEBFORGE PORTFOLIO TUNING — slightly quicker motion and compact landscape cards. */
+#work .portfolio-track{
+  animation:wfPortfolioSlide 60s linear infinite!important;
+}
+#work .portfolio-track .portfolio-project,
+#work .portfolio-track .portfolio-project.featured{
+  flex:0 0 clamp(290px,32vw,420px)!important;
+  width:clamp(290px,32vw,420px)!important;
+  height:clamp(285px,26vw,350px)!important;
+  min-height:0!important;
+}
+@media(max-width:760px){
+  #work .portfolio-track{
+    animation:wfPortfolioSlide 78s linear infinite!important;
+  }
+  #work .portfolio-track .portfolio-project,
+  #work .portfolio-track .portfolio-project.featured{
+    flex:0 0 min(78vw,340px)!important;
+    width:min(78vw,340px)!important;
+    height:285px!important;
+    min-height:0!important;
+    scroll-snap-align:none!important;
+  }
+  #work .portfolio-track .portfolio-project__description{
+    max-height:0!important;
+    opacity:0!important;
+    transform:translateY(9px)!important;
+  }
+  #work .portfolio-track .portfolio-project.is-active .portfolio-project__description{
+    max-height:90px!important;
+    opacity:1!important;
+    transform:translateY(0)!important;
+  }
+  #work .portfolio-marquee:has(.portfolio-project.is-active) .portfolio-track{
+    animation-play-state:paused!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #work .portfolio-track{animation:none!important}
+}
