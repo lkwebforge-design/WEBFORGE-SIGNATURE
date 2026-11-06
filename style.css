@@ -843,3 +843,9 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 
 /* Keep the second seamless loop available on touch screens too. */
 #work .portfolio-track__inner[aria-hidden="true"]{display:flex!important}
+
+/* iPhone touch-drag: vertical page scroll remains native; horizontal rail is handled by touchmove. */
+#work .portfolio-marquee{touch-action:pan-y!important;overscroll-behavior-x:contain!important}
+@media(max-width:760px){
+ #work .portfolio-marquee{touch-action:pan-y!important;overflow-x:hidden!important}
+}
