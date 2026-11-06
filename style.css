@@ -1187,3 +1187,6 @@ html[data-theme="light"] #project-contact .wf-social-heading{
 #work .portfolio-marquee{cursor:grab;touch-action:pan-y!important}
 #work .portfolio-marquee.is-dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
 #work .portfolio-marquee.is-dragging .portfolio-project{user-select:none;-webkit-user-select:none}
+
+/* Keep sticky scroll sections working without creating an extra horizontal scroll container. */
+body{overflow-x:clip!important}
