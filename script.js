@@ -276,7 +276,7 @@ if(story){
 
 
 
-/* WEBFORGE — vertical scroll drives the complete horizontal portfolio rail. */
+/* WEBFORGE — compact scroll-linked portfolio with optional manual drag. */
 (function(){
   const section=document.querySelector('#work.portfolio-redesign');
   const viewport=section&&section.querySelector('.portfolio-marquee');
@@ -288,35 +288,61 @@ if(story){
   const clone=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
   if(clone)clone.remove();
 
-  let distance=0,startY=0,raf=0;
-  const scrollGain=9;
+  let distance=0,startY=0,raf=0,manualOffset=0;
+  let dragging=false,pointerStart=0,positionStart=0,moved=false;
+  const scrollGain=24;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
+  const pageProgress=()=>Math.max(0,Math.min(distance,(window.scrollY-startY)*scrollGain));
 
+  function paint(){
+    const total=Math.max(0,Math.min(distance,pageProgress()+manualOffset));
+    track.style.setProperty('--portfolio-x',(-total)+'px');
+  }
   function measure(){
     distance=Math.max(0,Math.ceil(inner.scrollWidth-viewport.clientWidth));
-    /* Keep the vertical runway short: 9px of horizontal travel per 1px page scroll. */
-    spacer.style.height=Math.ceil(distance/scrollGain)+'px';
+    /* Only a short scroll runway is needed; the cards move 24px per page-scroll pixel. */
+    spacer.style.height=Math.ceil(distance/scrollGain+12)+'px';
     section.style.paddingBottom='0px';
-    /* Anchor the animation to the rail itself, not an estimated heading position. */
     startY=viewport.getBoundingClientRect().top+window.scrollY-topGap();
-    update();
+    manualOffset=0;
+    paint();
   }
+  function requestUpdate(){if(!raf)raf=window.requestAnimationFrame(function(){raf=0;paint()})}
 
-  function update(){
-    raf=0;
-    const progress=Math.max(0,Math.min(distance,(window.scrollY-startY)*scrollGain));
-    track.style.setProperty('--portfolio-x',(-progress)+'px');
+  viewport.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    dragging=true;moved=false;
+    pointerStart=e.clientX;
+    positionStart=pageProgress()+manualOffset;
+    viewport.classList.add('is-dragging');
+    try{viewport.setPointerCapture(e.pointerId)}catch(_){}
+  });
+  viewport.addEventListener('pointermove',function(e){
+    if(!dragging)return;
+    const delta=e.clientX-pointerStart;
+    if(Math.abs(delta)>5)moved=true;
+    const wanted=Math.max(0,Math.min(distance,positionStart-delta));
+    manualOffset=wanted-pageProgress();
+    paint();
+  });
+  function endDrag(e){
+    if(!dragging)return;
+    dragging=false;
+    viewport.classList.remove('is-dragging');
+    if(e&&e.pointerId!==undefined){try{viewport.releasePointerCapture(e.pointerId)}catch(_){}}
   }
+  viewport.addEventListener('pointerup',endDrag);
+  viewport.addEventListener('pointercancel',endDrag);
+  viewport.addEventListener('click',function(e){
+    if(moved){e.preventDefault();e.stopPropagation();moved=false}
+  },true);
 
-  function requestUpdate(){if(!raf)raf=window.requestAnimationFrame(update)}
   window.addEventListener('scroll',requestUpdate,{passive:true});
   window.addEventListener('resize',measure,{passive:true});
   window.addEventListener('orientationchange',measure,{passive:true});
-
   if('ResizeObserver' in window){
     const observer=new ResizeObserver(()=>measure());
-    observer.observe(viewport);
-    observer.observe(inner);
+    observer.observe(viewport);observer.observe(inner);
   }
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   window.addEventListener('load',measure,{once:true});
