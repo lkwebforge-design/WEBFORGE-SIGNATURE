@@ -282,33 +282,41 @@ if(story){
   const viewport=section&&section.querySelector('.portfolio-marquee');
   const track=viewport&&viewport.querySelector('.portfolio-track');
   const inner=track&&track.querySelector('.portfolio-track__inner:not([aria-hidden="true"])');
-  const heading=section&&section.querySelector('.section-head');
   const spacer=section&&section.querySelector('.portfolio-scroll-spacer');
-  if(!section||!viewport||!track||!inner||!heading||!spacer)return;
+  if(!section||!viewport||!track||!inner||!spacer)return;
+
   const clone=track.querySelector('.portfolio-track__inner[aria-hidden="true"]');
   if(clone)clone.remove();
+
   let distance=0,startY=0,raf=0;
   const topGap=()=>window.innerWidth<=760?window.innerHeight*.10:window.innerHeight*.12;
+
   function measure(){
-    distance=Math.max(0,inner.scrollWidth-viewport.clientWidth);
-    spacer.style.height=distance+'px';
-    section.style.paddingBottom='';
-    const headingMargin=parseFloat(getComputedStyle(heading).marginBottom)||0;
-    startY=heading.getBoundingClientRect().bottom+window.scrollY+headingMargin-topGap();
+    distance=Math.max(0,Math.ceil(inner.scrollWidth-viewport.clientWidth));
+    /* A small extra runway guarantees the final card reaches its full position
+       before the next section is allowed to enter. */
+    spacer.style.height=Math.ceil(distance+viewport.clientHeight*.35)+'px';
+    section.style.paddingBottom='0px';
+    /* Anchor the animation to the rail itself, not an estimated heading position. */
+    startY=viewport.getBoundingClientRect().top+window.scrollY-topGap();
     update();
   }
+
   function update(){
     raf=0;
     const progress=Math.max(0,Math.min(distance,window.scrollY-startY));
     track.style.setProperty('--portfolio-x',(-progress)+'px');
   }
+
   function requestUpdate(){if(!raf)raf=window.requestAnimationFrame(update)}
   window.addEventListener('scroll',requestUpdate,{passive:true});
   window.addEventListener('resize',measure,{passive:true});
   window.addEventListener('orientationchange',measure,{passive:true});
+
   if('ResizeObserver' in window){
     const observer=new ResizeObserver(()=>measure());
-    observer.observe(viewport);observer.observe(inner);observer.observe(heading);
+    observer.observe(viewport);
+    observer.observe(inner);
   }
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
   window.addEventListener('load',measure,{once:true});
