@@ -301,6 +301,18 @@ if(story){
   card.setAttribute('aria-label',(card.querySelector('strong')?.textContent||'Portfolio project').trim()+' — open live website');
  });
 
+ const previous=section.querySelector('.portfolio-control--prev');
+ const next=section.querySelector('.portfolio-control--next');
+ let controlResumeTimer=0;
+ function moveByUser(direction){
+  pause();
+  if(controlResumeTimer)clearTimeout(controlResumeTimer);
+  viewport.scrollBy({left:direction*Math.max(260,viewport.clientWidth*.78),behavior:'smooth'});
+  controlResumeTimer=window.setTimeout(resume,950);
+ }
+ previous&&previous.addEventListener('click',()=>moveByUser(-1));
+ next&&next.addEventListener('click',()=>moveByUser(1));
+
  const secondSet=track.querySelectorAll('.portfolio-track__inner')[1];
  let loopWidth=firstSet.getBoundingClientRect().width;
  if(secondSet&&loopWidth>0)viewport.scrollLeft=loopWidth;
