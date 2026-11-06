@@ -297,7 +297,7 @@ if(story){
  function update(){
    raf=0;
    const progress=travel>0?Math.max(0,Math.min(1,(window.scrollY-startY)/travel)):0;
-   track.style.transform='translate3d('+(-travel*progress)+'px,0,0)';
+   track.style.setProperty('--portfolio-x',(-travel*progress)+'px');
  }
  function requestUpdate(){if(!raf)raf=window.requestAnimationFrame(update)}
  window.addEventListener('scroll',requestUpdate,{passive:true});
