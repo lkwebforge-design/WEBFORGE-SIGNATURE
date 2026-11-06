@@ -873,3 +873,25 @@ html[data-theme="light"] #project-contact .wf-social-heading{
     touch-action:pan-x pan-y!important;
   }
 }
+
+/* Portfolio browsing controls: always available independently of autoplay. */
+#work .portfolio-controls{
+ display:flex!important;align-items:center;justify-content:flex-end;gap:12px;
+ width:100%;padding:0 2px 12px;position:relative;z-index:8;
+}
+#work .portfolio-controls>span{
+ margin-right:auto;color:var(--muted,#9ba39a);font-size:10px;font-weight:800;
+ letter-spacing:.14em;text-transform:uppercase;
+}
+#work .portfolio-control{
+ display:grid!important;place-items:center;width:44px;height:44px;flex:0 0 44px;
+ border:1px solid rgba(182,255,103,.42)!important;border-radius:50%;
+ background:rgba(182,255,103,.09)!important;color:#b6ff67!important;
+ font:700 23px/1 Arial,sans-serif;cursor:pointer;touch-action:manipulation;
+ transition:background .2s ease,transform .2s ease;
+}
+#work .portfolio-control:active{transform:scale(.94);background:rgba(182,255,103,.2)!important}
+#work .portfolio-marquee{overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x pan-y!important;-webkit-overflow-scrolling:touch!important}
+#work .portfolio-track{display:flex!important;width:max-content!important;min-width:max-content!important}
+#work .portfolio-track__inner{display:flex!important;flex:0 0 auto!important;width:max-content!important}
+@media(max-width:760px){#work .portfolio-controls{padding:0 20px 10px}#work .portfolio-control{width:42px;height:42px;flex-basis:42px}}
