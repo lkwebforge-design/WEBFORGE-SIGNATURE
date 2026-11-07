@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Project Story — WebForge Signature</title>
-<meta name="description" content="Explore a WebForge project story — the video, project perspective, responsive website preview and live build.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://lkwebforge-design.github.io/WEBFORGE-SIGNATURE/case-study.html">
+<title>Website Design Projects & Case Studies | WebForge Signature</title>
+<meta name="description" content="Explore WebForge Signature website design and development projects, including responsive websites for hospitality, fashion, beauty, fitness and creative brands.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -34,7 +36,16 @@ aura:{name:'AURA Private Island Retreat',category:'RESORT / HOSPITALITY',video:'
 volt:{name:'VOLT Fitness',category:'FITNESS / PERFORMANCE',video:'https://videos.pexels.com/video-files/6547808/6547808-uhd_2160_3840_24fps.mp4',img:'assets/portfolio-volt.svg',url:'https://lkwebforge-design.github.io/volt-fitness/',title:'Build your edge.',message:'VOLT needed a digital identity that felt energetic from the first second. Strong typography and bold composition create a sense of movement and performance. The content focuses on what members can achieve rather than simply listing facilities. Calls to action are positioned around the natural decision points in the journey. Mobile layouts keep the training message direct and easy to act on. The final experience is built to turn motivation into the next step.',details:['Performance-led identity','Strong mobile CTA','Training-focused storytelling']}
 };
 const key=new URLSearchParams(location.search).get('project')||'moss';const p=projects[key]||projects.moss;
-document.title=p.name+' — WebForge Signature';
+document.title=p.name+' Website Design Case Study | WebForge Signature';
+const projectDescription='Explore the '+p.name+' website design project by WebForge Signature, including its visual direction, responsive website experience and live build.';
+const descriptionTag=document.querySelector('meta[name="description"]');
+if(descriptionTag) descriptionTag.setAttribute('content',projectDescription);
+const ogTitle=document.querySelector('meta[property="og:title"]');
+if(ogTitle) ogTitle.setAttribute('content',document.title);
+const ogDescription=document.querySelector('meta[property="og:description"]');
+if(ogDescription) ogDescription.setAttribute('content',projectDescription);
+const canonicalTag=document.querySelector('link[rel="canonical"]');
+if(canonicalTag) canonicalTag.setAttribute('href',location.origin+location.pathname+'?project='+encodeURIComponent(key));
 document.getElementById('app').innerHTML=`
 <section class="hero"><div class="hero-copy"><div class="eyebrow"><i></i>${p.category}</div><h1>${p.name}<br><em>${p.title}</em></h1><p>See the thinking behind the build — from the visual direction to the finished website experience.</p><span class="pill">PROJECT STORY · WEBFORGE SIGNATURE</span></div><div><div class="video"><video autoplay muted loop playsinline controlslist="nodownload" src="${p.video}"></video><div class="shade"></div><div class="video-label">PROJECT VIDEO · ${p.name.toUpperCase()}</div><div class="video-caption"><strong>${p.title}</strong><small>${p.category}</small></div></div><div class="message">${p.message}</div><div class="note">The video is industry-matched visual reference footage. It is not presented as a recorded client testimonial.</div></div></section>
 <section class="story"><div class="story-head"><div><div class="eyebrow"><i></i>THE WEBSITE</div><h2>See the<br><em>finished view.</em></h2></div><p>Clean visual captures replace the heavy embedded previews, so the actual website can be understood quickly without slowing down the page.</p></div><p class="story-copy">${p.message}</p><div class="screens"><figure class="shot"><img src="https://image.thum.io/get/noanimate/width/1200/crop/820/${p.url}" alt="${p.name} website hero screenshot" loading="lazy"><figcaption><span>WEBSITE VIEW / HERO</span><span>01</span></figcaption></figure><figure class="shot"><img src="https://image.thum.io/get/noanimate/width/900/crop/1200/${p.url}" alt="${p.name} website extended screenshot" loading="lazy"><figcaption><span>WEBSITE VIEW / EXTENDED</span><span>02</span></figcaption></figure></div></section>
