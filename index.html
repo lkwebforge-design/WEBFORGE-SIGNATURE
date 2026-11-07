@@ -660,9 +660,7 @@
   const messagesEl=document.getElementById('wf-ai-messages');
   if(!launcher||!panel||!form||!input||!messagesEl)return;
   let history=[],busy=false,controller=null;
-  const welcome='Hey! Welcome to WebForge Signature. 👋
-
-I can help you explore website packages, SEO, e-commerce and ideas for your business. What are you planning to build?';
+  const welcome='Hey! Welcome to WebForge Signature. 👋\n\nI can help you explore website packages, SEO, e-commerce and ideas for your business. What are you planning to build?';
   function open(){panel.classList.add('is-open');launcher.setAttribute('aria-expanded','true');input.focus();}
   function shut(){panel.classList.remove('is-open');launcher.setAttribute('aria-expanded','false');launcher.focus();}
   function scroll(){messagesEl.scrollTop=messagesEl.scrollHeight;}
