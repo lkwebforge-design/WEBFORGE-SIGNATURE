@@ -140,8 +140,7 @@
         const lkr = Math.round((usd * usdToLkrRate) / 100) * 100;
         amount.textContent = 'LKR ' + format(lkr, 'LKR') + plus;
       } else {
-        amount.textContent = '
-</html> + format(usd, 'USD') + plus;
+        amount.textContent = String.fromCharCode(36) + format(usd, 'USD') + plus;
       }
     });
 
