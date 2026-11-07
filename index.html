@@ -201,24 +201,6 @@
 </style>
 
 
-<style id="portfolio-description-tap-only">
-/* Portfolio descriptions: preserve desktop hover; reveal on first touch, open on second. */
-@media (hover:none) and (pointer:coarse){
-  #work .portfolio-project .portfolio-project__description{
-    max-height:0!important;
-    opacity:0!important;
-    overflow:hidden!important;
-    transform:translateY(9px)!important;
-    transition:max-height .35s ease,opacity .25s ease,transform .35s ease!important;
-  }
-  #work .portfolio-project.is-active .portfolio-project__description{
-    max-height:90px!important;
-    opacity:1!important;
-    transform:translateY(0)!important;
-  }
-}
-</style>
-
 </head>
 <body>
 <div id="page-loader" aria-label="Loading WebForge Signature"><div class="loader-mark"><span>W</span></div><div class="loader-line"><i></i></div><small>WEBFORGE / SIGNATURE</small></div>
@@ -271,25 +253,259 @@
 <section id="work" class="section work-section portfolio-redesign">
 <div class="section-head reveal"><div><p class="eyebrow"><span></span> SELECTED WORK · 2026</p><h2>Built to make<br><em>an impression.</em></h2></div><p>Digital experiences designed around real business needs — from booking systems to fashion, hospitality, beauty and fitness.</p></div>
 <div class="portfolio-marquee" aria-label="WebForge selected projects"><div class="portfolio-track"><div class="portfolio-track__inner">
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/Cafe/?v=upgrade1" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1400&q=85" alt="Velora Café interior" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">01 / FEATURED PROJECT <b>✦</b></span><span class="portfolio-project__bottom"><small>CAFÉ · HOSPITALITY · IMMERSIVE WEB DESIGN</small><strong>Velora<br><em>Café.</em></strong><span class="portfolio-project__description">An immersive café experience with scroll-led video, menu, gallery and table enquiries.</span><i>EXPLORE LIVE WEBSITE ➜</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/breakpoint/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/lkwebforge-design/breakpoint/main/f0c7001f-fccb-4912-8bb5-087b1c6a5c82.jpeg" alt="Breakpoint Billiards Club pool table" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">02 / HOSPITALITY <b>✦</b></span><span class="portfolio-project__bottom"><small>HOSPITALITY · BOOKING SYSTEM</small><strong>Breakpoint<br><em>Billiards Club.</em></strong><span class="portfolio-project__description">A polished billiards club experience with table availability and online session booking.</span><i>EXPLORE LIVE WEBSITE ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/Gain/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90" alt="Streetwear editorial" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">03 / E-COMMERCE <b>✦</b></span><span class="portfolio-project__bottom"><small>FASHION · ONLINE STORE</small><strong>GAIN.</strong><span class="portfolio-project__description">A bold streetwear storefront concept built around product discovery and brand attitude.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/webforge-3d-lab/cafe/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1400&q=85" alt="Contemporary cafe" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">04 / HOSPITALITY <b>✦</b></span><span class="portfolio-project__bottom"><small>CAFÉ · BRAND EXPERIENCE</small><strong>Moss &amp; Mug.</strong><span class="portfolio-project__description">A warm café brand experience with a welcoming visual identity and clear visitor journey.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/lumerah-store/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=90" alt="Fashion boutique" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">05 / RETAIL <b>✦</b></span><span class="portfolio-project__bottom"><small>FASHION · DIGITAL STOREFRONT</small><strong>Lumerah Store.</strong><span class="portfolio-project__description">An editorial fashion storefront concept with a focused digital shopping journey.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/WEBFORGE-salon/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=85" alt="Salon interior" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">06 / BEAUTY <b>✦</b></span><span class="portfolio-project__bottom"><small>SALON · LUXURY EXPERIENCE</small><strong>Lumé Beauty Studio.</strong><span class="portfolio-project__description">A refined salon experience designed to showcase services, atmosphere and appointments.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/aerova-freezy/aura/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=85" alt="Tropical resort" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">07 / HOSPITALITY <b>✦</b></span><span class="portfolio-project__bottom"><small>RESORT · LUXURY STAY</small><strong>Aura Private Island.</strong><span class="portfolio-project__description">A luxury island-resort concept built around destination imagery and an elevated guest journey.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/volt-fitness/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85" alt="Gym equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">08 / FITNESS <b>✦</b></span><span class="portfolio-project__bottom"><small>FITNESS · PERFORMANCE</small><strong>Volt Fitness.</strong><span class="portfolio-project__description">A performance-led fitness website presenting training, facilities and membership.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card href="https://lkwebforge-design.github.io/aerova-freezy/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><img src="https://images.squarespace-cdn.com/content/67e2c89e3d6085381b1b8338/c512c65e-e435-4681-adac-1162e56994f8/Commercial%2BHVAC.jpg?format=1500w" alt="Aerova AC company commercial air conditioning equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">09 / CLIMATE CONTROL <b>✦</b></span><span class="portfolio-project__bottom"><small>AEROVA · AIR CONDITIONING</small><strong>Aerova AC Company.</strong><span class="portfolio-project__description">A professional climate-control website presenting services in a clear business-first layout.</span><i>VIEW PROJECT ✦</i></span></a>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Velora Café. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1400&q=85" alt="Velora Café interior" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">01 / FEATURED PROJECT <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>CAFÉ · HOSPITALITY · IMMERSIVE WEB DESIGN</small><strong>Velora<br><em>Café.</em></strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>CAFÉ · HOSPITALITY · IMMERSIVE WEB DESIGN</small><strong>Velora<br><em>Café.</em></strong><span class="portfolio-project__description">An immersive café experience with scroll-led video, menu, gallery and table enquiries.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/Cafe/?v=upgrade1" target="_blank" rel="noopener noreferrer" aria-label="View Velora Café. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Breakpoint Billiards Club. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://raw.githubusercontent.com/lkwebforge-design/breakpoint/main/f0c7001f-fccb-4912-8bb5-087b1c6a5c82.jpeg" alt="Breakpoint Billiards Club pool table" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">02 / HOSPITALITY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>HOSPITALITY · BOOKING SYSTEM</small><strong>Breakpoint<br><em>Billiards Club.</em></strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>HOSPITALITY · BOOKING SYSTEM</small><strong>Breakpoint<br><em>Billiards Club.</em></strong><span class="portfolio-project__description">A polished billiards club experience with table availability and online session booking.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/breakpoint/" target="_blank" rel="noopener noreferrer" aria-label="View Breakpoint Billiards Club. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="GAIN. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90" alt="Streetwear editorial" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">03 / E-COMMERCE <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>FASHION · ONLINE STORE</small><strong>GAIN.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>FASHION · ONLINE STORE</small><strong>GAIN.</strong><span class="portfolio-project__description">A bold streetwear storefront concept built around product discovery and brand attitude.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/Gain/" target="_blank" rel="noopener noreferrer" aria-label="View GAIN. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Moss &amp;amp; Mug. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1400&q=85" alt="Contemporary cafe" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">04 / HOSPITALITY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>CAFÉ · BRAND EXPERIENCE</small><strong>Moss &amp; Mug.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>CAFÉ · BRAND EXPERIENCE</small><strong>Moss &amp; Mug.</strong><span class="portfolio-project__description">A warm café brand experience with a welcoming visual identity and clear visitor journey.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/webforge-3d-lab/cafe/" target="_blank" rel="noopener noreferrer" aria-label="View Moss &amp; Mug. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Lumerah Store. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=90" alt="Fashion boutique" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">05 / RETAIL <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>FASHION · DIGITAL STOREFRONT</small><strong>Lumerah Store.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>FASHION · DIGITAL STOREFRONT</small><strong>Lumerah Store.</strong><span class="portfolio-project__description">An editorial fashion storefront concept with a focused digital shopping journey.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/lumerah-store/" target="_blank" rel="noopener noreferrer" aria-label="View Lumerah Store. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Lumé Beauty Studio. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=85" alt="Salon interior" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">06 / BEAUTY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>SALON · LUXURY EXPERIENCE</small><strong>Lumé Beauty Studio.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>SALON · LUXURY EXPERIENCE</small><strong>Lumé Beauty Studio.</strong><span class="portfolio-project__description">A refined salon experience designed to showcase services, atmosphere and appointments.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/WEBFORGE-salon/" target="_blank" rel="noopener noreferrer" aria-label="View Lumé Beauty Studio. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Aura Private Island. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=85" alt="Tropical resort" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">07 / HOSPITALITY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>RESORT · LUXURY STAY</small><strong>Aura Private Island.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>RESORT · LUXURY STAY</small><strong>Aura Private Island.</strong><span class="portfolio-project__description">A luxury island-resort concept built around destination imagery and an elevated guest journey.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/aerova-freezy/aura/" target="_blank" rel="noopener noreferrer" aria-label="View Aura Private Island. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Volt Fitness. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85" alt="Gym equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">08 / FITNESS <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>FITNESS · PERFORMANCE</small><strong>Volt Fitness.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>FITNESS · PERFORMANCE</small><strong>Volt Fitness.</strong><span class="portfolio-project__description">A performance-led fitness website presenting training, facilities and membership.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/volt-fitness/" target="_blank" rel="noopener noreferrer" aria-label="View Volt Fitness. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card role="group" aria-label="Aerova AC Company. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.squarespace-cdn.com/content/67e2c89e3d6085381b1b8338/c512c65e-e435-4681-adac-1162e56994f8/Commercial%2BHVAC.jpg?format=1500w" alt="Aerova AC company commercial air conditioning equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">09 / CLIMATE CONTROL <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>AEROVA · AIR CONDITIONING</small><strong>Aerova AC Company.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>AEROVA · AIR CONDITIONING</small><strong>Aerova AC Company.</strong><span class="portfolio-project__description">A professional climate-control website presenting services in a clear business-first layout.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/aerova-freezy/" target="_blank" rel="noopener noreferrer" aria-label="View Aerova AC Company. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
 </div><div class="portfolio-track__inner" aria-hidden="true" inert>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/Cafe/?v=upgrade1" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><img src="https://images.unsplash.com/photo-1774683272173-4f72fd508739?auto=format&fit=crop&crop=entropy&w=1400&h=1400&q=85" alt="Velora Café interior with warm natural light" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">01 / FEATURED PROJECT <b>✦</b></span><span class="portfolio-project__bottom"><small>CAFÉ · HOSPITALITY · IMMERSIVE WEB DESIGN</small><strong>Velora<br><em>Café.</em></strong><span class="portfolio-project__description">An immersive café experience with scroll-led video, menu, gallery and table enquiries.</span><i>EXPLORE LIVE WEBSITE ➜</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/breakpoint/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/lkwebforge-design/breakpoint/main/f0c7001f-fccb-4912-8bb5-087b1c6a5c82.jpeg" alt="Breakpoint Billiards Club pool table" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">02 / HOSPITALITY <b>✦</b></span><span class="portfolio-project__bottom"><small>HOSPITALITY · BOOKING SYSTEM</small><strong>Breakpoint<br><em>Billiards Club.</em></strong><span class="portfolio-project__description">A polished billiards club experience with table availability and online session booking.</span><i>EXPLORE LIVE WEBSITE ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/Gain/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90" alt="Streetwear editorial" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">03 / E-COMMERCE <b>✦</b></span><span class="portfolio-project__bottom"><small>FASHION · ONLINE STORE</small><strong>GAIN.</strong><span class="portfolio-project__description">A bold streetwear storefront concept built around product discovery and brand attitude.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/webforge-3d-lab/cafe/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1400&q=85" alt="Contemporary cafe" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">04 / HOSPITALITY <b>✦</b></span><span class="portfolio-project__bottom"><small>CAFÉ · BRAND EXPERIENCE</small><strong>Moss &amp; Mug.</strong><span class="portfolio-project__description">A warm café brand experience with a welcoming visual identity and clear visitor journey.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/lumerah-store/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=90" alt="Fashion boutique" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">05 / RETAIL <b>✦</b></span><span class="portfolio-project__bottom"><small>FASHION · DIGITAL STOREFRONT</small><strong>Lumerah Store.</strong><span class="portfolio-project__description">An editorial fashion storefront concept with a focused digital shopping journey.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/WEBFORGE-salon/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=85" alt="Salon interior" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">06 / BEAUTY <b>✦</b></span><span class="portfolio-project__bottom"><small>SALON · LUXURY EXPERIENCE</small><strong>Lumé Beauty Studio.</strong><span class="portfolio-project__description">A refined salon experience designed to showcase services, atmosphere and appointments.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/aerova-freezy/aura/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=85" alt="Tropical resort" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">07 / HOSPITALITY <b>✦</b></span><span class="portfolio-project__bottom"><small>RESORT · LUXURY STAY</small><strong>Aura Private Island.</strong><span class="portfolio-project__description">A luxury island-resort concept built around destination imagery and an elevated guest journey.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/volt-fitness/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85" alt="Gym equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">08 / FITNESS <b>✦</b></span><span class="portfolio-project__bottom"><small>FITNESS · PERFORMANCE</small><strong>Volt Fitness.</strong><span class="portfolio-project__description">A performance-led fitness website presenting training, facilities and membership.</span><i>VIEW PROJECT ✦</i></span></a>
-<a class="portfolio-project reveal" data-portfolio-card-clone href="https://lkwebforge-design.github.io/aerova-freezy/" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><img src="https://images.squarespace-cdn.com/content/67e2c89e3d6085381b1b8338/c512c65e-e435-4681-adac-1162e56994f8/Commercial%2BHVAC.jpg?format=1500w" alt="Aerova AC company commercial air conditioning equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">09 / CLIMATE CONTROL <b>✦</b></span><span class="portfolio-project__bottom"><small>AEROVA · AIR CONDITIONING</small><strong>Aerova AC Company.</strong><span class="portfolio-project__description">A professional climate-control website presenting services in a clear business-first layout.</span><i>VIEW PROJECT ✦</i></span></a>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Velora Café. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1774683272173-4f72fd508739?auto=format&fit=crop&crop=entropy&w=1400&h=1400&q=85" alt="Velora Café interior with warm natural light" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">01 / FEATURED PROJECT <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>CAFÉ · HOSPITALITY · IMMERSIVE WEB DESIGN</small><strong>Velora<br><em>Café.</em></strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>CAFÉ · HOSPITALITY · IMMERSIVE WEB DESIGN</small><strong>Velora<br><em>Café.</em></strong><span class="portfolio-project__description">An immersive café experience with scroll-led video, menu, gallery and table enquiries.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/Cafe/?v=upgrade1" target="_blank" rel="noopener noreferrer" aria-label="View Velora Café. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Breakpoint Billiards Club. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://raw.githubusercontent.com/lkwebforge-design/breakpoint/main/f0c7001f-fccb-4912-8bb5-087b1c6a5c82.jpeg" alt="Breakpoint Billiards Club pool table" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">02 / HOSPITALITY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>HOSPITALITY · BOOKING SYSTEM</small><strong>Breakpoint<br><em>Billiards Club.</em></strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>HOSPITALITY · BOOKING SYSTEM</small><strong>Breakpoint<br><em>Billiards Club.</em></strong><span class="portfolio-project__description">A polished billiards club experience with table availability and online session booking.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/breakpoint/" target="_blank" rel="noopener noreferrer" aria-label="View Breakpoint Billiards Club. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="GAIN. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90" alt="Streetwear editorial" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">03 / E-COMMERCE <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>FASHION · ONLINE STORE</small><strong>GAIN.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>FASHION · ONLINE STORE</small><strong>GAIN.</strong><span class="portfolio-project__description">A bold streetwear storefront concept built around product discovery and brand attitude.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/Gain/" target="_blank" rel="noopener noreferrer" aria-label="View GAIN. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Moss &amp;amp; Mug. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1400&q=85" alt="Contemporary cafe" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">04 / HOSPITALITY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>CAFÉ · BRAND EXPERIENCE</small><strong>Moss &amp; Mug.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>CAFÉ · BRAND EXPERIENCE</small><strong>Moss &amp; Mug.</strong><span class="portfolio-project__description">A warm café brand experience with a welcoming visual identity and clear visitor journey.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/webforge-3d-lab/cafe/" target="_blank" rel="noopener noreferrer" aria-label="View Moss &amp; Mug. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Lumerah Store. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=90" alt="Fashion boutique" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">05 / RETAIL <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>FASHION · DIGITAL STOREFRONT</small><strong>Lumerah Store.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>FASHION · DIGITAL STOREFRONT</small><strong>Lumerah Store.</strong><span class="portfolio-project__description">An editorial fashion storefront concept with a focused digital shopping journey.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/lumerah-store/" target="_blank" rel="noopener noreferrer" aria-label="View Lumerah Store. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Lumé Beauty Studio. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=85" alt="Salon interior" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">06 / BEAUTY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>SALON · LUXURY EXPERIENCE</small><strong>Lumé Beauty Studio.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>SALON · LUXURY EXPERIENCE</small><strong>Lumé Beauty Studio.</strong><span class="portfolio-project__description">A refined salon experience designed to showcase services, atmosphere and appointments.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/WEBFORGE-salon/" target="_blank" rel="noopener noreferrer" aria-label="View Lumé Beauty Studio. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Aura Private Island. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=85" alt="Tropical resort" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">07 / HOSPITALITY <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>RESORT · LUXURY STAY</small><strong>Aura Private Island.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>RESORT · LUXURY STAY</small><strong>Aura Private Island.</strong><span class="portfolio-project__description">A luxury island-resort concept built around destination imagery and an elevated guest journey.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/aerova-freezy/aura/" target="_blank" rel="noopener noreferrer" aria-label="View Aura Private Island. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Volt Fitness. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=85" alt="Gym equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">08 / FITNESS <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>FITNESS · PERFORMANCE</small><strong>Volt Fitness.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>FITNESS · PERFORMANCE</small><strong>Volt Fitness.</strong><span class="portfolio-project__description">A performance-led fitness website presenting training, facilities and membership.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/volt-fitness/" target="_blank" rel="noopener noreferrer" aria-label="View Volt Fitness. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
+<article class="portfolio-project reveal" data-portfolio-card-clone role="group" aria-label="Aerova AC Company. project">
+  <div class="portfolio-project__rotator">
+    <div class="portfolio-project__face portfolio-project__face--front">
+      <img src="https://images.squarespace-cdn.com/content/67e2c89e3d6085381b1b8338/c512c65e-e435-4681-adac-1162e56994f8/Commercial%2BHVAC.jpg?format=1500w" alt="Aerova AC company commercial air conditioning equipment" loading="lazy"><span class="portfolio-project__shade"></span><span class="portfolio-project__top">09 / CLIMATE CONTROL <b>✦</b></span>
+      <div class="portfolio-project__front-copy"><small>AEROVA · AIR CONDITIONING</small><strong>Aerova AC Company.</strong><span class="portfolio-project__flip-hint">HOVER TO DISCOVER <b>↻</b></span></div>
+    </div>
+    <div class="portfolio-project__face portfolio-project__face--back">
+      <div class="portfolio-project__back-copy"><small>AEROVA · AIR CONDITIONING</small><strong>Aerova AC Company.</strong><span class="portfolio-project__description">A professional climate-control website presenting services in a clear business-first layout.</span>
+        <a class="portfolio-project__view" href="https://lkwebforge-design.github.io/aerova-freezy/" target="_blank" rel="noopener noreferrer" aria-label="View Aerova AC Company. project">VIEW PROJECT <span aria-hidden="true">→</span></a>
+      </div>
+      <span class="portfolio-project__back-index" aria-hidden="true">WEBFORGE / SELECTED WORK</span>
+    </div>
+  </div>
+</article>
 </div></div></div><div class="portfolio-scroll-spacer" aria-hidden="true"></div><div class="portfolio-footer reveal"><span><i></i> MORE PROJECTS IN PROGRESS</span><p>Every build starts with a business goal — and ends with a digital experience designed around it.</p><a href="#start">HAVE A PROJECT IN MIND? ✦</a></div>
 </section>
 
@@ -345,23 +561,21 @@
 <footer><span>© 2026 WEBFORGE SIGNATURE</span><span>DESIGN · BUILD · LAUNCH</span><span>SRI LANKA · WORKING WORLDWIDE</span><div class="wf-social-links wf-social-links--footer wf-social-links--icons-only" aria-label="WebForge Signature social profiles"><a class="wf-social-link wf-social-link--facebook" href="https://www.facebook.com/share/19riTNADJA/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="WebForge Signature on Facebook" title="Facebook"><span class="wf-social-glyph wf-social-glyph--facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M13.5 21v-8.2h2.8l.42-3.2H13.5V7.55c0-.93.26-1.56 1.6-1.56h1.7V3.13A22.2 22.2 0 0 0 14.32 3c-2.46 0-4.14 1.5-4.14 4.26V9.6H7.4v3.2h2.78V21z"/></svg></span></a><a class="wf-social-link wf-social-link--instagram" href="https://www.instagram.com/webforge_signature?cplk=dmdqcWM1MDQyaDR6&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="WebForge Signature on Instagram" title="Instagram"><span class="wf-social-glyph wf-social-glyph--instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.65" cy="6.55" r="1.15" fill="currentColor"/></svg></span></a><a class="wf-social-link wf-social-link--fiverr" href="https://pro.fiverr.com/s/RVVoxvR" target="_blank" rel="noopener noreferrer" aria-label="WebForge Signature on Fiverr" title="Fiverr"><span class="wf-social-glyph wf-social-glyph--fiverr"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14.1 5.2c0-.8.5-1.3 1.4-1.3h2V1.1h-2.7c-2.7 0-4.2 1.5-4.2 4v1.1H8.4v2.6h2.2v11.9h3.3V8.8h3.1V6.2h-3.1V5.2zM5 6.2h3.2v14.5H5z"/><circle cx="6.6" cy="2.8" r="1.7" fill="currentColor"/></svg></span></a><a class="wf-social-link wf-social-link--upwork" href="https://www.upwork.com/freelancers/~01ac39669f80e91979?mp_source=share" target="_blank" rel="noopener noreferrer" aria-label="WebForge Signature on Upwork" title="Upwork"><span class="wf-social-glyph wf-social-glyph--upwork"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M3 8.2c1.5 4.6 3 6.8 5 6.8 2.2 0 3.3-3.1 4.1-5.8.8-2.5 1.9-3.7 3.7-3.7 2.1 0 3.6 1.7 3.6 4.2s-1.5 4.2-3.6 4.2c-1.8 0-3.3-1.1-4.8-3.1"/><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M3 8.2v8.3"/></svg></span></a><a class="wf-social-link wf-social-link--linkedin" href="https://www.linkedin.com/in/webforge-lk-9a312b441" target="_blank" rel="noopener noreferrer" aria-label="WebForge Signature on LinkedIn" title="LinkedIn"><span class="wf-social-glyph wf-social-glyph--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5.1 8.5H2.2V21h2.9zM3.65 3a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4M21.8 13.8c0-3.75-2-5.5-4.7-5.5-2.16 0-3.13 1.18-3.67 2V8.5h-2.9V21h2.9v-6.2c0-1.63.31-3.2 2.33-3.2 1.99 0 2.01 1.85 2.01 3.3V21h2.9z"/></svg></span></a><a class="wf-social-link wf-social-link--threads" href="https://www.threads.com/@webforge_signature?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" aria-label="WebForge Signature on Threads" title="Threads"><span class="wf-social-glyph wf-social-glyph--threads"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M18.9 10.2c-.5-4.1-2.9-6.6-6.8-6.6-4.4 0-7.2 3.2-7.2 8.3 0 5.2 2.7 8.5 7.1 8.5 3.5 0 5.8-2 5.8-5 0-2.7-1.8-4.3-4.7-4.3-2.2 0-3.5 1.1-3.5 2.8 0 1.4 1 2.3 2.4 2.3 2.4 0 4-2.3 3.6-5.3"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M9.6 8.7c1.3.5 3.4.7 5.6.5"/></svg></span></a></div></footer>
 <script src="script.js?v=portfolio-speed-045-20261106"></script>
 
-<script id="portfolio-description-two-tap">
+<script id="portfolio-card-flip">
 (function(){
   var viewport=document.querySelector('#work .portfolio-marquee');
   if(!viewport)return;
   var touchMode=window.matchMedia&&window.matchMedia('(hover:none) and (pointer:coarse)').matches;
   if(!touchMode)return;
   viewport.addEventListener('click',function(event){
-    var card=event.target.closest('a.portfolio-project');
+    if(event.defaultPrevented)return;
+    if(event.target.closest('.portfolio-project__view'))return;
+    var card=event.target.closest('.portfolio-project[data-portfolio-card]');
     if(!card)return;
-    if(!card.classList.contains('is-active')){
-      viewport.querySelectorAll('a.portfolio-project.is-active').forEach(function(item){
-        item.classList.remove('is-active');
-      });
-      card.classList.add('is-active');
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }
+    var willFlip=!card.classList.contains('is-flipped');
+    viewport.querySelectorAll('.portfolio-project.is-flipped').forEach(function(item){item.classList.remove('is-flipped')});
+    if(willFlip)card.classList.add('is-flipped');
+    event.preventDefault();
   },true);
 })();
 </script>
