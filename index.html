@@ -580,5 +580,135 @@
 })();
 </script>
 
+
+<!-- WEBFORGE AI ASSISTANT — isolated floating chat widget -->
+<style id="webforge-ai-assistant-styles">
+#wf-ai-launcher{position:fixed;right:24px;bottom:24px;z-index:9998;display:flex;align-items:center;gap:11px;padding:10px 16px 10px 10px;border:1px solid rgba(182,255,103,.48);border-radius:999px;background:#0b100c;color:#f4f6f1;box-shadow:0 12px 40px rgba(0,0,0,.34),0 0 28px rgba(182,255,103,.09);font:700 11px/1.2 'DM Sans',sans-serif;letter-spacing:.02em;cursor:pointer;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+#wf-ai-launcher:hover{transform:translateY(-3px);border-color:#b6ff67;box-shadow:0 16px 44px rgba(0,0,0,.42),0 0 34px rgba(182,255,103,.15)}
+#wf-ai-launcher .wf-ai-mark{width:35px;height:35px;display:grid;place-items:center;border-radius:50%;background:#b6ff67;color:#10150d;font:800 15px/1 'Manrope',sans-serif;box-shadow:0 0 20px rgba(182,255,103,.22)}
+#wf-ai-launcher .wf-ai-launch-copy{display:flex;flex-direction:column;gap:3px;text-align:left}
+#wf-ai-launcher .wf-ai-launch-copy small{font-size:8px;letter-spacing:.14em;color:#aeb8ae}
+#wf-ai-panel{position:fixed;right:24px;bottom:88px;z-index:9999;width:min(390px,calc(100vw - 28px));height:min(590px,calc(100dvh - 118px));display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(182,255,103,.22);border-radius:18px;background:#0b0f0c;color:#f4f6f1;box-shadow:0 24px 90px rgba(0,0,0,.58),0 0 45px rgba(182,255,103,.07);font-family:'DM Sans',sans-serif}
+#wf-ai-panel.is-open{display:flex;animation:wfAiAppear .2s ease-out}
+@keyframes wfAiAppear{from{opacity:0;transform:translateY(9px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+#wf-ai-panel *{box-sizing:border-box}
+.wf-ai-head{display:flex;align-items:center;gap:11px;padding:17px 17px 15px;border-bottom:1px solid rgba(255,255,255,.08);background:linear-gradient(120deg,rgba(182,255,103,.08),transparent 65%)}
+.wf-ai-avatar{width:39px;height:39px;flex:none;display:grid;place-items:center;border-radius:12px;background:#b6ff67;color:#10150d;font:800 17px 'Manrope',sans-serif}
+.wf-ai-heading{min-width:0;flex:1}
+.wf-ai-heading strong{display:block;font:800 13px 'Manrope',sans-serif;letter-spacing:-.02em}
+.wf-ai-heading small{display:flex;align-items:center;gap:6px;margin-top:5px;color:#96a196;font-size:10px}
+.wf-ai-online{width:6px;height:6px;border-radius:50%;background:#b6ff67;box-shadow:0 0 9px rgba(182,255,103,.7)}
+.wf-ai-head-actions{display:flex;gap:5px}
+.wf-ai-head-actions button{width:31px;height:31px;border:1px solid rgba(255,255,255,.10);border-radius:9px;background:rgba(255,255,255,.04);color:#cbd4cb;font-size:16px;cursor:pointer}
+.wf-ai-head-actions button:hover{border-color:rgba(182,255,103,.45);color:#b6ff67}
+#wf-ai-messages{flex:1;min-height:0;overflow-y:auto;padding:17px 14px 12px;scroll-behavior:smooth}
+.wf-ai-message{display:flex;flex-direction:column;align-items:flex-start;margin:0 0 13px}
+.wf-ai-message.user{align-items:flex-end}
+.wf-ai-bubble{max-width:88%;padding:11px 13px;border:1px solid rgba(255,255,255,.08);border-radius:4px 14px 14px 14px;background:#151c16;color:#e8eee7;font-size:12px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.wf-ai-message.user .wf-ai-bubble{border-color:rgba(182,255,103,.22);border-radius:14px 4px 14px 14px;background:rgba(182,255,103,.10);color:#f4f6f1}
+.wf-ai-stamp{margin:5px 4px 0;color:#738073;font-size:8px;letter-spacing:.08em}
+.wf-ai-quick{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 13px}
+.wf-ai-quick button{padding:8px 10px;border:1px solid rgba(182,255,103,.25);border-radius:999px;background:rgba(182,255,103,.045);color:#d5e2d2;font-size:10px;cursor:pointer}
+.wf-ai-quick button:hover{background:rgba(182,255,103,.12);border-color:rgba(182,255,103,.55)}
+.wf-ai-typing{display:flex;align-items:center;gap:5px;width:max-content;padding:12px 14px;border-radius:4px 14px 14px 14px;background:#151c16}
+.wf-ai-typing i{width:5px;height:5px;border-radius:50%;background:#b6ff67;animation:wfAiDot 1s infinite ease-in-out}
+.wf-ai-typing i:nth-child(2){animation-delay:.15s}.wf-ai-typing i:nth-child(3){animation-delay:.3s}
+@keyframes wfAiDot{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.wf-ai-compose{padding:12px 13px 13px;border-top:1px solid rgba(255,255,255,.08);background:#0d120e}
+.wf-ai-input-wrap{display:flex;align-items:flex-end;gap:8px;padding:7px 7px 7px 12px;border:1px solid rgba(255,255,255,.13);border-radius:13px;background:#121914}
+.wf-ai-input-wrap:focus-within{border-color:rgba(182,255,103,.55);box-shadow:0 0 0 3px rgba(182,255,103,.06)}
+#wf-ai-input{width:100%;max-height:90px;min-height:36px;resize:none;border:0;outline:0;background:transparent;color:#f4f6f1;font:12px/1.5 'DM Sans',sans-serif}
+#wf-ai-input::placeholder{color:#778278}
+#wf-ai-send{width:36px;height:36px;flex:none;border:0;border-radius:10px;background:#b6ff67;color:#10150d;font-size:17px;font-weight:800;cursor:pointer}
+#wf-ai-send:disabled{opacity:.42;cursor:wait}
+.wf-ai-disclaimer{margin:8px 2px 0;color:#748074;font-size:9px;line-height:1.45;text-align:center}
+@media(max-width:600px){#wf-ai-launcher{right:15px;bottom:15px;padding:8px 12px 8px 8px}#wf-ai-launcher .wf-ai-mark{width:34px;height:34px}#wf-ai-panel{right:8px;bottom:68px;width:calc(100vw - 16px);height:min(620px,calc(100dvh - 86px));border-radius:16px}}
+@media(prefers-reduced-motion:reduce){#wf-ai-panel.is-open{animation:none}.wf-ai-typing i{animation:none}}
+</style>
+<button id="wf-ai-launcher" type="button" aria-controls="wf-ai-panel" aria-expanded="false" aria-label="Open WebForge AI assistant">
+  <span class="wf-ai-mark">W</span><span class="wf-ai-launch-copy"><span>Ask WebForge AI</span><small>WEBSITE &amp; BUSINESS HELP</small></span>
+</button>
+<section id="wf-ai-panel" role="dialog" aria-label="WebForge AI Assistant" aria-modal="false">
+  <header class="wf-ai-head">
+    <div class="wf-ai-avatar">W</div>
+    <div class="wf-ai-heading"><strong>WebForge Assistant</strong><small><i class="wf-ai-online"></i> Online · Here to help</small></div>
+    <div class="wf-ai-head-actions"><button type="button" id="wf-ai-reset" aria-label="Start a new conversation" title="New chat">↻</button><button type="button" id="wf-ai-close" aria-label="Close chat" title="Close">×</button></div>
+  </header>
+  <div id="wf-ai-messages" aria-live="polite">
+    <div class="wf-ai-message"><div class="wf-ai-bubble">Hey! Welcome to WebForge Signature. 👋\n\nI can help you explore website packages, SEO, e-commerce and ideas for your business. What are you planning to build?</div><span class="wf-ai-stamp">WEBFORGE ASSISTANT</span></div>
+    <div class="wf-ai-quick" id="wf-ai-quick">
+      <button type="button" data-prompt="Show me your website packages and prices.">Packages &amp; prices</button>
+      <button type="button" data-prompt="What kind of websites can WebForge build?">Website services</button>
+      <button type="button" data-prompt="Can you explain your SEO services?">SEO services</button>
+    </div>
+  </div>
+  <form class="wf-ai-compose" id="wf-ai-form">
+    <div class="wf-ai-input-wrap"><textarea id="wf-ai-input" rows="1" maxlength="1800" placeholder="Ask us anything…" aria-label="Your message"></textarea><button id="wf-ai-send" type="submit" aria-label="Send message">↑</button></div>
+    <p class="wf-ai-disclaimer">AI-generated guidance · Confirm final project scope with the WebForge team.</p>
+  </form>
+</section>
+<script id="webforge-ai-assistant">
+(function(){
+  const API='https://webforge-ai-chat-v2.lkwebforge.workers.dev/chat';
+  const launcher=document.getElementById('wf-ai-launcher');
+  const panel=document.getElementById('wf-ai-panel');
+  const close=document.getElementById('wf-ai-close');
+  const reset=document.getElementById('wf-ai-reset');
+  const form=document.getElementById('wf-ai-form');
+  const input=document.getElementById('wf-ai-input');
+  const send=document.getElementById('wf-ai-send');
+  const messagesEl=document.getElementById('wf-ai-messages');
+  if(!launcher||!panel||!form||!input||!messagesEl)return;
+  let history=[],busy=false,controller=null;
+  const welcome='Hey! Welcome to WebForge Signature. 👋\\n\\nI can help you explore website packages, SEO, e-commerce and ideas for your business. What are you planning to build?';
+  function open(){panel.classList.add('is-open');launcher.setAttribute('aria-expanded','true');input.focus();}
+  function shut(){panel.classList.remove('is-open');launcher.setAttribute('aria-expanded','false');launcher.focus();}
+  function scroll(){messagesEl.scrollTop=messagesEl.scrollHeight;}
+  function addMessage(role,text){
+    const wrap=document.createElement('div');wrap.className='wf-ai-message '+(role==='user'?'user':'');
+    const bubble=document.createElement('div');bubble.className='wf-ai-bubble';bubble.textContent=text;wrap.appendChild(bubble);
+    const stamp=document.createElement('span');stamp.className='wf-ai-stamp';stamp.textContent=role==='user'?'YOU':'WEBFORGE ASSISTANT';wrap.appendChild(stamp);
+    messagesEl.appendChild(wrap);scroll();return wrap;
+  }
+  function showTyping(){
+    const wrap=document.createElement('div');wrap.className='wf-ai-message';wrap.id='wf-ai-typing';
+    const dots=document.createElement('div');dots.className='wf-ai-typing';dots.innerHTML='<i></i><i></i><i></i>';wrap.appendChild(dots);messagesEl.appendChild(wrap);scroll();
+  }
+  function clearTyping(){const node=document.getElementById('wf-ai-typing');if(node)node.remove();}
+  function setBusy(value){busy=value;send.disabled=value;input.disabled=value;send.textContent=value?'…':'↑';}
+  async function submit(text){
+    const message=(text||input.value).trim();if(!message||busy)return;
+    const quick=document.getElementById('wf-ai-quick');if(quick)quick.remove();
+    addMessage('user',message);input.value='';input.style.height='auto';
+    history.push({role:'user',content:message});history=history.slice(-8);
+    setBusy(true);showTyping();controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),30000);
+    try{
+      const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history}),signal:controller.signal});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok||!data.reply)throw new Error(data.error||'The assistant could not respond. Please try again.');
+      history.push({role:'assistant',content:data.reply});history=history.slice(-8);clearTyping();addMessage('assistant',data.reply);
+    }catch(error){
+      clearTyping();const msg=error.name==='AbortError'?'That took too long. Please try again, or contact us directly on WhatsApp: +94 77 154 4911.':(error.message||'Connection issue. Please try again.');
+      addMessage('assistant',msg);
+    }finally{clearTimeout(timeout);controller=null;setBusy(false);input.focus();}
+  }
+  launcher.addEventListener('click',()=>panel.classList.contains('is-open')?shut():open());
+  close.addEventListener('click',shut);
+  reset.addEventListener('click',()=>{
+    if(controller)controller.abort();history=[];messagesEl.innerHTML='';
+    const first=addMessage('assistant',welcome);first.querySelector('.wf-ai-stamp').textContent='WEBFORGE ASSISTANT';
+    const quick=document.createElement('div');quick.className='wf-ai-quick';quick.id='wf-ai-quick';
+    [['Packages & prices','Show me your website packages and prices.'],['Website services','What kind of websites can WebForge build?'],['SEO services','Can you explain your SEO services?']].forEach(([label,prompt])=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.dataset.prompt=prompt;quick.appendChild(b);});
+    messagesEl.appendChild(quick);setBusy(false);input.focus();
+  });
+  form.addEventListener('submit',e=>{e.preventDefault();submit();});
+  input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(input.scrollHeight,90)+'px';});
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.requestSubmit();}});
+  messagesEl.addEventListener('click',e=>{const button=e.target.closest('[data-prompt]');if(button)submit(button.dataset.prompt);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('is-open'))shut();});
+})();
+</script>
+
 </body>
 </html>
