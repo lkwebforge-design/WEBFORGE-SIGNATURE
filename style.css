@@ -1345,3 +1345,32 @@ body{overflow-x:clip!important}
 @media(hover:hover) and (pointer:fine){#work .portfolio-project:hover .portfolio-project__rotator,#work .portfolio-project:focus-visible .portfolio-project__rotator,#work .portfolio-project:focus-within .portfolio-project__rotator{transform:rotateY(180deg)!important}#work .portfolio-project:hover .portfolio-project__face--front>img{transform:scale(1.055)!important;filter:brightness(.78) saturate(.96)!important}}
 @media(max-width:760px){#work .portfolio-project__face--front .portfolio-project__top{top:15px!important;left:15px!important;right:15px!important;font-size:8px!important}#work .portfolio-project__front-copy{left:20px!important;right:20px!important;bottom:21px!important;gap:10px!important}#work .portfolio-project__front-copy>strong{font-size:34px!important}#work .portfolio-project__back-copy>strong{font-size:32px!important}#work .portfolio-project__description{font-size:11px!important;line-height:1.7!important}#work .portfolio-project__face--back{padding:25px!important}#work .portfolio-project__back-index{top:23px!important;left:25px!important}#work .portfolio-project__view{min-height:46px!important;min-width:166px!important}}
 @media(prefers-reduced-motion:reduce){#work .portfolio-project__rotator,#work .portfolio-project__face--front>img,#work .portfolio-project__view,#work .portfolio-project__view>span{transition:none!important}}
+
+/* Portfolio flip-back descriptions: explicit readable paragraph above CTA. */
+#work .portfolio-project__face--back .portfolio-project__back-copy .portfolio-project__description{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  max-width:390px!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  color:rgba(244,246,241,.82)!important;
+  font-family:var(--body,inherit)!important;
+  font-size:12px!important;
+  font-weight:400!important;
+  line-height:1.75!important;
+  letter-spacing:.01em!important;
+  text-align:left!important;
+}
+@media(max-width:760px){
+  #work .portfolio-project__face--back .portfolio-project__back-copy .portfolio-project__description{
+    font-size:11px!important;
+    line-height:1.7!important;
+  }
+}
