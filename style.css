@@ -1374,3 +1374,9 @@ body{overflow-x:clip!important}
     line-height:1.7!important;
   }
 }
+
+
+/* Footer policy links */
+.wf-legal-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;width:100%;padding:18px 0 2px;border-top:1px solid rgba(255,255,255,.09)}
+.wf-legal-links a{color:#929d92;text-decoration:none;font:600 10px/1.5 'DM Sans',sans-serif;letter-spacing:.04em;transition:color .2s ease}
+.wf-legal-links a:hover,.wf-legal-links a:focus-visible{color:#b6ff67}
